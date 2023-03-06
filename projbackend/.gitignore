@@ -3,3 +3,5 @@ node_modules
 /utils/dataHandler
 data-management
 .vscode
+CollegeList.json
+testimonials.json

@@ -48,10 +48,12 @@ app.use(express.urlencoded({ extended: true }));
 const home = require("./routes/homeRoutes");
 const user = require("./routes/userRoutes");
 const college = require("./routes/collegeRoutes");
+const testimonial = require("./routes/testimonialsRoutes");
 //Using routes
 app.use("/api/v1", home);
 app.use("/api/v1", user);
 app.use("/api/v1", college);
+app.use("/api/v1", testimonial);
 
 //This is the last middleware. whenever the next keyword is called with an error then this is where it will come for processing.
 app.use((err, req, res, next) => {
