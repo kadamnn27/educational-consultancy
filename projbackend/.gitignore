@@ -5,3 +5,4 @@ data-management
 .vscode
 CollegeList.json
 testimonials.json
+utils/dataHandler
