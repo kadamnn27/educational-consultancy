@@ -243,8 +243,8 @@ exports.updateAccount = BigPromise(async (req, res, next) => {
     if (user.image.id) {
       const resp = await cloudinary.uploader.destroy(user.image.id);
     }
-    const photo = req.files.photo;
-    const imgResult = await cloudinary.uploader.upload(photo.tempFilePath, {
+    const image = req.files.image;
+    const imgResult = await cloudinary.uploader.upload(image.tempFilePath, {
       folder: "users",
       crop: "scale",
     });
