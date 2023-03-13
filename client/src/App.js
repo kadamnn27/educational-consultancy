@@ -34,6 +34,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [cookieToken, setCookieToken] = useState(null);
   const [course, setCourse] = React.useState('Course Details');
+  const [mode, setMode] = useState(null);
 
   //This method would work but seems taxing to the computer power.
   // window.setInterval(() => {
@@ -55,23 +56,23 @@ function App() {
     if (user) localStorage.setItem('user', JSON.stringify(user));
   }, [user])
   return (
-    <UserContext.Provider value={{ user, setUser, cookieToken, setCookieToken,course,setCourse }}>
+    <UserContext.Provider value={{ user, setUser, cookieToken, setCookieToken,course,setCourse,mode,setMode }}>
       <div className={classes.App}>
         <Router>
-          <Navbar navbar={navbar} setNavbar={setNavbar} />
+          {mode || window.location.pathname!=='/'?<Navbar navbar={navbar} setNavbar={setNavbar} />:<></>}
           <Routes>
             <Route exact path="/" element={<Home navbar={navbar} setNavbar={setNavbar} />} />
             <Route path="/about" element={<About navbar={navbar} setNavbar={setNavbar} />} />
             <Route path="/login" element={<Login navbar={navbar} setNavbar={setNavbar} />} />
             <Route path="/register" element={<Register navbar={navbar} setNavbar={setNavbar} />} />
-            <Route path="/reviews" element={<FAQ navbar={navbar} setNavbar={setNavbar} />} />
+            <Route path="/faq" element={<FAQ navbar={navbar} setNavbar={setNavbar} />} />
             <Route path="/colleges" element={<Colleges navbar={navbar} setNavbar={setNavbar} />} />
             <Route path="/account" element={<Account navbar={navbar} setNavbar={setNavbar} />} />
             <Route path="/course" element={<Course navbar={navbar} setNavbar={setNavbar} />} />
           </Routes>
         </Router>
-        <ChatBotComponent />
-        <Footer />
+        {mode || window.location.pathname!=='/'?<ChatBotComponent />:<></>}
+        {mode || window.location.pathname!=='/'?<Footer />:<></>}
       </div>
     </UserContext.Provider>
   );

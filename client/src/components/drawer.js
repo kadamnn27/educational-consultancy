@@ -2,7 +2,10 @@ import React, { useState, useContext } from "react";
 import { UserContext } from "../UserContext";
 import MenuIcon from "@material-ui/icons/Menu";
 import logoMini from "../images/logo-mini.jpeg";
-import texturedImage from "../images/textured_3_edit.png"
+import texturedImage from "../images/textured_3_edit.png";
+import dropDownIcon from '../images/icons/icons8-drop-down-30.png';
+import Collapse from '@mui/material/Collapse';
+import crossIcon from '../images/icons/icons8-multiplication-48.png';
 
 import {
     Drawer,
@@ -65,7 +68,16 @@ const useStyles = makeStyles(() => ({
     },
     list: {
         // background: "#0411af",
-    }
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "start",
+    },
+    courseMenuLinks: {
+        textDecoration: "none",
+        color: "#fea905",
+        fontSize: "17px",
+
+    },
 }));
 
 const Alert = React.forwardRef(function Alert(props, ref) {
@@ -74,6 +86,14 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 const DrawerMenu = () => {
     const [open, setOpen] = React.useState(false);
+    //courses menu
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [menuOpenUG, setMenuOpenUG] = useState(false);
+    const [menuOpenPG, setMenuOpenPG] = useState(false);
+
+    //mode menu
+    const [modeMenuOpen, setModeMenuOpen] = useState(false);
+
     const handleClick = () => {
         setOpen(true);
     };
@@ -87,7 +107,7 @@ const DrawerMenu = () => {
     const classes = useStyles();
     const [openDrawer, setOpenDrawer] = useState(false);
 
-    const { user, setUser, cookieToken, setCookieToken } = useContext(UserContext);
+    const { user, setUser, cookieToken, setCookieToken, course, setCourse, mode, setMode } = useContext(UserContext);
 
     return (
         <div>
@@ -104,16 +124,161 @@ const DrawerMenu = () => {
                         onClose={() => setOpenDrawer(false)}
                         classes={{ paper: classes.paper }}
                     >
-                        <List className={classes.list}>
+
+                        <List>
                             <ListItem onClick={() => setOpenDrawer(false)}>
                                 <ListItemText>
-                                    <Link className={classes.link} to="/about">About</Link>
+                                    <Link className={classes.link} to="/about">About Us</Link>
                                 </ListItemText>
                             </ListItem>
                             {/* <ListItem onClick={() => setOpenDrawer(false)}>
                                 <ListItemText>
                                     <Link className={classes.link} to="/colleges">Colleges</Link>
                                 </ListItemText>
+                            </ListItem> */}
+                            <ListItem onClick={() => setModeMenuOpen(!modeMenuOpen)}
+                                style={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'flex-start',
+                                    paddingLeft: '11px'
+                                }}
+                            >
+                                <button style={{ background: 'transparent', border: 'none', display: 'flex' }}>
+                                    <Typography style={{ fontSize: '20px', color: '#fea905' }}>
+                                        Mode
+                                    </Typography>
+
+                                    <img src={dropDownIcon} />
+                                </button>
+                                <Collapse in={modeMenuOpen} timeout={500} unmountOnExit
+                                    style={{
+                                        top: '65px',
+                                        margin: '0px',
+                                        padding: '0px',
+                                        zIndex: '100'
+                                    }}>
+                                    <ul class="menu-list-drawer">
+                                        <li style={{
+                                            background: mode === 'UG' ? 'rgba(255,165,0,0.2)' : 'transparent',
+                                            listStyleType: 'none',
+                                            padding: '10px',
+                                        }}
+                                            onClick={() => setMode('UG')}
+                                        >
+                                            Neet UG
+                                        </li>
+                                        <li style={{
+                                            background: mode === 'PG' ? 'rgba(255,165,0,0.2)' : 'transparent',
+                                            listStyleType: 'none',
+                                            padding: '10px',
+                                        }}
+                                            onClick={() => setMode('PG')}
+                                        >
+                                            Neet PG
+                                        </li>
+                                    </ul>
+                                </Collapse>
+                            </ListItem>
+                            {/* <ListItem style={{
+                                display: 'flex', flexDirection: 'column', alignItems: 'flex-start',
+                                paddingLeft: '11px'
+                            }}>
+                                <button
+                                    onClick={() => setMenuOpen(!menuOpen)}
+                                    style={{ background: 'transparent', border: 'none', display: 'flex'}}>
+                                    <Typography style={{ fontSize: '20px', color: '#fea905' }}>
+                                        Courses
+                                    </Typography>
+                                    <img src={dropDownIcon}></img>
+                                </button>
+                                <Collapse in={menuOpen} timeout={500} unmountOnExit
+                                    style={{
+                                        top: '65px',
+                                        margin: '0px',
+                                        padding: '0px',
+                                        zIndex: '100'
+                                    }}
+                                >
+                                    <ul class="menu-list-drawer">
+                                        <li style={{ listStyleType: 'none' }}
+                                            onClick={() => setMenuOpenUG(!menuOpenUG)}
+                                        >
+                                            Neet UG
+                                            <img
+                                                src={dropDownIcon}
+                                            />
+                                            <Collapse in={menuOpenUG}
+                                                style={{
+                                                    top: '0px',
+                                                    zIndex: '101'
+                                                }}
+                                                timeout={500} unmountOnExit
+                                            >
+                                                <ul class="menu-list-drawer">
+                                                    <li style={{ listStyleType: 'none', padding: '10px' }}>
+                                                        <Link to='/course' class={classes.courseMenuLinks} onClick={() => setCourse("UG1")}>
+                                                            UG1
+                                                        </Link>
+                                                    </li>
+                                                    <li style={{ listStyleType: 'none', padding: '10px' }}>
+                                                        <Link to='/course' class={classes.courseMenuLinks} onClick={() => setCourse("UG2")}>
+                                                            UG2
+                                                        </Link>
+                                                    </li>
+                                                    <li style={{ listStyleType: 'none', padding: '10px' }}>
+                                                        <Link to='/course' class={classes.courseMenuLinks} onClick={() => setCourse("UG3")}>
+                                                            UG3
+                                                        </Link>
+                                                    </li>
+                                                    <li style={{ listStyleType: 'none', padding: '10px' }}>
+                                                        <Link to='/course' class={classes.courseMenuLinks} onClick={() => setCourse("UG4")}>
+                                                            UG4
+                                                        </Link>
+                                                    </li>
+                                                </ul>
+                                            </Collapse>
+                                        </li>
+                                        <li style={{ listStyleType: 'none' }}
+                                            onClick={() => setMenuOpenPG(!menuOpenPG)}
+                                        >
+                                            Neet PG
+                                            <img
+                                                src={dropDownIcon}
+                                            />
+                                            <Collapse in={menuOpenPG}
+                                                style={{
+                                                    top: '0px',
+                                                    zIndex: '101'
+                                                }}
+                                                timeout={500} unmountOnExit
+                                            >
+                                                <ul class="menu-list-drawer">
+                                                    <li style={{ listStyleType: 'none', padding: '10px' }}>
+                                                        <Link to='/course' class={classes.courseMenuLinks} onClick={() => setCourse("PG1")}>
+                                                            PG1
+                                                        </Link>
+                                                    </li>
+                                                    <li style={{ listStyleType: 'none', padding: '10px' }}>
+                                                        <Link to='/course' class={classes.courseMenuLinks} onClick={() => setCourse("PG2")}>
+                                                            PG2
+                                                        </Link>
+                                                    </li>
+                                                    <li style={{ listStyleType: 'none', padding: '10px' }}>
+                                                        <Link to='/course' class={classes.courseMenuLinks} onClick={() => setCourse("PG3")}>
+                                                            PG3
+                                                        </Link>
+                                                    </li>
+                                                    <li style={{ listStyleType: 'none', padding: '10px' }}>
+                                                        <Link to='/course' class={classes.courseMenuLinks} onClick={() => setCourse("PG4")}>
+                                                            PG4
+                                                        </Link>
+                                                    </li>
+                                                </ul>
+                                            </Collapse>
+                                        </li>
+                                    </ul>
+                                </Collapse>
                             </ListItem> */}
                             {!user ?
                                 <>
@@ -131,7 +296,7 @@ const DrawerMenu = () => {
                                 <>
                                     <ListItem onClick={() => setOpenDrawer(false)}>
                                         <ListItemText>
-                                            <Link className={classes.link} to="/account">Hi, {user.name}</Link>
+                                            <Link className={classes.link} to="/account">Account Details</Link>
                                         </ListItemText>
                                     </ListItem>
                                     <ListItem onClick={() => {

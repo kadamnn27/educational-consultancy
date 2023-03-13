@@ -140,3 +140,24 @@ label[for=avatar]:hover,label[for=avatar]:focus{
   color: #fea905;
   box-shadow: 0px 0px 6px 2.5px #fea905 ,1px 1px 1px 0px #ECDE65,1px 1px 1px 0px #ECDE65;
 }
+
+.menu-list{
+  background:white;
+  color:#fea905;
+  padding:10px;
+  border-radius:5px;
+  font-size: 17px;
+  border:2px solid #fea905;
+}
+
+.menu-list li:hover, .menu-list li:focus,.menu-list-drawer li:focus{
+  background:rgba(254, 185, 1, 0.2);
+  color:black;
+}
+
+.menu-list-drawer{
+  color:#fea905;
+  border-radius:5px;
+  font-size: 17px;
+  padding: 10px 0px 0px 0px;
+}

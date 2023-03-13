@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import SplitButton from 'react-bootstrap/SplitButton';
-import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
+// import Dropdown from 'react-bootstrap/Dropdown';
+// import DropdownButton from 'react-bootstrap/DropdownButton';
+// import SplitButton from 'react-bootstrap/SplitButton';
+// import Button from 'react-bootstrap/Button';
+// import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Collapse from '@mui/material/Collapse';
 import { FormControl, Select, MenuItem, FormHelperText, InputLabel } from '@mui/material';
 import { Toolbar, Container, AppBar, Typography, Grow, Grid, CssBaseline, makeStyles, useTheme, useMediaQuery } from "@material-ui/core";
 import { Link } from "react-router-dom";
@@ -12,7 +13,7 @@ import { UserContext } from "../UserContext";
 import DrawerMenu from "./drawer";
 import logo from '../images/logo_white.png';
 import "../App.css";
-import arrowIcon from '../images/icons/icons8-chevron-left-50.png';
+import dropDownIcon from '../images/icons/icons8-drop-down-30.png';
 import texturedImage from "../images/textured_3_edit.png";
 
 import Cookies from 'js-cookie';
@@ -35,10 +36,18 @@ const useStyles = makeStyles((theme) => ({
         textDecoration: "none",
         color: "#fea905",
         fontSize: "20px",
-        // marginLeft: theme.spacing(10),
         "&:hover": {
             color: "hotpink",
             borderBottom: "1px solid hotpink",
+        },
+    },
+    courseMenuLinks: {
+        textDecoration: "none",
+        color: "#fea905",
+        fontSize: "17px",
+        "&:hover": {
+            color: "black",
+            borderBottom: "1px solid black",
         },
     },
     logoText: {
@@ -62,6 +71,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Navbar = ({ navbar, setNavbar }) => {
+
+    //courses menu
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [menuOpenUG, setMenuOpenUG] = useState(false);
+    const [menuOpenPG, setMenuOpenPG] = useState(false);
+
+    //mode menu
+    const [modeMenuOpen, setModeMenuOpen] = useState(false);
+
+
     // const [navbar, setNavbar] = useState(false);
     const [location, setLocation] = useState("/");
     const changeNavbar = () => {
@@ -92,7 +111,7 @@ const Navbar = ({ navbar, setNavbar }) => {
     const focus = useRef();
     const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
 
-    const { user, setUser, cookieToken, setCookieToken, course, setCourse } = useContext(UserContext);
+    const { user, setUser, cookieToken, setCookieToken, course, setCourse, mode, setMode } = useContext(UserContext);
     return (
         <div>
             <CssBaseline />
@@ -113,40 +132,167 @@ const Navbar = ({ navbar, setNavbar }) => {
                                         <Typography style={{ marginLeft: 0, fontSize: "23px", fontWeight: "300" }} className={classes.logoText}>Consultancy</Typography></div>) : (<p style={{ position: "relative", top: "2px", marginBottom: "4px" }}>Home</p>)}
                                 </Link>
                                 <Link to="/about" className={classes.link}>
-                                    About
+                                    About Us
                                 </Link>
-                                {/* <Link to="/" className={classes.link}>
-                                    <SplitButton
-                                        key="down"
-                                        id={`dropdown-button-drop-down-centered`}
-                                        drop="down-centered"
-                                        variant="secondary"
-                                        title={course}
-                                    >
-                                        <SplitButton
-                                            key="end"
-                                            id={`dropdown-button-drop-end`}
-                                            drop="end"
-                                            variant="secondary"
-                                            title={`NEET UG`}
+                                <button
+                                    onMouseOver={() => setModeMenuOpen(true)}
+                                    onMouseLeave={() => setModeMenuOpen(false)}
+                                    style={{ background: 'transparent', border: 'none', display: 'flex' }}
+                                >
+                                    <Typography style={{ fontSize: '20px', color: '#fea905' }}>
+                                        Mode
+                                    </Typography>
+                                    <img src={dropDownIcon}></img>
+                                </button>
+                                <Collapse in={modeMenuOpen} timeout={500} unmountOnExit
+                                    onMouseOver={() => setModeMenuOpen(true)}
+                                    onMouseLeave={() => setModeMenuOpen(false)}
+                                    style={{
+                                        position: 'absolute',
+                                        top: '65px',
+                                        // left: `4${((window.innerWidth) / 100) - 5}%`,
+                                        zIndex: '100'
+                                    }}
+                                >
+                                    <ul class="menu-list">
+                                        <li style={{ listStyleType: 'none', padding: '10px' }}>
+                                            <button
+                                                style={{
+                                                    background: 'transparent',
+                                                    border: 'none',
+                                                    color: mode === 'UG' ? 'black' : 'orange',
+                                                    fontWeight: 'bold',
+                                                    transition: 'all 0.2s ease'
+                                                }}
+                                                onClick={() => setMode("UG")}
+                                            >
+                                                Neet UG
+                                            </button>
+                                        </li>
+                                        <li
+                                            style={{ listStyleType: 'none', padding: '10px' }}
                                         >
-                                            <Dropdown.Item href="#/course" value="UG1" onClick={(e)=>setCourse(e.target.value)}>UG1</Dropdown.Item>
-                                            <Dropdown.Item eventKey="2">UG2</Dropdown.Item>
-                                            <Dropdown.Item eventKey="3">UG3</Dropdown.Item>
-                                        </SplitButton>
-                                        <SplitButton
-                                            key="end"
-                                            id={`dropdown-button-drop-end`}
-                                            drop="end"
-                                            variant="secondary"
-                                            title={`NEET PG`}
+                                            <button
+                                                style={{
+                                                    background: 'transparent',
+                                                    border: 'none',
+                                                    color: mode === 'PG' ? 'black' : '#fea905',
+                                                    fontWeight: 'bold',
+                                                    transition: 'all 0.2s ease'
+                                                }}
+                                                onClick={() => setMode("PG")}
+                                            >
+                                                Neet PG
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </Collapse>
+                                {/* <button
+                                    onMouseOver={() => setMenuOpen(true)}
+                                    onMouseLeave={() => setMenuOpen(false)}
+                                    style={{ background: 'transparent', border: 'none', display: 'flex' }}>
+                                    <Typography style={{ fontSize: '20px', color: '#fea905' }}>
+                                        Courses
+                                    </Typography>
+                                    <img src={dropDownIcon}></img>
+                                </button>
+                                <Collapse in={menuOpen} timeout={500} unmountOnExit
+                                    onMouseOver={() => setMenuOpen(true)}
+                                    onMouseLeave={() => setMenuOpen(false)}
+                                    style={{
+                                        position: 'absolute',
+                                        top: '65px',
+                                        left: `5${((window.innerWidth) / 100) - 5}%`,
+                                        zIndex: '100'
+                                    }}
+                                >
+                                    <ul class="menu-list">
+                                        <li style={{ listStyleType: 'none', padding: '10px' }}
+                                            onMouseOver={() => setMenuOpenUG(true)}
+                                            onMouseLeave={() => setMenuOpenUG(false)}
                                         >
-                                            <Dropdown.Item eventKey="1">PG1</Dropdown.Item>
-                                            <Dropdown.Item eventKey="2">PG2</Dropdown.Item>
-                                            <Dropdown.Item eventKey="3">PG3</Dropdown.Item>
-                                        </SplitButton>
-                                    </SplitButton>
-                                </Link> */}
+                                            Neet UG
+                                            <img
+                                                style={{ transform: 'rotate(270deg)' }}
+                                                src={dropDownIcon}
+                                            />
+                                            <Collapse in={menuOpenUG} orientation="horizontal"
+                                                style={{
+                                                    position: 'absolute',
+                                                    left: '145px',
+                                                    top: '0px',
+                                                    zIndex: '101'
+                                                }}
+                                                timeout={500} unmountOnExit
+                                            >
+                                                <ul class="menu-list">
+                                                    <li style={{ listStyleType: 'none', padding: '10px' }}>
+                                                        <Link to='/course' class={classes.courseMenuLinks} onClick={() => setCourse("UG1")}>
+                                                            UG1
+                                                        </Link>
+                                                    </li>
+                                                    <li style={{ listStyleType: 'none', padding: '10px' }}>
+                                                        <Link to='/course' class={classes.courseMenuLinks} onClick={() => setCourse("UG2")}>
+                                                            UG2
+                                                        </Link>
+                                                    </li>
+                                                    <li style={{ listStyleType: 'none', padding: '10px' }}>
+                                                        <Link to='/course' class={classes.courseMenuLinks} onClick={() => setCourse("UG3")}>
+                                                            UG3
+                                                        </Link>
+                                                    </li>
+                                                    <li style={{ listStyleType: 'none', padding: '10px' }}>
+                                                        <Link to='/course' class={classes.courseMenuLinks} onClick={() => setCourse("UG4")}>
+                                                            UG4
+                                                        </Link>
+                                                    </li>
+                                                </ul>
+                                            </Collapse>
+                                        </li>
+                                        <li style={{ listStyleType: 'none', padding: '10px' }}
+                                            onMouseOver={() => setMenuOpenPG(true)}
+                                            onMouseLeave={() => setMenuOpenPG(false)}
+                                        >
+                                            Neet PG
+                                            <img
+                                                style={{ transform: 'rotate(270deg)' }}
+                                                src={dropDownIcon}
+                                            />
+                                            <Collapse in={menuOpenPG} orientation="horizontal"
+                                                style={{
+                                                    position: 'absolute',
+                                                    left: '145px',
+                                                    top: '0px',
+                                                    zIndex: '101'
+                                                }}
+                                                timeout={500} unmountOnExit
+                                            >
+                                                <ul class="menu-list">
+                                                    <li style={{ listStyleType: 'none', padding: '10px' }}>
+                                                        <Link to='/course' class={classes.courseMenuLinks} onClick={() => setCourse("PG1")}>
+                                                            PG1
+                                                        </Link>
+                                                    </li>
+                                                    <li style={{ listStyleType: 'none', padding: '10px' }}>
+                                                        <Link to='/course' class={classes.courseMenuLinks} onClick={() => setCourse("PG2")}>
+                                                            PG2
+                                                        </Link>
+                                                    </li>
+                                                    <li style={{ listStyleType: 'none', padding: '10px' }}>
+                                                        <Link to='/course' class={classes.courseMenuLinks} onClick={() => setCourse("PG3")}>
+                                                            PG3
+                                                        </Link>
+                                                    </li>
+                                                    <li style={{ listStyleType: 'none', padding: '10px' }}>
+                                                        <Link to='/course' class={classes.courseMenuLinks} onClick={() => setCourse("PG4")}>
+                                                            PG4
+                                                        </Link>
+                                                    </li>
+                                                </ul>
+                                            </Collapse>
+                                        </li>
+                                    </ul>
+                                </Collapse> */}
 
                                 {/* <Link to="/colleges" className={classes.link}>
                                     Colleges
