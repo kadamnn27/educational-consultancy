@@ -68,6 +68,7 @@ const Account = ({ navbar, setNavbar }) => {
                 formData.append('image', image);
                 formData.append('name', name);
                 formData.append('email', email);
+                formData.append('feeBudget', feeBudget);
                 await axios.put('/api/v1/youraccount',
                     formData, {
                     headers: {
