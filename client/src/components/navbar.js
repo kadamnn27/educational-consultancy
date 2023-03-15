@@ -134,9 +134,9 @@ const Navbar = ({ navbar, setNavbar }) => {
                                 <Link to="/about" className={classes.link}>
                                     About Us
                                 </Link>
-                                <Link to={`/about/${mode}`} className={classes.link}>
+                                {/* <Link to={`/about/${mode}`} className={classes.link}>
                                     About {mode}
-                                </Link>
+                                </Link> */}
                                 <button
                                     onMouseOver={() => setModeMenuOpen(true)}
                                     onMouseLeave={() => setModeMenuOpen(false)}
