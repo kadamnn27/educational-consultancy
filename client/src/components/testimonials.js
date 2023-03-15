@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import { Paper, Container, Typography, makeStyles, Button } from "@material-ui/core";
 import Divider from '@mui/material/Divider';
 import Chip from '@mui/material/Chip';
@@ -19,7 +20,11 @@ import { UserContext } from '../UserContext';
 
 const useStyles = makeStyles((theme) => ({
     testimonialsBtn: {
+        fontFamily: "Nunito Sans",
+        fontWeight: "600",
         margin: "20px",
+        padding: "10px",
+        textDecoration: "none",
         backgroundColor: "white",
         color: "black",
         borderRadius: "10px",
@@ -71,7 +76,7 @@ const Testimonials = () => {
         setTestimonials([]);
         axios.get(testimonialsURL)
             .then((response) => {
-                setTestimonials(response.data.testimonials.filter(testimonial=>testimonial.type===mode));
+                setTestimonials(response.data.testimonials.filter(testimonial => testimonial.type === mode));
             })
             .catch((error) => {
                 console.log(error);
@@ -99,7 +104,7 @@ const Testimonials = () => {
             <Paper elevation={5} className={classes.paper}>
                 {
                     testimonials.length > 0 ?
-                        <Carousel indicators={true} style={{paddingBottom:'20px'}}>
+                        <Carousel indicators={true} style={{ paddingBottom: '20px' }}>
                             {
                                 testimonials.map((testimonial, index) => (
                                     <Carousel.Item key={index} className={classes.item}>
@@ -125,13 +130,13 @@ const Testimonials = () => {
                         </Carousel>
                         :
                         <Typography align="center">
-                            <CircularProgress style={{ color: "white",margin:'20px' }} />
+                            <CircularProgress style={{ color: "white", margin: '20px' }} />
                         </Typography>
                 }
             </Paper>
             <Typography align="center">
                 <br />
-                <Button className={classes.testimonialsBtn} href="/faq" variant="contained">Some Frequently Asked Questions</Button>
+                <Link className={classes.testimonialsBtn} to="/faq" variant="contained">Some Frequently Asked Questions</Link>
             </Typography>
         </div>
     )

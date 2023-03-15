@@ -32,7 +32,7 @@ const Register = ({ navbar, setNavbar }) => {
     }, [])
 
     const [image, setImage] = useState(null);
-    const [imageURL,setImageURL] = useState(null);
+    const [imageURL, setImageURL] = useState(null);
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -56,12 +56,13 @@ const Register = ({ navbar, setNavbar }) => {
         domicile: "",
         passedTenth: "",
         passedEleventh: "",
-        passedTwelfth: ""
+        passedTwelfth: "",
+        passedGrad: ""
     });
     const [isPwd, setPwd] = useState(false);
     // const [fatherOccupation, setfatherOccupation] = useState("");
     // const [motherOccupation, setmotherOccupation] = useState("");
-    const [occParent, setoccParent] = useState({ fatherOccupation: "", motherOccupation: "" });
+    const [occParent, setoccParent] = useState({ fatherOccupation: "Select or Write", motherOccupation: "Select or Write" });
     const [quota, setQuota] = useState("General");
     const [feeBudget, setFeeBudget] = useState(null);
     const [phoneNo, setPhoneNo] = useState("");
@@ -77,10 +78,12 @@ const Register = ({ navbar, setNavbar }) => {
         setResponseRecieved(true);
         setSuccess(false);
         setFailiure(false);
-        if (!name || !email || !password || !course || !gender || !dob || !category || !state || !occParent) {
+        if (!name || !email || !password || !course || !gender || !dob || !category || !state || !occParent||occParent.fatherOccupation==="Select or Write"||occParent.motherOccupation==="Select or Write"||!feeBudget) {
             setResponseRecieved(false);
-            return alert("One or more fields missing");
+            return alert("One or more required fields missing");
         }
+        if(course==="FCPS/CPS" || course==="DNB" || course==="MD/MS") setState({...state,passedTenth:0,passedEleventh:0,passedTwelfth:0})
+        else setState({...state,passedGrad:0});
         try {
             // const form=document.getElementById("form");
             // console.log(form);
@@ -99,7 +102,7 @@ const Register = ({ navbar, setNavbar }) => {
             formData.append('name', name);
             formData.append('email', email);
             formData.append('password', password);
-            formData.append('phoneno',phoneNo);
+            formData.append('phoneno', phoneNo);
             formData.append('course', course);
             formData.append('city', city);
             formData.append('image', image); // `image` should be a file object, such as from an `<input type="file">` field
@@ -112,14 +115,15 @@ const Register = ({ navbar, setNavbar }) => {
             formData.append('quota', quota);
             formData.append('feeBudget', feeBudget);
             formData.append('category', category);
-            console.log(formData);
+            // console.log(formData);
+            // console.log(state);
             const response = await axios.post(REGISTERATION_URL,
-            formData,
-             {
-                headers: { 'Content-Type': 'multipart/form-data'},
-                withCredentials: true
-            }
-)
+                formData,
+                {
+                    headers: { 'Content-Type': 'multipart/form-data' },
+                    withCredentials: true
+                }
+            )
             // console.log(formData);
             // console.log(JSON.stringify(response));
             // const accessToken = response.accessToken
@@ -249,8 +253,8 @@ const Register = ({ navbar, setNavbar }) => {
                                     </RadioGroup>
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                                    <Typography style={{ margin: '15px 40px 15px 15px' }}>Select your DOB : </Typography>
-                                    <input name="dob" style={{ background: 'transparent', border: '0px', borderTop: '2px', color: 'orange', fontWeight: "600" }} type="date" label="DOB" value={dob} onChange={(e) => setDob(e.target.value)} id="dob" />
+                                    <Typography style={{ margin: '15px 10px 15px 15px' }}>Select your DOB : </Typography>
+                                    <input name="dob" style={{ background: 'transparent', border: '0px', borderTop: '2px', color: 'orange', fontWeight: "600",fontSize:'20px' }} type="date" label="DOB" value={dob} onChange={(e) => setDob(e.target.value)} id="dob" />
                                     <img width="15px" style={{ position: 'relative', right: '15px', bottom: '2px' }} src={CalendarIcon} />
                                 </div>
                             </div>
@@ -275,7 +279,7 @@ const Register = ({ navbar, setNavbar }) => {
                                     <MenuItem value="BAMS">BAMS</MenuItem>
                                     <MenuItem value="BHMS">BHMS</MenuItem>
                                     <MenuItem value="BDS">BDS</MenuItem>
-                                    <MenuItem value="MD/MS">MD/MDS</MenuItem>
+                                    <MenuItem value="MD/MS">MD/MS</MenuItem>
                                     <MenuItem value="DNB">DNB</MenuItem>
                                     <MenuItem value="FCPS/CPS">FCPS/CPS</MenuItem>
                                 </TextField>
@@ -324,132 +328,180 @@ const Register = ({ navbar, setNavbar }) => {
                                     <MenuItem value="Uttar Pradesh">Uttar Pradesh</MenuItem>
                                     <MenuItem value="West Bengal">West Bengal</MenuItem>
                                 </TextField>
-                                <TextField
-                                    select
-                                    variant={state.passedTenth ? "filled" : "standard"}
-                                    helperText="Enter the state you passed your 10th from"
-                                    style={{ margin: '15px' }}
-                                    label="Tenth State"
-                                    value={state.passedTenth}
-                                    name="passedTenth"
-                                    onChange={(e) => setState({ ...state, passedTenth: e.target.value })}
-                                >
-                                    <MenuItem value="">
-                                        <em>None</em>
-                                    </MenuItem>
-                                    <MenuItem value="Andhra Pradesh">Andhra Pradesh</MenuItem>
-                                    <MenuItem value="Arunachal Pradesh">Arunachal Pradesh</MenuItem>
-                                    <MenuItem value="Assam">Assam</MenuItem>
-                                    <MenuItem value="Bihar">Bihar</MenuItem>
-                                    <MenuItem value="Chhatisgarh">Chattisgarh</MenuItem>
-                                    <MenuItem value="Goa">Goa</MenuItem>
-                                    <MenuItem value="Gujarat">Gujarat</MenuItem>
-                                    <MenuItem value="Haryana">Haryana</MenuItem>
-                                    <MenuItem value="Himachal Pradesh">Himachal Pradesh</MenuItem>
-                                    <MenuItem value="Jharkand">Jharkand</MenuItem>
-                                    <MenuItem value="Karnatka">Karnatka</MenuItem>
-                                    <MenuItem value="Kerala">Kerala</MenuItem>
-                                    <MenuItem value="Madhya Pradesh">Madhya Pradesh</MenuItem>
-                                    <MenuItem value="Maharashtra">Maharashtra</MenuItem>
-                                    <MenuItem value="Manipur">Manipur</MenuItem>
-                                    <MenuItem value="Meghalya">Meghalya</MenuItem>
-                                    <MenuItem value="Mizoram">Mizoram</MenuItem>
-                                    <MenuItem value="Nagaland">Nagaland</MenuItem>
-                                    <MenuItem value="Odisha">Odisha</MenuItem>
-                                    <MenuItem value="Punjab">Punjab</MenuItem>
-                                    <MenuItem value="Rajasthan">Rajasthan</MenuItem>
-                                    <MenuItem value="Sikkim">Sikkim</MenuItem>
-                                    <MenuItem value="Tamil Nadu">Tamil Nadu</MenuItem>
-                                    <MenuItem value="Telangana">Telangana</MenuItem>
-                                    <MenuItem value="Tripura">Tripura</MenuItem>
-                                    <MenuItem value="Uttarakhand">Uttarakhand</MenuItem>
-                                    <MenuItem value="Uttar Pradesh">Uttar Pradesh</MenuItem>
-                                    <MenuItem value="West Bengal">West Bengal</MenuItem>
-                                </TextField>
-                                <TextField
-                                    select
-                                    variant={state.passedEleventh ? "filled" : "standard"}
-                                    helperText="Enter the state you passed your 11th from"
-                                    style={{ margin: '15px' }}
-                                    label="Eleventh State"
-                                    name="passedEleventh"
-                                    value={state.passedEleventh}
-                                    onChange={(e) => setState({ ...state, passedEleventh: e.target.value })}
-                                >
-                                    <MenuItem value="">
-                                        <em>None</em>
-                                    </MenuItem>
-                                    <MenuItem value="Andhra Pradesh">Andhra Pradesh</MenuItem>
-                                    <MenuItem value="Arunachal Pradesh">Arunachal Pradesh</MenuItem>
-                                    <MenuItem value="Assam">Assam</MenuItem>
-                                    <MenuItem value="Bihar">Bihar</MenuItem>
-                                    <MenuItem value="Chhatisgarh">Chattisgarh</MenuItem>
-                                    <MenuItem value="Goa">Goa</MenuItem>
-                                    <MenuItem value="Gujarat">Gujarat</MenuItem>
-                                    <MenuItem value="Haryana">Haryana</MenuItem>
-                                    <MenuItem value="Himachal Pradesh">Himachal Pradesh</MenuItem>
-                                    <MenuItem value="Jharkand">Jharkand</MenuItem>
-                                    <MenuItem value="Karnatka">Karnatka</MenuItem>
-                                    <MenuItem value="Kerala">Kerala</MenuItem>
-                                    <MenuItem value="Madhya Pradesh">Madhya Pradesh</MenuItem>
-                                    <MenuItem value="Maharashtra">Maharashtra</MenuItem>
-                                    <MenuItem value="Manipur">Manipur</MenuItem>
-                                    <MenuItem value="Meghalya">Meghalya</MenuItem>
-                                    <MenuItem value="Mizoram">Mizoram</MenuItem>
-                                    <MenuItem value="Nagaland">Nagaland</MenuItem>
-                                    <MenuItem value="Odisha">Odisha</MenuItem>
-                                    <MenuItem value="Punjab">Punjab</MenuItem>
-                                    <MenuItem value="Rajasthan">Rajasthan</MenuItem>
-                                    <MenuItem value="Sikkim">Sikkim</MenuItem>
-                                    <MenuItem value="Tamil Nadu">Tamil Nadu</MenuItem>
-                                    <MenuItem value="Telangana">Telangana</MenuItem>
-                                    <MenuItem value="Tripura">Tripura</MenuItem>
-                                    <MenuItem value="Uttarakhand">Uttarakhand</MenuItem>
-                                    <MenuItem value="Uttar Pradesh">Uttar Pradesh</MenuItem>
-                                    <MenuItem value="West Bengal">West Bengal</MenuItem>
-                                </TextField>
-                                <TextField
-                                    select
-                                    variant={state.passedTwelfth ? "filled" : "standard"}
-                                    helperText="Enter the state you passed your 12th from"
-                                    style={{ margin: '15px' }}
-                                    label="Twelfth State"
-                                    value={state.passedTwelfth}
-                                    name="passedTwelfth"
-                                    onChange={(e) => setState({ ...state, passedTwelfth: e.target.value })}
-                                >
-                                    <MenuItem value={null}>
-                                        <em>None</em>
-                                    </MenuItem>
-                                    <MenuItem value="Andhra Pradesh">Andhra Pradesh</MenuItem>
-                                    <MenuItem value="Arunachal Pradesh">Arunachal Pradesh</MenuItem>
-                                    <MenuItem value="Assam">Assam</MenuItem>
-                                    <MenuItem value="Bihar">Bihar</MenuItem>
-                                    <MenuItem value="Chhatisgarh">Chattisgarh</MenuItem>
-                                    <MenuItem value="Goa">Goa</MenuItem>
-                                    <MenuItem value="Gujarat">Gujarat</MenuItem>
-                                    <MenuItem value="Haryana">Haryana</MenuItem>
-                                    <MenuItem value="Himachal Pradesh">Himachal Pradesh</MenuItem>
-                                    <MenuItem value="Jharkand">Jharkand</MenuItem>
-                                    <MenuItem value="Karnatka">Karnatka</MenuItem>
-                                    <MenuItem value="Kerala">Kerala</MenuItem>
-                                    <MenuItem value="Madhya Pradesh">Madhya Pradesh</MenuItem>
-                                    <MenuItem value="Maharashtra">Maharashtra</MenuItem>
-                                    <MenuItem value="Manipur">Manipur</MenuItem>
-                                    <MenuItem value="Meghalya">Meghalya</MenuItem>
-                                    <MenuItem value="Mizoram">Mizoram</MenuItem>
-                                    <MenuItem value="Nagaland">Nagaland</MenuItem>
-                                    <MenuItem value="Odisha">Odisha</MenuItem>
-                                    <MenuItem value="Punjab">Punjab</MenuItem>
-                                    <MenuItem value="Rajasthan">Rajasthan</MenuItem>
-                                    <MenuItem value="Sikkim">Sikkim</MenuItem>
-                                    <MenuItem value="Tamil Nadu">Tamil Nadu</MenuItem>
-                                    <MenuItem value="Telangana">Telangana</MenuItem>
-                                    <MenuItem value="Tripura">Tripura</MenuItem>
-                                    <MenuItem value="Uttarakhand">Uttarakhand</MenuItem>
-                                    <MenuItem value="Uttar Pradesh">Uttar Pradesh</MenuItem>
-                                    <MenuItem value="West Bengal">West Bengal</MenuItem>
-                                </TextField>
+                                {course === "MD/MS" || course === "DNB" || course === "FCPS?CPS" ?
+                                    <>
+                                        <TextField
+                                            select
+                                            variant={state.passedGrad ? "filled" : "standard"}
+                                            helperText="Enter the state you did your graduation from"
+                                            style={{ margin: '15px' }}
+                                            label="Graduation State"
+                                            value={state.passedGrad}
+                                            name="passedGrad"
+                                            onChange={(e) => setState({ ...state, passedGrad: e.target.value })}
+                                        >
+                                            <MenuItem value="">
+                                                <em>None</em>
+                                            </MenuItem>
+                                            <MenuItem value="Andhra Pradesh">Andhra Pradesh</MenuItem>
+                                            <MenuItem value="Arunachal Pradesh">Arunachal Pradesh</MenuItem>
+                                            <MenuItem value="Assam">Assam</MenuItem>
+                                            <MenuItem value="Bihar">Bihar</MenuItem>
+                                            <MenuItem value="Chhatisgarh">Chattisgarh</MenuItem>
+                                            <MenuItem value="Goa">Goa</MenuItem>
+                                            <MenuItem value="Gujarat">Gujarat</MenuItem>
+                                            <MenuItem value="Haryana">Haryana</MenuItem>
+                                            <MenuItem value="Himachal Pradesh">Himachal Pradesh</MenuItem>
+                                            <MenuItem value="Jharkand">Jharkand</MenuItem>
+                                            <MenuItem value="Karnatka">Karnatka</MenuItem>
+                                            <MenuItem value="Kerala">Kerala</MenuItem>
+                                            <MenuItem value="Madhya Pradesh">Madhya Pradesh</MenuItem>
+                                            <MenuItem value="Maharashtra">Maharashtra</MenuItem>
+                                            <MenuItem value="Manipur">Manipur</MenuItem>
+                                            <MenuItem value="Meghalya">Meghalya</MenuItem>
+                                            <MenuItem value="Mizoram">Mizoram</MenuItem>
+                                            <MenuItem value="Nagaland">Nagaland</MenuItem>
+                                            <MenuItem value="Odisha">Odisha</MenuItem>
+                                            <MenuItem value="Punjab">Punjab</MenuItem>
+                                            <MenuItem value="Rajasthan">Rajasthan</MenuItem>
+                                            <MenuItem value="Sikkim">Sikkim</MenuItem>
+                                            <MenuItem value="Tamil Nadu">Tamil Nadu</MenuItem>
+                                            <MenuItem value="Telangana">Telangana</MenuItem>
+                                            <MenuItem value="Tripura">Tripura</MenuItem>
+                                            <MenuItem value="Uttarakhand">Uttarakhand</MenuItem>
+                                            <MenuItem value="Uttar Pradesh">Uttar Pradesh</MenuItem>
+                                            <MenuItem value="West Bengal">West Bengal</MenuItem>
+                                        </TextField>
+                                    </> :
+                                    <>
+                                        <TextField
+                                            select
+                                            variant={state.passedTenth ? "filled" : "standard"}
+                                            helperText="Enter the state you passed your 10th from"
+                                            style={{ margin: '15px' }}
+                                            label="Tenth State"
+                                            value={state.passedTenth}
+                                            name="passedTenth"
+                                            onChange={(e) => setState({ ...state, passedTenth: e.target.value })}
+                                        >
+                                            <MenuItem value="">
+                                                <em>None</em>
+                                            </MenuItem>
+                                            <MenuItem value="Andhra Pradesh">Andhra Pradesh</MenuItem>
+                                            <MenuItem value="Arunachal Pradesh">Arunachal Pradesh</MenuItem>
+                                            <MenuItem value="Assam">Assam</MenuItem>
+                                            <MenuItem value="Bihar">Bihar</MenuItem>
+                                            <MenuItem value="Chhatisgarh">Chattisgarh</MenuItem>
+                                            <MenuItem value="Goa">Goa</MenuItem>
+                                            <MenuItem value="Gujarat">Gujarat</MenuItem>
+                                            <MenuItem value="Haryana">Haryana</MenuItem>
+                                            <MenuItem value="Himachal Pradesh">Himachal Pradesh</MenuItem>
+                                            <MenuItem value="Jharkand">Jharkand</MenuItem>
+                                            <MenuItem value="Karnatka">Karnatka</MenuItem>
+                                            <MenuItem value="Kerala">Kerala</MenuItem>
+                                            <MenuItem value="Madhya Pradesh">Madhya Pradesh</MenuItem>
+                                            <MenuItem value="Maharashtra">Maharashtra</MenuItem>
+                                            <MenuItem value="Manipur">Manipur</MenuItem>
+                                            <MenuItem value="Meghalya">Meghalya</MenuItem>
+                                            <MenuItem value="Mizoram">Mizoram</MenuItem>
+                                            <MenuItem value="Nagaland">Nagaland</MenuItem>
+                                            <MenuItem value="Odisha">Odisha</MenuItem>
+                                            <MenuItem value="Punjab">Punjab</MenuItem>
+                                            <MenuItem value="Rajasthan">Rajasthan</MenuItem>
+                                            <MenuItem value="Sikkim">Sikkim</MenuItem>
+                                            <MenuItem value="Tamil Nadu">Tamil Nadu</MenuItem>
+                                            <MenuItem value="Telangana">Telangana</MenuItem>
+                                            <MenuItem value="Tripura">Tripura</MenuItem>
+                                            <MenuItem value="Uttarakhand">Uttarakhand</MenuItem>
+                                            <MenuItem value="Uttar Pradesh">Uttar Pradesh</MenuItem>
+                                            <MenuItem value="West Bengal">West Bengal</MenuItem>
+                                        </TextField>
+                                        <TextField
+                                            select
+                                            variant={state.passedEleventh ? "filled" : "standard"}
+                                            helperText="Enter the state you passed your 11th from"
+                                            style={{ margin: '15px' }}
+                                            label="Eleventh State"
+                                            name="passedEleventh"
+                                            value={state.passedEleventh}
+                                            onChange={(e) => setState({ ...state, passedEleventh: e.target.value })}
+                                        >
+                                            <MenuItem value="">
+                                                <em>None</em>
+                                            </MenuItem>
+                                            <MenuItem value="Andhra Pradesh">Andhra Pradesh</MenuItem>
+                                            <MenuItem value="Arunachal Pradesh">Arunachal Pradesh</MenuItem>
+                                            <MenuItem value="Assam">Assam</MenuItem>
+                                            <MenuItem value="Bihar">Bihar</MenuItem>
+                                            <MenuItem value="Chhatisgarh">Chattisgarh</MenuItem>
+                                            <MenuItem value="Goa">Goa</MenuItem>
+                                            <MenuItem value="Gujarat">Gujarat</MenuItem>
+                                            <MenuItem value="Haryana">Haryana</MenuItem>
+                                            <MenuItem value="Himachal Pradesh">Himachal Pradesh</MenuItem>
+                                            <MenuItem value="Jharkand">Jharkand</MenuItem>
+                                            <MenuItem value="Karnatka">Karnatka</MenuItem>
+                                            <MenuItem value="Kerala">Kerala</MenuItem>
+                                            <MenuItem value="Madhya Pradesh">Madhya Pradesh</MenuItem>
+                                            <MenuItem value="Maharashtra">Maharashtra</MenuItem>
+                                            <MenuItem value="Manipur">Manipur</MenuItem>
+                                            <MenuItem value="Meghalya">Meghalya</MenuItem>
+                                            <MenuItem value="Mizoram">Mizoram</MenuItem>
+                                            <MenuItem value="Nagaland">Nagaland</MenuItem>
+                                            <MenuItem value="Odisha">Odisha</MenuItem>
+                                            <MenuItem value="Punjab">Punjab</MenuItem>
+                                            <MenuItem value="Rajasthan">Rajasthan</MenuItem>
+                                            <MenuItem value="Sikkim">Sikkim</MenuItem>
+                                            <MenuItem value="Tamil Nadu">Tamil Nadu</MenuItem>
+                                            <MenuItem value="Telangana">Telangana</MenuItem>
+                                            <MenuItem value="Tripura">Tripura</MenuItem>
+                                            <MenuItem value="Uttarakhand">Uttarakhand</MenuItem>
+                                            <MenuItem value="Uttar Pradesh">Uttar Pradesh</MenuItem>
+                                            <MenuItem value="West Bengal">West Bengal</MenuItem>
+                                        </TextField>
+                                        <TextField
+                                            select
+                                            variant={state.passedTwelfth ? "filled" : "standard"}
+                                            helperText="Enter the state you passed your 12th from"
+                                            style={{ margin: '15px' }}
+                                            label="Twelfth State"
+                                            value={state.passedTwelfth}
+                                            name="passedTwelfth"
+                                            onChange={(e) => setState({ ...state, passedTwelfth: e.target.value })}
+                                        >
+                                            <MenuItem value={null}>
+                                                <em>None</em>
+                                            </MenuItem>
+                                            <MenuItem value="Andhra Pradesh">Andhra Pradesh</MenuItem>
+                                            <MenuItem value="Arunachal Pradesh">Arunachal Pradesh</MenuItem>
+                                            <MenuItem value="Assam">Assam</MenuItem>
+                                            <MenuItem value="Bihar">Bihar</MenuItem>
+                                            <MenuItem value="Chhatisgarh">Chattisgarh</MenuItem>
+                                            <MenuItem value="Goa">Goa</MenuItem>
+                                            <MenuItem value="Gujarat">Gujarat</MenuItem>
+                                            <MenuItem value="Haryana">Haryana</MenuItem>
+                                            <MenuItem value="Himachal Pradesh">Himachal Pradesh</MenuItem>
+                                            <MenuItem value="Jharkand">Jharkand</MenuItem>
+                                            <MenuItem value="Karnatka">Karnatka</MenuItem>
+                                            <MenuItem value="Kerala">Kerala</MenuItem>
+                                            <MenuItem value="Madhya Pradesh">Madhya Pradesh</MenuItem>
+                                            <MenuItem value="Maharashtra">Maharashtra</MenuItem>
+                                            <MenuItem value="Manipur">Manipur</MenuItem>
+                                            <MenuItem value="Meghalya">Meghalya</MenuItem>
+                                            <MenuItem value="Mizoram">Mizoram</MenuItem>
+                                            <MenuItem value="Nagaland">Nagaland</MenuItem>
+                                            <MenuItem value="Odisha">Odisha</MenuItem>
+                                            <MenuItem value="Punjab">Punjab</MenuItem>
+                                            <MenuItem value="Rajasthan">Rajasthan</MenuItem>
+                                            <MenuItem value="Sikkim">Sikkim</MenuItem>
+                                            <MenuItem value="Tamil Nadu">Tamil Nadu</MenuItem>
+                                            <MenuItem value="Telangana">Telangana</MenuItem>
+                                            <MenuItem value="Tripura">Tripura</MenuItem>
+                                            <MenuItem value="Uttarakhand">Uttarakhand</MenuItem>
+                                            <MenuItem value="Uttar Pradesh">Uttar Pradesh</MenuItem>
+                                            <MenuItem value="West Bengal">West Bengal</MenuItem>
+                                        </TextField>
+                                    </>
+                                }
                             </div>
                         </Grid>
                         <Grid item md={12}>
@@ -470,7 +522,7 @@ const Register = ({ navbar, setNavbar }) => {
                                     </RadioGroup>
                                 </div>
                                 <TextField
-                                    select
+                                    select={quota === "General" || quota === "SC" || quota === "ST" || quota === "OBC-Central" || quota === "OBC-State" || quota === "EWS" || quota === "" ? true : false}
                                     variant={quota ? "filled" : "standard"}
                                     helperText="Select Quota"
                                     style={{ margin: '15px' }}
@@ -482,7 +534,10 @@ const Register = ({ navbar, setNavbar }) => {
                                     <MenuItem value="General">General</MenuItem>
                                     <MenuItem value="SC">SC</MenuItem>
                                     <MenuItem value="ST">ST</MenuItem>
-                                    <MenuItem value="OBC">OBC</MenuItem>
+                                    <MenuItem value="OBC-Central">OBC - Central</MenuItem>
+                                    <MenuItem value="OBC-State">OBC - State</MenuItem>
+                                    <MenuItem value="EWS">EWS</MenuItem>
+                                    <MenuItem value="Other">Other</MenuItem>
                                 </TextField>
                                 <TextField type="number" style={{ margin: '15px' }} value={feeBudget} onChange={(e) => setFeeBudget(e.target.value)} id="outlined-basic" label="Annual Fee Budget (INR)" variant="outlined" />
                                 <TextField
@@ -499,9 +554,9 @@ const Register = ({ navbar, setNavbar }) => {
                                     <MenuItem value="state">State</MenuItem>
                                 </TextField>
                                 <div style={{ margin: '15px' }}>
-                                    <Typography variant="h6">Parent's occParent</Typography>
+                                    <Typography variant="h6">Parent's Occupation</Typography>
                                     <TextField
-                                        select
+                                        select={occParent.motherOccupation==="Select or Write"||occParent.motherOccupation === "ESI" || occParent.motherOccupation === "Defence" || occParent.motherOccupation === "Paramilitary" || occParent.motherOccupation === "Judiciary" || occParent.motherOccupation === "Housewife" || occParent.motherOccupation === "Doctor" || occParent.motherOccupation === "Teacher"}
                                         variant={occParent.motherOccupation ? "filled" : "standard"}
                                         helperText="Enter Mother's occupation"
                                         value={occParent.motherOccupation}
@@ -514,12 +569,14 @@ const Register = ({ navbar, setNavbar }) => {
                                         <MenuItem value="ESI">ESI</MenuItem>
                                         <MenuItem value="Defence">Defence</MenuItem>
                                         <MenuItem value="Paramilitary">Paramilitary</MenuItem>
-                                        <MenuItem value="Judiciary">Judiciaary</MenuItem>
-                                        <MenuItem value="other">Other</MenuItem>
-
+                                        <MenuItem value="Judiciary">Judiciary</MenuItem>
+                                        <MenuItem value="Housewife">Housewife</MenuItem>
+                                        <MenuItem value="Doctor">Doctor</MenuItem>
+                                        <MenuItem value="Teacher">Teacher</MenuItem>
+                                        <MenuItem value="Other">Other</MenuItem>
                                     </TextField>
                                     <TextField
-                                        select
+                                        select={occParent.fatherOccupation==="Select or Write"||occParent.fatherOccupation === "ESI" || occParent.fatherOccupation === "Defence" || occParent.fatherOccupation === "Paramilitary" || occParent.fatherOccupation === "Judiciary" || occParent.fatherOccupation === "Businessman" || occParent.fatherOccupation === "Doctor" || occParent.fatherOccupation === "Teacher"}
                                         helperText="Enter Father's occupation"
                                         value={occParent.fatherOccupation}
                                         variant={occParent.fatherOccupation ? "filled" : "standard"}
@@ -532,8 +589,11 @@ const Register = ({ navbar, setNavbar }) => {
                                         <MenuItem value="ESI">ESI</MenuItem>
                                         <MenuItem value="Defence">Defence</MenuItem>
                                         <MenuItem value="Paramilitary">Paramilitary</MenuItem>
-                                        <MenuItem value="Judiciary">Judiciaary</MenuItem>
-                                        <MenuItem value="other">Other</MenuItem>
+                                        <MenuItem value="Judiciary">Judiciary</MenuItem>
+                                        <MenuItem value="Businessman">Businessman</MenuItem>
+                                        <MenuItem value="Doctor">Doctor</MenuItem>
+                                        <MenuItem value="Teacher">Teacher</MenuItem>
+                                        <MenuItem value="Other">Other</MenuItem>
                                     </TextField>
                                 </div>
                             </div>

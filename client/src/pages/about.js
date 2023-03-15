@@ -95,13 +95,17 @@ const About = ({ navbar, setNavbar }) => {
                 :
                 <>
 
-                    <Typography variant="h4" className={classes.text} style={{ color: '#fea905' }}>Why Expert Educational Consultancy</Typography>
+                    <Typography variant="h4" className={classes.text} style={{ color: '#fea905' }}>Our Expert Educational Consultancy</Typography>
                     <Typography className={classes.text} align="center" variant="body1" style={{ marginBottom: '20px' }}>
                         Expert Educational Consultancy one of the leading Medical Admission Counselling Service Provider was established in the year 1995. Our permanent Head Office is situated in North West Delhi supervising more than 10+ branches in all over India. In the last 27 years, we can proudly say that through our assistance approx. 10,500 students have got admission in prestigious government and private colleges of India.               
 Our Managing Director, Mr. Shamsher Rana, who has personally visited private medical colleges in 12 states >90% in India which made him one of the best Medical Admission Consultant, with 100% honesty and transparency has every year managed to enrolled >95% of our students in best colleges.
+<br/>
+<br/>
 
                         Expert Educational Consultancy with data analytics and Artificial Intelligence (AI) tools provide best possible guidance to medical aspirants as per their NEET AIR, Category, Domicile, Budget & their branch preferences. We focus on making the medical admission counselling procedure as simple and transparent as we can, so that the students and their parents do not get confused and puzzled about the admission. We assist from the NEET form filling till the admission, even after admission till the security refund. We make sure that the students should get accurate and appropriate information and notification regarding the counselling procedure on time. We put emphasis to give individual attention on every case that comes to us.
                         The vision of the medical admission guidance EEC in India is to provide accessible and affordable guidance to students seeking admission into top medical colleges in India. Our mission is to simplify the admission process for students and make it stress-free. We aim to provide a one-stop solution for all medical admission needs and be a trusted partner for students and their families in their pursuit of quality medical education. Our goal is to make a positive impact on the lives of students by helping them achieve their dreams and become successful professionals in the medical field.
+                        <br />
+                        <br />
 
                         In India, the process of getting admitted to a medical college can be quite competitive and challenging. There are several factors that you need to consider, including your rank in NEET (National Eligibility cum Entrance Test), Domicile, Category, financial capacity to pay fees, branch, availability of seats, etc. which are explained under :
                         <ul>
@@ -142,7 +146,7 @@ Our Managing Director, Mr. Shamsher Rana, who has personally visited private med
                                     style={{ color: '#fea905' }} variant="h5">
                                     Branch :
                                 </Typography>
-                                <Typography className={classes.text} variant="body2">Government / Private colleges Branch preference as per requirement of the students (recognised /permitted).
+                                <Typography className={classes.text} variant="body2">Government / Private colleges Branch preference as per requirement of the students (recognised / permitted).
                                 </Typography>
                             </li>
                         </ul>

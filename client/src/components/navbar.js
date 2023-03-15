@@ -134,6 +134,9 @@ const Navbar = ({ navbar, setNavbar }) => {
                                 <Link to="/about" className={classes.link}>
                                     About Us
                                 </Link>
+                                <Link to={`/about/${mode}`} className={classes.link}>
+                                    About {mode}
+                                </Link>
                                 <button
                                     onMouseOver={() => setModeMenuOpen(true)}
                                     onMouseLeave={() => setModeMenuOpen(false)}
@@ -147,10 +150,15 @@ const Navbar = ({ navbar, setNavbar }) => {
                                 <Collapse in={modeMenuOpen} timeout={500} unmountOnExit
                                     onMouseOver={() => setModeMenuOpen(true)}
                                     onMouseLeave={() => setModeMenuOpen(false)}
-                                    style={{
+                                    style={navbar?{
+                                        position: 'absolute',
+                                        top: '70px',
+                                        left:'50%',
+                                        zIndex: '100'
+                                    }:{
                                         position: 'absolute',
                                         top: '65px',
-                                        // left: `4${((window.innerWidth) / 100) - 5}%`,
+                                        left:'45%',
                                         zIndex: '100'
                                     }}
                                 >

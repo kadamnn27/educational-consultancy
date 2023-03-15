@@ -55,12 +55,8 @@ const FAQ = ({ navbar, setNavbar }) => {
   useEffect(() => {
     setNavbar(true);
   }, []);
-  const [value, setValue] = React.useState(0);
   const { mode } = useContext(UserContext);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
   return (
     <Container style={{ margin: "80px auto" }}>
       <Typography
@@ -74,7 +70,7 @@ const FAQ = ({ navbar, setNavbar }) => {
         }}
         align="center"
       >
-        FAQs for {mode}
+        FAQs for NEET {mode}
       </Typography>
       {mode === "UG" ?
         <>
@@ -298,7 +294,7 @@ const FAQ = ({ navbar, setNavbar }) => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          <Accordion style={{ backgroundColor: "blueviolet" }}>
+          <Accordion style={{ backgroundColor: "violet" }}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
@@ -331,7 +327,7 @@ const FAQ = ({ navbar, setNavbar }) => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          <Accordion style={{ backgroundColor: "crimson" }}>
+          <Accordion style={{ backgroundColor: "lightgreen" }}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel2a-content"
@@ -371,7 +367,7 @@ const FAQ = ({ navbar, setNavbar }) => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          <Accordion style={{ backgroundColor: "cadetblue" }}>
+          <Accordion style={{ backgroundColor: "bisque" }}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel3a-content"
@@ -448,7 +444,7 @@ const FAQ = ({ navbar, setNavbar }) => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          <Accordion style={{ backgroundColor: "lightgreen" }}>
+          <Accordion style={{ backgroundColor: "lightpink" }}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel2a-content"
@@ -481,7 +477,7 @@ const FAQ = ({ navbar, setNavbar }) => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          <Accordion style={{ backgroundColor: "darkcyan" }}>
+          <Accordion style={{ backgroundColor: "cyan" }}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel3a-content"
@@ -561,7 +557,7 @@ const FAQ = ({ navbar, setNavbar }) => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          <Accordion style={{ backgroundColor: "firebrick" }}>
+          <Accordion style={{ backgroundColor: "greenyellow" }}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel2a-content"
@@ -594,7 +590,7 @@ const FAQ = ({ navbar, setNavbar }) => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          <Accordion style={{ backgroundColor: "darkturquoise" }}>
+          <Accordion style={{ backgroundColor: "yellow" }}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel3a-content"
@@ -625,7 +621,7 @@ const FAQ = ({ navbar, setNavbar }) => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          <Accordion style={{ backgroundColor: "forestgreen" }}>
+          <Accordion style={{ backgroundColor: "lightblue" }}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
@@ -658,7 +654,7 @@ const FAQ = ({ navbar, setNavbar }) => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          <Accordion style={{ backgroundColor: "greenyellow" }}>
+          <Accordion style={{ backgroundColor: "lightgreen" }}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel2a-content"

@@ -12,6 +12,8 @@ import FAQ from './pages/faq';
 import Colleges from './pages/colleges';
 import Account from './pages/account';
 import Course from './pages/course';
+import AboutPG from './pages/aboutPG';
+import AboutUG from './pages/aboutUG';
 import { makeStyles } from '@material-ui/core';
 import { UserContext } from './UserContext';
 import Cookies from 'js-cookie';
@@ -69,6 +71,8 @@ function App() {
             <Route path="/colleges" element={<Colleges navbar={navbar} setNavbar={setNavbar} />} />
             <Route path="/account" element={<Account navbar={navbar} setNavbar={setNavbar} />} />
             <Route path="/course" element={<Course navbar={navbar} setNavbar={setNavbar} />} />
+            <Route eaxct path="/about/UG" element={<AboutUG navbar={navbar} setNavbar={setNavbar} />} />
+            <Route eaxct path="/about/PG" element={<AboutPG navbar={navbar} setNavbar={setNavbar} />} />
           </Routes>
         </Router>
         {mode || window.location.pathname!=='/'?<ChatBotComponent />:<></>}

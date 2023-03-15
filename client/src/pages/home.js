@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState, useContext } from "react";
 import CarouselComponent from "../components/carousel";
 import { UserContext } from "../UserContext";
+import { Link } from "react-router-dom";
 
 import {
   useMediaQuery,
@@ -35,6 +36,12 @@ const useStyles = makeStyles((theme) => ({
       color: "#fea905",
       background: "linear-gradient(to right bottom,black,#0411af)",
     },
+  },
+  link: {
+    textDecoration: "none",
+    color: "black",
+    "&:hover,&:focus":
+      { color: 'orange' }
   },
   aboutUsSection: {
     marginTop: "15px",
@@ -97,14 +104,14 @@ const Home = () => {
     <div style={isMobile ? { marginTop: "220px" } : {}} width="100%">
       {
         !mode ?
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', flexDirection: 'column' }}>
-            <div style={{position:'relative',bottom:'100px'}}>
+          <div style={{position:'absolute',top:'0',left:'0',right:'0', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', flexDirection: 'column' }}>
+            <div style={{ position: 'relative', bottom: '100px' }}>
               <Typography align="center" variant="h6">Welcome to </Typography>
               <Typography style={{ marginTop: "10px", fontSize: "25px" }} className={classes.logoText}>Expert Educational</Typography>
               <Typography style={{ fontSize: "40px" }} className={classes.logoText}>Consultancy</Typography>
             </div>
             <Typography variant="body1">Pick a mode</Typography>
-            <div >
+            <div>
               <button
                 class={classes.modeButton}
                 onClick={() => { setMode("UG") }}
@@ -152,7 +159,7 @@ const Home = () => {
                   >
                     Expert Educational Consultancy was conceptualised and incorporated
                     in 1995 with a permanent office in Delhi, in response to the
-                    growing concerns in MBBS/MD / MS / DNB / Diploma / FCPS / CPS
+                    growing concerns in MBBS / BDS / BAMS / BHMS / MD / MS /  Diploma / FCPS / CPS
                     admissions in India about fraud, misguidance and cheating by
                     several unscrupulous touts masquerading as admission counsellors.
                     To combat this growing issue and offer complete transparency,
@@ -315,10 +322,12 @@ const Home = () => {
                   <br />
                   <Button
                     className={classes.btn}
-                    href="/register"
+                    // href="/register"
                     variant="contained"
                   >
-                    Take Membership
+                    <Link className={classes.link} to="/register" style={{}}>
+                      Take Membership
+                    </Link>
                   </Button>
                 </Typography>
               </div>
@@ -326,7 +335,7 @@ const Home = () => {
             </Container>
           </>
       }
-    </div >
+    </div>
   );
 };
 

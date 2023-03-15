@@ -18,7 +18,7 @@ const useStyles = makeStyles(() => ({
     },
     text: {
         fontFamily: "Nunito Sans !important",
-        fontWeight: "600 !important"
+        fontWeight: "600 !important",
     }
 }));
 
@@ -140,13 +140,13 @@ const Account = ({ navbar, setNavbar }) => {
                         {
                             responseRecieved ?
                                 <>
-                                    <div style={{ width: '100%', height: '40px', background: 'white', position: 'absolute', top: '0px', right: '0px', zIndex: '100' }}></div>
+                                    <div style={{ width: '100%', height: '60px', background: 'white', position: 'absolute', top: '0px', right: '0px', zIndex: '100' }}></div>
                                     <div style={{ marginTop: "0px" }}>
                                         <div className={classes.fieldSections}>
                                             {changingDetails ?
                                                 <>
                                                     <div style={{ display: 'flex', alignItems: 'center' }}>
-                                                        <img src={imageURL} alt="profile" style={{ width: "100px", height: "100px", borderRadius: "50%", objectFit: "cover", zIndex: '101' }} />
+                                                        <img src={imageURL} alt="profile" style={{ width: "125px", height: "125px", borderRadius: "50%", objectFit: "cover", zIndex: '101', border: '10px solid white' }} />
                                                         <input
                                                             hidden
                                                             id="avatar"
@@ -158,7 +158,7 @@ const Account = ({ navbar, setNavbar }) => {
                                                                 setImage(event.target.files[0]);
                                                             }}
                                                         />
-                                                        <label for="avatar" style={{ background: 'white', padding: '0px', width: '33px', height: '25px', margin: '0px', position: 'absolute', zIndex: '102', left: '85px', top: '5px', borderBottom: '0px' }}>
+                                                        <label for="avatar" style={{ background: 'transparent', padding: '0px', width: '0px', height: '0px', margin: '0px', position: 'absolute', zIndex: '102', left: '100px', top: '20px', border: '0px' }}>
                                                             <img src={editIcon} style={{}} width="30px" />
                                                         </label>
                                                         <TextField
@@ -187,6 +187,7 @@ const Account = ({ navbar, setNavbar }) => {
                                                         />
                                                         <TextField
                                                             className={classes.text}
+                                                            type="number"
                                                             label='Enter Annual Fee Budget (in INR)'
                                                             color="warning"
                                                             value={feeBudget}
@@ -201,7 +202,7 @@ const Account = ({ navbar, setNavbar }) => {
                                                 <Grid container>
                                                     <Grid item md={12} style={{ display: 'flex', alignItems: 'center' }}>
                                                         {user.image ?
-                                                            <img src={user.image.secure_url} alt="profile" style={{ width: "100px", height: "100px", borderRadius: "50%", objectFit: "cover", marginRight: '20px', zIndex: '101' }} />
+                                                            <img src={user.image.secure_url} alt="profile" style={{ width: "125px", height: "125px", borderRadius: "50%", objectFit: "cover", marginRight: '20px', zIndex: '101', border: '10px solid white' }} />
                                                             :
                                                             <img src={defaultAvatar} alt="profile" style={{ width: "100px", height: "100px", borderRadius: "50%", objectFit: "cover", marginRight: '20px', zIndex: '101' }} />
                                                         }
@@ -209,28 +210,28 @@ const Account = ({ navbar, setNavbar }) => {
                                                     </Grid>
                                                     <Grid item xs={12} md={4} style={{ marginTop: '20px' }}>
                                                         <Typography variant="h5" style={{ borderBottom: '2px solid black', marginBottom: '20px' }}>Personal Info</Typography>
-                                                        <Typography className={classes.text} style={{ color: 'orange' }}><span style={{ color: 'black', fontSize: '1.1em' }}>Course : </span> {user.course}</Typography>
-                                                        <Typography className={classes.text} style={{ color: 'orange' }}><span style={{ color: 'black', fontSize: '1.1em' }}>Quota : </span> {user.quota}</Typography>
-                                                        <Typography className={classes.text} style={{ color: 'orange' }}><span style={{ color: 'black', fontSize: '1.1em' }}>Category : </span> {user.category}</Typography>
-                                                        <Typography className={classes.text} style={{ color: 'orange' }}><span style={{ color: 'black', fontSize: '1.1em' }}>Gender : </span> {user.gender}</Typography>
+                                                        <Typography className={classes.text} style={{ color: 'darkorange' }}><span style={{ color: 'black', fontSize: '1.1em' }}>Course : </span> {user.course}</Typography>
+                                                        <Typography className={classes.text} style={{ color: 'darkorange' }}><span style={{ color: 'black', fontSize: '1.1em' }}>Quota : </span> {user.quota}</Typography>
+                                                        <Typography className={classes.text} style={{ color: 'darkorange',textTransform:'Capitalize' }}><span style={{ color: 'black', fontSize: '1.1em' }}>Category : </span> {user.category}</Typography>
+                                                        <Typography className={classes.text} style={{ color: 'darkorange',textTransform:'Capitalize' }}><span style={{ color: 'black', fontSize: '1.1em' }}>Gender : </span> {user.gender}</Typography>
                                                     </Grid>
                                                     <Grid item xs={12} md={4} style={{ marginTop: '20px' }}>
                                                         <Typography variant="h5" style={{ borderBottom: '2px solid black', marginBottom: '20px' }}>Contact Info</Typography>
-                                                        <Typography className={classes.text} style={{ color: 'orange' }}><span style={{ color: 'black', fontSize: '1.1em' }}>Email : </span> {user.email}</Typography>
-                                                        <Typography className={classes.text} style={{ color: 'orange' }}><span style={{ color: 'black', fontSize: '1.1em' }}>Phone : </span> {user.phoneno}</Typography>
-                                                        <Typography className={classes.text} style={{ color: 'orange' }}><span style={{ color: 'black', fontSize: '1.1em' }}>Address : </span> {user.city} , {user.state.domicile}</Typography>
+                                                        <Typography className={classes.text} style={{ color: 'darkorange' }}><span style={{ color: 'black', fontSize: '1.1em' }}>Email : </span> {user.email}</Typography>
+                                                        <Typography className={classes.text} style={{ color: 'darkorange' }}><span style={{ color: 'black', fontSize: '1.1em' }}>Phone : </span> {user.phoneno}</Typography>
+                                                        <Typography className={classes.text} style={{ color: 'darkorange' }}><span style={{ color: 'black', fontSize: '1.1em' }}>Address : </span> {user.city} , {user.state.domicile}</Typography>
                                                     </Grid>
                                                     <Grid item xs={12} md={4} style={{ marginTop: '20px' }}>
                                                         <Typography variant="h5" style={{ borderBottom: '2px solid black', marginBottom: '20px' }}>NEET Details</Typography>
-                                                        <Typography className={classes.text} style={{ color: 'orange' }}><span style={{ color: 'black', fontSize: '1.1em' }}>NEET AIR: </span> {user.neet.airRank}</Typography>
-                                                        <Typography className={classes.text} style={{ color: 'orange' }}><span style={{ color: 'black', fontSize: '1.1em' }}>NEET Score: </span> {user.neet.score}</Typography>
-                                                        <Typography className={classes.text} style={{ color: 'orange' }}><span style={{ color: 'black', fontSize: '1.1em' }}>NEET Category Rank: </span> {user.neet.categoryRank}</Typography>
-                                                        <Typography className={classes.text} style={{ color: 'orange' }}><span style={{ color: 'black', fontSize: '1.1em' }}>NEET Fee Budget: </span> {user.feeBudget}</Typography>
+                                                        <Typography className={classes.text} style={{ color: 'darkorange' }}><span style={{ color: 'black', fontSize: '1.1em' }}>NEET AIR: </span> {user.neet.airRank}</Typography>
+                                                        <Typography className={classes.text} style={{ color: 'darkorange' }}><span style={{ color: 'black', fontSize: '1.1em' }}>NEET Score: </span> {user.neet.score}</Typography>
+                                                        <Typography className={classes.text} style={{ color: 'darkorange' }}><span style={{ color: 'black', fontSize: '1.1em' }}>NEET Category Rank: </span> {user.neet.categoryRank}</Typography>
+                                                        <Typography className={classes.text} style={{ color: 'darkorange',textTransform:'Capitalize' }}><span style={{ color: 'black', fontSize: '1.1em' }}>NEET Fee Budget: </span> {user.feeBudget}</Typography>
                                                     </Grid>
                                                     <Grid item xs={12} md={4} style={{ marginTop: '20px' }}>
                                                         <Typography variant="h5" style={{ borderBottom: '2px solid black', marginBottom: '20px' }}>Parent's Occupation</Typography>
-                                                        <Typography className={classes.text} style={{ color: 'orange' }}><span style={{ color: 'black', fontSize: '1.1em' }}>Father's Occupation: </span> {user.occParent.fatherOccupation}</Typography>
-                                                        <Typography className={classes.text} style={{ color: 'orange' }}><span style={{ color: 'black', fontSize: '1.1em' }}>Mother's Occupation: </span> {user.occParent.motherOccupation}</Typography>
+                                                        <Typography className={classes.text} style={{ color: 'darkorange',textTransform:'Capitalize' }}><span style={{ color: 'black', fontSize: '1.1em' }}>Father's Occupation: </span> {user.occParent.fatherOccupation}</Typography>
+                                                        <Typography className={classes.text} style={{ color: 'darkorange',textTransform:'Capitalize' }}><span style={{ color: 'black', fontSize: '1.1em' }}>Mother's Occupation: </span> {user.occParent.motherOccupation}</Typography>
                                                     </Grid>
                                                 </Grid>
                                             }
@@ -243,168 +244,206 @@ const Account = ({ navbar, setNavbar }) => {
                     <Grid item xs={12}>
                         <Colleges navbar={navbar} setNavbar={setNavbar} />
                         <div>
-                            <Typography align="center" className={classes.text} variant="h5" style={{ color: 'orange', marginBottom: '20px' }}>
+                            <Typography align="center" className={classes.text} variant="h4" style={{ color: 'orange', marginBottom: '20px' }}>
                                 Get Exclusive Benifits with our Subscription
                             </Typography>
-                            <Grid container>
+                            <Grid container spacing={3}>
                                 <Grid item xs={12} sm={6} md={4}>
-                                    <Paper elevation={3} style={{ padding: '15px', background: 'rgba(102,173,255,0.4)', borderRadius: '15px', margin: '15px' }}>
-                                        <Typography className={classes.text} align="center" style={{ fontSize: '20px', marginBottom: "15px" }}>
-                                            Free
-                                        </Typography>
-                                        <ul>
-                                            <li>About NEET UG</li>
-                                            <li>About MCC UG All India Counselling</li>
-                                            <li>About State UG Counselling</li>
-                                            <li>State-wise list of Medical Colleges in India</li>
-                                            <li>Youtube/Social Media Channel Subscriptions</li>
-                                            <li>Case Studies/Blog Posts</li>
-                                        </ul>
+                                    <Paper elevation={3} style={{ background: 'white', borderRadius: '15px', display: 'flex', flexDirection: 'column', margin: '10px', boxShadow: '0px 0px 15px black' }}>
+                                        <div style={{ display: 'flex', flexDirection: 'column', background: 'black', padding: '20px 20px 50px 20px', marginBottom: '15px', borderRadius: '15px 15px 0px 0px' }}>
+                                            <Typography variant="h4" className={classes.text} style={{ color: 'white' }}>
+                                                Free
+                                            </Typography>
+                                            <Typography variant="body1" className={classes.text} style={{ color: 'white', fontStyle: 'italic' }}>
+                                                Free Plan to get you on-board !
+                                            </Typography>
+                                        </div>
+                                        <div style={{padding:'10px'}}>
+                                            <ul>
+                                                <li>About NEET UG</li>
+                                                <li>About MCC UG All India Counselling</li>
+                                                <li>About State UG Counselling</li>
+                                                <li>State-wise list of Medical Colleges in India</li>
+                                                <li>Youtube/Social Media Channel Subscriptions</li>
+                                                <li>Case Studies/Blog Posts</li>
+                                            </ul>
+                                        </div>
+                                        <br/>
                                     </Paper>
                                 </Grid>
                                 <Grid item xs={12} sm={6} md={4}>
-                                    <Paper elevation={3} style={{ padding: '15px', background: 'rgba(102,173,255,0.4)', borderRadius: '15px', display: 'flex', flexDirection: 'column', margin: '10px' }}>
-                                        <Typography className={classes.text} align="center" style={{ color: '#cd7f32', textShadow: '1px 1px 10px brown', fontSize: '20px', marginBottom: "15px" }}>
-                                            Bronze
-                                        </Typography>
-                                        <ul>
-                                            <li>Free Plan Benifits</li>
-                                            <li>Expert ranking of all medical colleges</li>
-                                            <li>Fee structure of all medical colleges</li>
-                                            <li>Special provisions applicability</li>
-                                            <li>Last year category wise cutoff of colleges</li>
-                                            <li>Notification alerts for UG counselling</li>
-                                        </ul>
-                                        <Button
-                                            variant="contained"
-                                            style={{
-                                                margin: '0 auto',
-                                                fontFamily: "Nunito Sans",
-                                                fontWeight: "600",
-                                                background: "white",
-                                                color: "black",
-                                                borderRadius: "10px",
-                                                transition: "all 0.5s ease",
-                                                border: "2px solid orange",
-                                                "&:hover,&:focus": {
-                                                    boxShadow: "0px 0px 6px 2.5px #fea905 ,1px 1px 1px 0px #ECDE65,1px 1px 1px 0px #ECDE65",
-                                                    color: "#fea905",
-                                                    background: "linear-gradient(to right bottom,black,#0411af)"
-                                                }
-                                            }}
-                                        >
-                                            ₹ 499
-                                        </Button>
-                                    </Paper>
-                                </Grid>
-                                <Grid item xs={12} sm={6} md={4}>
-                                    <Paper elevation={3} style={{ padding: '15px', background: 'rgba(102,173,255,0.4)', borderRadius: '15px', display: 'flex', flexDirection: 'column', margin: '10px' }}>
-                                        <Typography className={classes.text} align="center" style={{ color: 'white', textShadow: '2px 2px 10px black', fontSize: '20px', marginBottom: "15px" }}>
-                                            Silver
-                                        </Typography>
-                                        <ul>
-                                            <li>Bronze Plan Benifits</li>
-                                            <li>Personalized admission probability report</li>
-                                            <li>Personalized college predictor as per rank</li>
-                                            <li>Category wise, round-wise cutoff of medical colleges</li>
-                                            <li>Information about NBBS abroad</li>
-                                            <li>Documents lists with scan and save facility</li>
-                                        </ul>
+                                    <Paper elevation={3} style={{ background: 'white', borderRadius: '15px', display: 'flex', flexDirection: 'column', margin: '10px', boxShadow: '0px 0px 15px brown' }}>
+                                        <div style={{ display: 'flex', flexDirection: 'column', background: '#C2783F', padding: '20px', marginBottom: '15px', borderRadius: '15px 15px 0px 0px' }}>
+                                            <Typography variant="h4" className={classes.text} style={{ color: 'white' }}>
+                                                Bronze
+                                            </Typography>
+                                            <Typography variant="body1" className={classes.text} style={{ color: 'white', fontStyle: 'italic' }}>
+                                                Free Plan + Additional Benefits
+                                            </Typography>
+                                            <Button
+                                                variant="contained"
+                                                style={{
+                                                    margin: '10px auto 0px auto',
+                                                    width: '60%',
+                                                    fontFamily: "Nunito Sans",
+                                                    fontWeight: "600",
+                                                    background: "white",
+                                                    color: "black",
+                                                    borderRadius: "10px",
+                                                    transition: "all 0.5s ease",
+                                                    border: "2px solid orange",
+                                                    "&:hover,&:focus": {
+                                                        boxShadow: "0px 0px 6px 2.5px #fea905 ,1px 1px 1px 0px #ECDE65,1px 1px 1px 0px #ECDE65",
+                                                        color: "#fea905",
+                                                        background: "linear-gradient(to right bottom,black,#0411af)"
+                                                    }
+                                                }}
+                                            >
+                                                Join For ₹ 499
+                                            </Button>
+                                        </div>
+                                        <div style={{padding:'10px'}}>
+                                            <ul>
+                                                <li>Expert ranking of all medical colleges</li>
+                                                <li>Fee structure of all medical colleges</li>
+                                                <li>Special provisions applicability</li>
+                                                <li>Last year category wise cutoff of colleges</li>
+                                                <li>Notification alerts for UG counselling</li>
+                                            </ul>
+                                        </div>
                                         <br />
-                                        <Button
-                                            variant="contained"
-                                            style={{
-                                                margin: '0 auto',
-                                                fontFamily: "Nunito Sans",
-                                                fontWeight: "600",
-                                                background: "white",
-                                                color: "black",
-                                                borderRadius: "10px",
-                                                transition: "all 0.5s ease",
-                                                border: "2px solid orange",
-                                                "&:hover,&:focus": {
-                                                    boxShadow: "0px 0px 6px 2.5px #fea905 ,1px 1px 1px 0px #ECDE65,1px 1px 1px 0px #ECDE65",
-                                                    color: "#fea905",
-                                                    background: "linear-gradient(to right bottom,black,#0411af)"
-                                                }
-                                            }}
-                                        >
-                                            ₹ 999
-                                        </Button>
                                     </Paper>
                                 </Grid>
                                 <Grid item xs={12} sm={6} md={4}>
-                                    <Paper elevation={3} style={{ padding: '15px', background: 'rgba(102,173,255,0.4)', borderRadius: '15px', display: 'flex', flexDirection: 'column', margin: '10px' }}>
-                                        <Typography className={classes.text} align="center" style={{ color: '#ffd700', textShadow: '1px 1px 10px black', fontSize: '20px', marginBottom: "15px" }}>
-                                            Gold
-                                        </Typography>
-                                        <ul>
-                                            <li>Silver Plan Benifits</li>
-                                            <li>Personalized Guidance on Govt/Private/Deemed R1 & R2 counselling</li>
-                                            <li>Form Filling</li>
-                                            <li>NEET AIR Rank based choice order list of colleges</li>
-                                            <li>Merit list and result updates of counselling</li>
-                                            <li>Online counselling support by Expert Admission COunsellor - 5</li>
-                                            <li>Online Counselling Sessions with Mr. Shamsher Rana - 2</li>
-                                        </ul>
-                                        <Button
-                                            variant="contained"
-                                            style={{
-                                                margin: '0 auto',
-                                                fontFamily: "Nunito Sans",
-                                                fontWeight: "600",
-                                                background: "white",
-                                                color: "black",
-                                                borderRadius: "10px",
-                                                transition: "all 0.5s ease",
-                                                border: "2px solid orange",
-                                                "&:hover,&:focus": {
-                                                    boxShadow: "0px 0px 6px 2.5px #fea905 ,1px 1px 1px 0px #ECDE65,1px 1px 1px 0px #ECDE65",
-                                                    color: "#fea905",
-                                                    background: "linear-gradient(to right bottom,black,#0411af)"
-                                                }
-                                            }}
-                                        >
-                                            ₹ 2999
-                                        </Button>
+                                    <Paper elevation={3} style={{ background: 'white', borderRadius: '15px', display: 'flex', flexDirection: 'column', margin: '10px', boxShadow: '0px 0px 15px gray'}}>
+                                        <div style={{ display: 'flex', flexDirection: 'column', background: '#BBC2CC', padding: '20px', marginBottom: '15px', borderRadius: '15px 15px 0px 0px' }}>
+                                            <Typography variant="h4" className={classes.text} style={{ color: 'white' }}>
+                                                Silver
+                                            </Typography>
+                                            <Typography variant="body1" className={classes.text} style={{ color: 'white', fontStyle: 'italic' }}>
+                                                Bronze Plan + Additional Benefits
+                                            </Typography>
+                                            <Button
+                                                variant="contained"
+                                                style={{
+                                                    margin: '10px auto 0px auto',
+                                                    width: '60%',
+                                                    fontFamily: "Nunito Sans",
+                                                    fontWeight: "600",
+                                                    background: "white",
+                                                    color: "black",
+                                                    borderRadius: "10px",
+                                                    transition: "all 0.5s ease",
+                                                    border: "2px solid orange",
+                                                    "&:hover,&:focus": {
+                                                        boxShadow: "0px 0px 6px 2.5px #fea905 ,1px 1px 1px 0px #ECDE65,1px 1px 1px 0px #ECDE65",
+                                                        color: "#fea905",
+                                                        background: "linear-gradient(to right bottom,black,#0411af)"
+                                                    }
+                                                }}
+                                            >
+                                                Join For ₹ 999
+                                            </Button>
+                                        </div>
+                                        <div style={{padding:'10px'}}>
+                                            <ul>
+                                                <li>Personalized admission probability report</li>
+                                                <li>Personalized college predictor as per rank</li>
+                                                <li>Category wise, round-wise cutoff of medical colleges</li>
+                                                <li>Information about NBBS abroad</li>
+                                                <li>Documents lists with scan and save facility</li>
+                                            </ul>
+                                        </div>
+                                        <br />
                                     </Paper>
                                 </Grid>
                                 <Grid item xs={12} sm={6} md={4}>
-                                    <Paper elevation={3} style={{ padding: '15px', background: 'rgba(102,173,255,0.4)', borderRadius: '15px', display: 'flex', flexDirection: 'column', margin: '10px' }}>
-                                        <Typography className={classes.text} align="center" style={{ color: 'orange', textShadow: '2px 2px 15px orange', fontSize: '20px', marginBottom: "15px" }}>
-                                            Platinum
-                                        </Typography>
+                                    <Paper elevation={3} style={{ background: 'white', borderRadius: '15px', display: 'flex', flexDirection: 'column', margin: '10px', boxShadow: '0px 0px 15px gold' }}>
+                                        <div style={{ display: 'flex', flexDirection: 'column', background: 'gold', padding: '20px', marginBottom: '15px', borderRadius: '15px 15px 0px 0px' }}>
+                                            <Typography variant="h4" className={classes.text} style={{ color: 'white' }}>
+                                                Gold
+                                            </Typography>
+                                            <Typography variant="body1" className={classes.text} style={{ color: 'white', fontStyle: 'italic' }}>
+                                                Silver Plan + Additional Benefits
+                                            </Typography>
+                                            <Button
+                                                variant="contained"
+                                                style={{
+                                                    margin: '10px auto 0px auto',
+                                                    width: '60%',
+                                                    fontFamily: "Nunito Sans",
+                                                    fontWeight: "600",
+                                                    background: "white",
+                                                    color: "black",
+                                                    borderRadius: "10px",
+                                                    transition: "all 0.5s ease",
+                                                    border: "2px solid orange",
+                                                    "&:hover,&:focus": {
+                                                        boxShadow: "0px 0px 6px 2.5px #fea905 ,1px 1px 1px 0px #ECDE65,1px 1px 1px 0px #ECDE65",
+                                                        color: "#fea905",
+                                                        background: "linear-gradient(to right bottom,black,#0411af)"
+                                                    }
+                                                }}
+                                            >
+                                                Join For ₹ 2999
+                                            </Button>
+                                        </div>
+                                        <div style={{padding:'10px'}}>
+                                            <ul>
+                                                <li>Personalized Guidance on Govt/Private/Deemed R1 & R2 counselling</li>
+                                                <li>Form Filling</li>
+                                                <li>NEET AIR Rank based choice order list of colleges</li>
+                                                <li>Merit list and result updates of counselling</li>
+                                                <li>Online counselling support by Expert Admission Counsellor - 5</li>
+                                                <li>Online Counselling Sessions with Mr. Shamsher Rana - 2</li>
+                                            </ul>
+                                        </div>
+                                        <br />
+                                    </Paper>
+                                </Grid>
+                                <Grid item xs={12} sm={6} md={4}>
+                                <Paper elevation={3} style={{ background: 'white', borderRadius: '15px', display: 'flex', flexDirection: 'column', margin: '10px', boxShadow: '0px 0px 15px #CC9EF5' }}>
+                                        <div style={{ display: 'flex', flexDirection: 'column', background: '#CC9EF5', padding: '20px', marginBottom: '15px', borderRadius: '15px 15px 0px 0px' }}>
+                                            <Typography variant="h4" className={classes.text} style={{ color: 'white' }}>
+                                                Platinum
+                                            </Typography>
+                                            <Typography variant="body1" className={classes.text} style={{ color: 'white', fontStyle: 'italic' }}>
+                                                Gold Plan + Additional Benefits
+                                            </Typography>
+                                            <Button
+                                                variant="contained"
+                                                style={{
+                                                    margin: '10px auto 0px auto',
+                                                    width: '60%',
+                                                    fontFamily: "Nunito Sans",
+                                                    fontWeight: "600",
+                                                    background: "white",
+                                                    color: "black",
+                                                    borderRadius: "10px",
+                                                    transition: "all 0.5s ease",
+                                                    border: "2px solid orange",
+                                                    "&:hover,&:focus": {
+                                                        boxShadow: "0px 0px 6px 2.5px #fea905 ,1px 1px 1px 0px #ECDE65,1px 1px 1px 0px #ECDE65",
+                                                        color: "#fea905",
+                                                        background: "linear-gradient(to right bottom,black,#0411af)"
+                                                    }
+                                                }}
+                                            >
+                                                Join For ₹ 5999
+                                            </Button>
+                                        </div>
+                                        <div style={{padding:'10px'}}>
                                         <ul>
-                                            <li>Gold Plan Benifits</li>
                                             <li>NRI Quota Admission Counselling</li>
                                             <li>Management seat admission counsellng</li>
                                             <li>Mop up round counselling</li>
                                             <li>Stray vacancy round counselling</li>
                                             <li>MBBS Abroad Admission Counselling</li>
-                                            <li>Online counselling support by Expert Admission COunsellor - Unlimited</li>
+                                            <li>Online counselling support by Expert Admission Counsellor - Unlimited</li>
                                             <li>Online Counselling Sessions with Mr. Shamsher Rana - 5</li>
                                         </ul>
+                                        </div>
                                         <br />
-                                        <Button
-                                            variant="contained"
-                                            style={{
-                                                margin: '0 auto',
-                                                fontFamily: "Nunito Sans",
-                                                fontWeight: "600",
-                                                background: "white",
-                                                color: "black",
-                                                borderRadius: "10px",
-                                                transition: "all 0.5s ease",
-                                                border: "2px solid orange",
-                                                "&:hover,&:focus": {
-                                                    boxShadow: "0px 0px 6px 2.5px #fea905 ,1px 1px 1px 0px #ECDE65,1px 1px 1px 0px #ECDE65",
-                                                    color: "#fea905",
-                                                    background: "linear-gradient(to right bottom,black,#0411af)"
-                                                }
-                                            }}
-                                        >
-                                            ₹ 5999
-                                        </Button>
                                     </Paper>
                                 </Grid>
                             </Grid>
