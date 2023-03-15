@@ -81,7 +81,6 @@ exports.login = BigPromise(async (req, res, next) => {
   ) {
     return next(new customErr("email and password are all required", 400));
   }
-
   const user = await User.findOne({ email: req.body.email }).select(
     "+password"
   );

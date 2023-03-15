@@ -87,6 +87,10 @@ const userSchema = new Schema({
       type: String,
       required: [true, "Domicile state must be provided"],
     },
+    passedGrad:{
+      type: String,
+      required: [true, "State of passing MBBS must be provided"],
+    },
     passedTenth: {
       type: String,
       required: [true, "State of passing 10th must be provided"],
@@ -107,18 +111,15 @@ const userSchema = new Schema({
   occParent: {
     motherOccupation:{
       type: String,
-      enum: ["ESI", "Defence", "Paramilitary", "Judiciary", "other"],
       required: [true, "Occupation of Parent must be provided"],
     },
     fatherOccupation:{
       type: String,
-      enum: ["ESI", "Defence", "Paramilitary", "Judiciary", "other"],
       required: [true, "Occupation of Parent must be provided"],
     }
   },
   quota: {
     type: String,
-    enum:["General","SC","ST","OBC"]
   }, //ASK: about this
   feeBudget: {
     type: Number,
