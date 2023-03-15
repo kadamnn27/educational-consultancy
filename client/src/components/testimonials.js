@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Paper, Container, Typography, makeStyles, Button } from "@material-ui/core";
 import Divider from '@mui/material/Divider';
 import Chip from '@mui/material/Chip';
 import Carousel from 'react-bootstrap/Carousel';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import CircularProgress from '@mui/material/CircularProgress';
 // import Box from '@mui/material/Box';
 
 import image1 from "../images/testimonials/priyanshi_mathur.jpeg";
 import image2 from "../images/testimonials/mudit_jain.jpeg";
 import image3 from '../images/carousel-images/carousel-image-3.jpg';
 import texturedImage from "../images/textured_3.png";
-import { testimonials } from "../data/testimonials-data";
+// import { testimonials } from "../data/testimonials-data";
+import axios from '../api/axios';
+import { UserContext } from '../UserContext';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -60,6 +64,19 @@ const useStyles = makeStyles((theme) => ({
 
 const Testimonials = () => {
     const classes = useStyles();
+    const testimonialsURL = '/api/v1/testimonials';
+    const [testimonials, setTestimonials] = useState([]);
+    const { mode } = useContext(UserContext);
+    useEffect(() => {
+        setTestimonials([]);
+        axios.get(testimonialsURL)
+            .then((response) => {
+                setTestimonials(response.data.testimonials.filter(testimonial=>testimonial.type===mode));
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }, [mode])
     return (
         <div>
             <Divider
@@ -75,37 +92,48 @@ const Testimonials = () => {
                     sx={{
                         background: "linear-gradient(to right bottom,orange,#fea905)"
                     }}
-                    label="Our Testimonials"
+                    label={`Our ${mode} Testimonials`}
                     className={classes.chip}
                 />
             </Divider>
             <Paper elevation={5} className={classes.paper}>
-                <Carousel indicators={false}>
-                    {testimonials.map((testimonial, index) => (
-                        <Carousel.Item key={index} className={classes.item}>
-                            <img
-                                className={classes.image}
-                                src={testimonial.image}
-                                alt="Second slide"
-                            />
-                            <Carousel.Caption className={classes.caption}>
-                                <Typography className={classes.text} variant="h4" gutterBottom style={{ color: "orange", }}>
-                                    {testimonial.name}
-                                </Typography>
-                                <Typography className={classes.text} variant="body2" gutterBottom style={{ color: "orange", }}>
-                                    {testimonial.content}
-                                </Typography>
-                            </Carousel.Caption>
-                        </Carousel.Item>
-                    ))
-                    }
-                </Carousel>
+                {
+                    testimonials.length > 0 ?
+                        <Carousel indicators={true} style={{paddingBottom:'20px'}}>
+                            {
+                                testimonials.map((testimonial, index) => (
+                                    <Carousel.Item key={index} className={classes.item}>
+                                        <img
+                                            className={classes.image}
+                                            src={testimonial.image.secure_url}
+                                            alt="User Image"
+                                        />
+                                        <Carousel.Caption className={classes.caption}>
+                                            <Typography className={classes.text} variant="h4" gutterBottom style={{ color: "orange", }}>
+                                                {testimonial.name}
+                                            </Typography>
+                                            <Typography className={classes.text} variant="h6" gutterBottom style={{ color: "orange", }}>
+                                                {testimonial.course}
+                                            </Typography>
+                                            <Typography className={classes.text} variant="body2" gutterBottom style={{ color: "orange", }}>
+                                                {testimonial.content}
+                                            </Typography>
+                                        </Carousel.Caption>
+                                    </Carousel.Item>
+                                ))
+                            }
+                        </Carousel>
+                        :
+                        <Typography align="center">
+                            <CircularProgress style={{ color: "white",margin:'20px' }} />
+                        </Typography>
+                }
             </Paper>
             <Typography align="center">
                 <br />
-                <Button className={classes.testimonialsBtn} href="/reviews" variant="contained">Some Frequently Asked Questions</Button>
+                <Button className={classes.testimonialsBtn} href="/faq" variant="contained">Some Frequently Asked Questions</Button>
             </Typography>
-        </div >
+        </div>
     )
 }
 

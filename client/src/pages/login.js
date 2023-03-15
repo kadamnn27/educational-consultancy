@@ -61,6 +61,7 @@ const Login = ({ navbar, setNavbar }) => {
             setResponseRecieved(false);
             setSuccess(true);
             setUser(response.data.user);
+            // console.log(response.data.user);
             Cookies.set('token', response.data.token, { expires: new Date(new Date().getTime()+10*60*1000) });
             // let expireTime = new Date(Date.now() +10*1000).toUTCString();
             // document.cookie = `token=${response.data.token};expires=${expireTime}`;
@@ -73,7 +74,7 @@ const Login = ({ navbar, setNavbar }) => {
             setFailiure(true);
             setResponseRecieved(false);
         }
-        console.log(email, password);
+        // console.log(email, password);
 
     }
 
