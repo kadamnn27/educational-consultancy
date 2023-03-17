@@ -17,9 +17,6 @@ import AboutUG from './pages/aboutUG';
 import { makeStyles } from '@material-ui/core';
 import { UserContext } from './UserContext';
 import Cookies from 'js-cookie';
-import axios from './api/axios';
-
-const LOGIN_URL = '/api/v1/login';
 
 const useStyles = makeStyles(() => ({
   App: {
@@ -29,7 +26,6 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-// const User=createContext(null);
 function App() {
   const [navbar, setNavbar] = useState(false);
   const classes = useStyles();

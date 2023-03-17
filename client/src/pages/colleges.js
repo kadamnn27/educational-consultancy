@@ -6,9 +6,7 @@ import { CircularProgress, Typography, Button, Radio, RadioGroup, FormControlLab
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, TextField, MenuItem, Grow, Stack, Alert, Divider } from '@mui/material';
 
 import texturedImage from "../images/textured_3_edit.png";
-import Cookies from 'js-cookie';
 const COLLEGES_URL = '/api/v1/colleges';
-
 
 const columns = [
     { id: 'index', label: "No.", minWidth: 60 },
@@ -68,9 +66,7 @@ var rows = [];
 
 const Colleges = ({ navbar, setNavbar }) => {
     const [collegeRows, setCollegeRows] = useState([]);
-    // var token = Cookies.get('token');
     const { user, setUser, cookieToken, setCookieToken } = useContext(UserContext);
-    // console.log(token);
     useEffect(() => {
         setNavbar(true);
         axios.get(COLLEGES_URL, {

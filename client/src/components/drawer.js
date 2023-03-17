@@ -1,38 +1,28 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "../UserContext";
 import MenuIcon from "@material-ui/icons/Menu";
-import logoMini from "../images/logo-mini.jpeg";
 import texturedImage from "../images/textured_3_edit.png";
 import dropDownIcon from '../images/icons/icons8-drop-down-30.png';
-import Collapse from '@mui/material/Collapse';
-import crossIcon from '../images/icons/icons8-multiplication-48.png';
-
 import {
-    Drawer,
+    Collapse, Drawer,
     IconButton,
     List,
     ListItem,
     ListItemText,
-    makeStyles,
     Toolbar,
     AppBar,
-    CssBaseline,
-    Typography,
-    Grid
-} from "@material-ui/core";
-
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
-import Snackbar from '@mui/material/Snackbar';
+    Grid,
+} from '@mui/material';
+import{CssBaseline,makeStyles,Typography} from '@material-ui/core';
 import MuiAlert from '@mui/material/Alert';
+
+import crossIcon from '../images/icons/icons8-multiplication-48.png';
 
 import { Link } from "react-router-dom";
 
 import Cookies from 'js-cookie';
 import axios from '../api/axios';
 const LOGOUT_URL = '/api/v1/logout';
-
-
 
 const useStyles = makeStyles(() => ({
     link: {
@@ -67,7 +57,6 @@ const useStyles = makeStyles(() => ({
         background: `url(${texturedImage})`,
     },
     list: {
-        // background: "#0411af",
         display: "flex",
         flexDirection: "column",
         justifyContent: "start",
@@ -163,6 +152,7 @@ const DrawerMenu = () => {
                                             background: mode === 'UG' ? 'rgba(255,165,0,0.2)' : 'transparent',
                                             listStyleType: 'none',
                                             padding: '10px',
+                                            cursor: 'pointer'
                                         }}
                                             onClick={() => setMode('UG')}
                                         >
@@ -172,6 +162,7 @@ const DrawerMenu = () => {
                                             background: mode === 'PG' ? 'rgba(255,165,0,0.2)' : 'transparent',
                                             listStyleType: 'none',
                                             padding: '10px',
+                                            cursor: 'pointer'
                                         }}
                                             onClick={() => setMode('PG')}
                                         >

@@ -35,19 +35,15 @@ const Account = ({ navbar, setNavbar }) => {
     const [imageURL, setImageURL] = useState(null);
     const [name, setName] = useState(null);
     const [email, setEmail] = useState(null);
-    // const [phone, setPhone] = useState(user.phoneno);
     const [feeBudget, setFeeBudget] = useState(null);
 
     const classes = useStyles();
-    // console.log(user);
 
     useEffect(() => {
         setNavbar(true);
     }, [])
 
     const handleSubmit = async (e) => {
-        // console.log(user.image);
-        // e.preventDefault();
         if (!changingDetails) {
             if (user.image) {
                 setImage(user.image);
@@ -77,20 +73,13 @@ const Account = ({ navbar, setNavbar }) => {
                     }
                 })
                     .then(res => {
-                        // console.log(formData);
-                        // console.log(res);
                         setSuccess(res);
-                        // console.log(formData.getAll('image'),image,imageURL);
-
-                        // setResponseUser(res.data.user);
-                        // console.log(res.data.user);
                         setUser(res.data.user);
                         setResponseRecieved(true);
                     })
                     .catch(err => {
                         setFailiure(err);
                         setResponseRecieved(true);
-                        // console.log(err);
                     })
             }
         }

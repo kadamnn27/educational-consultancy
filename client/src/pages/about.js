@@ -1,14 +1,9 @@
-import React, { useEffect, useContext } from 'react';
-import { Box, Container, Typography, makeStyles } from '@material-ui/core';
-import Tab from '@mui/material/Tab';
-import Tabs from '@mui/material/Tabs';
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
+import React, { useEffect, useContext, useState } from 'react';
+import { Container, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import { makeStyles, Typography } from '@material-ui/core'
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import PropTypes from 'prop-types';
 import { UserContext } from "../UserContext";
-
 
 const useStyles = makeStyles(() => ({
     text: {
@@ -16,42 +11,8 @@ const useStyles = makeStyles(() => ({
         fontWeight: "600",
         textAlign: "justify",
         textJustify: "inter-word",
-    }
+    },
 }));
-
-// function TabPanel(props) {
-//     const { children, value, index, ...other } = props;
-
-//     return (
-//         <div
-//             role="tabpanel"
-//             hidden={value !== index}
-//             id={`simple-tabpanel-${index}`}
-//             aria-labelledby={`simple-tab-${index}`}
-//             {...other}
-//         >
-//             {value === index && (
-//                 <Box sx={{ p: 3 }}>
-//                     <Typography>{children}</Typography>
-//                 </Box>
-//             )}
-//         </div>
-//     );
-// }
-
-// function a11yProps(index) {
-//     return {
-//         id: `simple-tab-${index}`,
-//         'aria-controls': `simple-tabpanel-${index}`,
-//     };
-// }
-
-
-// TabPanel.propTypes = {
-//     children: PropTypes.node,
-//     index: PropTypes.number.isRequired,
-//     value: PropTypes.number.isRequired,
-// };
 
 const About = ({ navbar, setNavbar }) => {
     const classes = useStyles();
@@ -64,16 +25,12 @@ const About = ({ navbar, setNavbar }) => {
         setValue(newValue);
     };
     const { mode } = useContext(UserContext);
+    const [accordionSelected, setAccordionSelected] = useState(false);
     return (
         <Container style={{ margin: "80px auto" }}>
             <Typography align="center" variant="h2" style={{ color: "orange", textShadow: "1px 1px 3px #0411af", marginBottom: "10px", fontFamily: "Nunito Sans", fontWeight: "600", }}>
-                EEC for NEET {mode === "UG" ? "UG" : "PG"}
+                EEC - NEET {mode === "UG" ? "UG" : "PG"}
             </Typography>
-            {/* <Tabs centered value={value} onChange={handleChange} aria-label="basic tabs example">
-                <Tab label="About UG" {...a11yProps(0)} />
-                <Tab label="About PG" {...a11yProps(1)} />
-            </Tabs> */}
-            {/* <TabPanel value={value} index={0}> */}
             {mode === "UG" ?
                 <>
                     <Typography className={classes.text} align="center"
@@ -99,8 +56,8 @@ const About = ({ navbar, setNavbar }) => {
                     <Typography className={classes.text} align="center" variant="body1" style={{ marginBottom: '20px' }}>
                         Expert Educational Consultancy one of the leading Medical Admission Counselling Service Provider was established in the year 1995. Our permanent Head Office is situated in North West Delhi supervising more than 10+ branches in all over India. In the last 27 years, we can proudly say that through our assistance approx. 10,500 students have got admission in prestigious government and private colleges of India.               
 Our Managing Director, Mr. Shamsher Rana, who has personally visited private medical colleges in 12 states >90% in India which made him one of the best Medical Admission Consultant, with 100% honesty and transparency has every year managed to enrolled >95% of our students in best colleges.
-<br/>
-<br/>
+                        <br />
+                        <br />
 
                         Expert Educational Consultancy with data analytics and Artificial Intelligence (AI) tools provide best possible guidance to medical aspirants as per their NEET AIR, Category, Domicile, Budget & their branch preferences. We focus on making the medical admission counselling procedure as simple and transparent as we can, so that the students and their parents do not get confused and puzzled about the admission. We assist from the NEET form filling till the admission, even after admission till the security refund. We make sure that the students should get accurate and appropriate information and notification regarding the counselling procedure on time. We put emphasis to give individual attention on every case that comes to us.
                         The vision of the medical admission guidance EEC in India is to provide accessible and affordable guidance to students seeking admission into top medical colleges in India. Our mission is to simplify the admission process for students and make it stress-free. We aim to provide a one-stop solution for all medical admission needs and be a trusted partner for students and their families in their pursuit of quality medical education. Our goal is to make a positive impact on the lives of students by helping them achieve their dreams and become successful professionals in the medical field.
@@ -111,7 +68,7 @@ Our Managing Director, Mr. Shamsher Rana, who has personally visited private med
                         <ul>
                             <li>
                                 <Typography className={classes.text}
-                                    style={{ color: '#fea905' }} variant="h5">
+                                    style={{ color: '#fea905' }} variant="h6">
                                     NEET AIR (All India Rank) :
                                 </Typography>
                                 <Typography className={classes.text} variant="body2">The All India Rank (AIR) is the rank of a candidate in the NEET exam. It is calculated based on the total marks obtained by the candidate in the exam. The higher the rank, the better the chances of getting admission in a good medical college.
@@ -119,7 +76,7 @@ Our Managing Director, Mr. Shamsher Rana, who has personally visited private med
                             </li>
                             <li>
                                 <Typography className={classes.text}
-                                    style={{ color: '#fea905' }} variant="h5">
+                                    style={{ color: '#fea905' }} variant="h6">
                                     Category :
                                 </Typography>
                                 <Typography className={classes.text} variant="body2">The All India Rank (AIR) is the rank of a candidAdmissions guidance for MD/MS/DIPLOMA/DNB courses depend on the category of the student such as General, EWS, OBC, SC, ST, PwD etc. Different State/ institutes have different reservation criteria for each category, and EEC have complete knowledge about the same.
@@ -127,7 +84,7 @@ Our Managing Director, Mr. Shamsher Rana, who has personally visited private med
                             </li>
                             <li>
                                 <Typography className={classes.text}
-                                    style={{ color: '#fea905' }} variant="h5">
+                                    style={{ color: '#fea905' }} variant="h6">
                                     Domicile :
                                 </Typography>
                                 <Typography className={classes.text} variant="body2">Domicile of the student means where the student lives or have property / ancestral property or have done his/her education. It plays a crucial role in the admission process. Some institutes have different quotas for students of the same state and outside of the state, which EEC have complete information about.
@@ -135,7 +92,7 @@ Our Managing Director, Mr. Shamsher Rana, who has personally visited private med
                             </li>
                             <li>
                                 <Typography className={classes.text}
-                                    style={{ color: '#fea905' }} variant="h5">
+                                    style={{ color: '#fea905' }} variant="h6">
                                     Tuition Fee :
                                 </Typography>
                                 <Typography className={classes.text} variant="body2">The tuition fee or the financial capacity to pay fees for different branch varies from institute to institute, and the consultancy have updated information about the same to guide the student in the right direction.
@@ -143,7 +100,7 @@ Our Managing Director, Mr. Shamsher Rana, who has personally visited private med
                             </li>
                             <li>
                                 <Typography className={classes.text}
-                                    style={{ color: '#fea905' }} variant="h5">
+                                    style={{ color: '#fea905' }} variant="h6">
                                     Branch :
                                 </Typography>
                                 <Typography className={classes.text} variant="body2">Government / Private colleges Branch preference as per requirement of the students (recognised / permitted).
@@ -151,7 +108,7 @@ Our Managing Director, Mr. Shamsher Rana, who has personally visited private med
                             </li>
                         </ul>
                     </Typography>
-                    <Typography variant="h4" className={classes.text} style={{ color: '#fea905' }}>Expert Educational Consultancy Admission Counselling Procedure -
+                    <Typography variant="h4" className={classes.text} style={{ color: '#fea905' }}>Expert Educational Consultancy Admission Counselling Procedure
                     </Typography>
                     <Typography className={classes.text} align="center" variant="body1" style={{ marginBottom: '20px' }}>
                         <ul>
@@ -181,137 +138,139 @@ Our Managing Director, Mr. Shamsher Rana, who has personally visited private med
                             </li>
                         </ul>
                     </Typography>
-                    <Accordion style={{ backgroundColor: "khaki" }}>
-                        <AccordionSummary
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls="panel1a-content"
-                            id="panel1a-header"
-                        >
-                            <Typography
-                                style={{
-                                    fontFamily: "Nunito Sans",
-                                    fontWeight: "600",
-                                }}
+                    <div className="accordions">
+                        <Accordion style={{ margin: '10px',borderRadius:'10px' }}>
+                            <AccordionSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header"
                             >
-                                What differentiates this organization with others?
-                            </Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <Typography
-                                style={{
-                                    fontFamily: "Nunito Sans",
-                                    fontWeight: "600",
-                                }}
+                                <Typography
+                                    style={{
+                                        fontFamily: "Nunito Sans",
+                                        fontWeight: "600",
+                                    }}
+                                >
+                                    Q. What differentiates this organization with others?
+                                </Typography>
+                            </AccordionSummary>
+                            <AccordionDetails style={{ background: 'rgba(135,206,235,0.5)', borderRadius: '10px', margin: '10px' }}>
+                                <Typography
+                                    style={{
+                                        fontFamily: "Nunito Sans",
+                                        fontWeight: "600",
+                                    }}
+                                >
+                                    We as a whole team are devoted to provide the best opportunities to our students and in the fastest way possible. We provide personalized report of the college list by profiling every student individually. Most of the consultancies focuses on just admission and their consultancy fee whereas Expert Educational Consultancy aims at providing best possible guidance to the students to get admission based on their NEET AIR & Fee Budget which will lead them to a smooth pathway towards their career goal.
+                                </Typography>
+                            </AccordionDetails>
+                        </Accordion>
+                        <Accordion style={{ margin: '10px',borderRadius:'10px' }}>
+                            <AccordionSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header"
                             >
-                                We as a whole team are devoted to provide the best opportunities to our students and in the fastest way possible. We provide personalized report of the college list by profiling every student individually. Most of the consultancies focuses on just admission and their consultancy fee whereas Expert Educational Consultancy aims at providing best possible guidance to the students to get admission based on their NEET AIR & Fee Budget which will lead them to a smooth pathway towards their career goal.
-                            </Typography>
-                        </AccordionDetails>
-                    </Accordion>
-                    <Accordion style={{ backgroundColor: "pink" }}>
-                        <AccordionSummary
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls="panel1a-content"
-                            id="panel1a-header"
-                        >
-                            <Typography
-                                style={{
-                                    fontFamily: "Nunito Sans",
-                                    fontWeight: "600",
-                                }}
+                                <Typography
+                                    style={{
+                                        fontFamily: "Nunito Sans",
+                                        fontWeight: "600",
+                                    }}
+                                >
+                                    Q. What is the document verification process for various states and how to arrange it?
+                                </Typography>
+                            </AccordionSummary>
+                            <AccordionDetails style={{ background: 'rgba(135,206,235,0.5)', borderRadius: '10px', margin: '10px' }}>
+                                <Typography
+                                    style={{
+                                        fontFamily: "Nunito Sans",
+                                        fontWeight: "600",
+                                    }}
+                                >
+                                    The document verification process for various states differs state to state. It can be online where students must upload original scan documents on the counselling portal or it can be offline where students must go to a nodal center / Institute taking their original documents to verify them.
+                                    Expert Educational Consultancy provide the list of documents and all the other information related to the same.
+                                </Typography>
+                            </AccordionDetails>
+                        </Accordion>
+                        <Accordion style={{ margin: '10px',borderRadius:'10px' }}>
+                            <AccordionSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header"
                             >
-                                What is the document verification process for various states and how to arrange it?
-                            </Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <Typography
-                                style={{
-                                    fontFamily: "Nunito Sans",
-                                    fontWeight: "600",
-                                }}
+                                <Typography
+                                    style={{
+                                        fontFamily: "Nunito Sans",
+                                        fontWeight: "600",
+                                    }}
+                                >
+                                    Q. How will I know the admission eligibility criteria of each state?                        </Typography>
+                            </AccordionSummary>
+                            <AccordionDetails style={{ background: 'rgba(135,206,235,0.5)', borderRadius: '10px', margin: '10px' }}>
+                                <Typography
+                                    style={{
+                                        fontFamily: "Nunito Sans",
+                                        fontWeight: "600",
+                                    }}
+                                >
+                                    Students can get knowledge about the admission eligibility criteria of each state from the Information Bulletin provided at the MCC/State counselling website. But taking knowledge for all state’s eligibility criteria is too time consuming and is not enough to get admission. Even after going through this information bulletin, you will be having some queries which can only be sought out by a counsellor or a consultancy.
+                                </Typography>
+                            </AccordionDetails>
+                        </Accordion>
+                        <Accordion style={{ margin: '10px',borderRadius:'10px' }}>
+                            <AccordionSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header"
                             >
-                                The document verification process for various states differs state to state. It can be online where students must upload original scan documents on the counselling portal or it can be offline where students must go to a nodal center / Institute taking their original documents to verify them.
-                                Expert Educational Consultancy provide the list of documents and all the other information related to the same.
-                            </Typography>
-                        </AccordionDetails>
-                    </Accordion>
-                    <Accordion style={{ backgroundColor: "yellowgreen" }}>
-                        <AccordionSummary
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls="panel1a-content"
-                            id="panel1a-header"
-                        >
-                            <Typography
-                                style={{
-                                    fontFamily: "Nunito Sans",
-                                    fontWeight: "600",
-                                }}
-                            >
-                                How will I know the admission eligibility criteria of each state?                        </Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <Typography
-                                style={{
-                                    fontFamily: "Nunito Sans",
-                                    fontWeight: "600",
-                                }}
-                            >
-                                Students can get knowledge about the admission eligibility criteria of each state from the Information Bulletin provided at the MCC/State counselling website. But taking knowledge for all state’s eligibility criteria is too time consuming and is not enough to get admission. Even after going through this information bulletin, you will be having some queries which can only be sought out by a counsellor or a consultancy.
-                            </Typography>
-                        </AccordionDetails>
-                    </Accordion>
-                    <Accordion style={{ backgroundColor: "skyblue" }}>
-                        <AccordionSummary
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls="panel1a-content"
-                            id="panel1a-header"
-                        >
-                            <Typography
-                                style={{
-                                    fontFamily: "Nunito Sans",
-                                    fontWeight: "600",
-                                }}
-                            >
-                                How to fill up the application forms of various states and deemed universities?
-                            </Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <Typography
-                                style={{
-                                    fontFamily: "Nunito Sans",
-                                    fontWeight: "600",
-                                }}
-                            >
-                                Our team will guide you through Any Desk App to fill up the application forms for various states and deemed universities.
+                                <Typography
+                                    style={{
+                                        fontFamily: "Nunito Sans",
+                                        fontWeight: "600",
+                                    }}
+                                >
+                                    Q. How to fill up the application forms of various states and deemed universities?
+                                </Typography>
+                            </AccordionSummary>
+                            <AccordionDetails style={{ background: 'rgba(135,206,235,0.5)', borderRadius: '10px', margin: '10px' }}>
+                                <Typography
+                                    style={{
+                                        fontFamily: "Nunito Sans",
+                                        fontWeight: "600",
+                                    }}
+                                >
+                                    Our team will guide you through Any Desk App to fill up the application forms for various states and deemed universities.
 
-                            </Typography>
-                        </AccordionDetails>
-                    </Accordion>
-                    <Accordion style={{ backgroundColor: "salmon" }}>
-                        <AccordionSummary
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls="panel1a-content"
-                            id="panel1a-header"
-                        >
-                            <Typography
-                                style={{
-                                    fontFamily: "Nunito Sans",
-                                    fontWeight: "600",
-                                }}
+                                </Typography>
+                            </AccordionDetails>
+                        </Accordion>
+                        <Accordion style={{ margin: '10px',borderRadius:'10px' }}>
+                            <AccordionSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header"
                             >
-                                How will I get the latest updates on the admission process?
-                            </Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <Typography
-                                style={{
-                                    fontFamily: "Nunito Sans",
-                                    fontWeight: "600",
-                                }}
-                            >
-                                Our team will be continuously in contact with you through whatsapp, sms, email, webinar and phone to keep you updated about all the information regarding counselling and admission.
-                            </Typography>
-                        </AccordionDetails>
-                    </Accordion>
+                                <Typography
+                                    style={{
+                                        fontFamily: "Nunito Sans",
+                                        fontWeight: "600",
+                                    }}
+                                >
+                                    Q. How will I get the latest updates on the admission process?
+                                </Typography>
+                            </AccordionSummary>
+                            <AccordionDetails style={{ background: 'rgba(135,206,235,0.5)', borderRadius: '10px', margin: '10px' }}>
+                                <Typography
+                                    style={{
+                                        fontFamily: "Nunito Sans",
+                                        fontWeight: "600",
+                                    }}
+                                >
+                                    Our team will be continuously in contact with you through whatsapp, sms, email, webinar and phone to keep you updated about all the information regarding counselling and admission.
+                                </Typography>
+                            </AccordionDetails>
+                        </Accordion>
+                    </div>
                 </>
             }
         </Container>

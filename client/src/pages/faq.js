@@ -1,13 +1,7 @@
 import React, { useContext, useEffect } from "react";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import Typography from "@mui/material/Typography";
+import {Accordion,AccordionSummary,AccordionDetails,Box,Container,Typography} from '@mui/material';
+import { makeStyles } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { Box, Container, makeStyles } from "@material-ui/core";
-import Tab from "@mui/material/Tab";
-import Tabs from "@mui/material/Tabs";
-import PropTypes from "prop-types";
 import { UserContext } from "../UserContext.js";
 
 const useStyles = makeStyles(() => ({
@@ -16,39 +10,6 @@ const useStyles = makeStyles(() => ({
     fontWeight: "600",
   },
 }));
-
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
 
 const FAQ = ({ navbar, setNavbar }) => {
   const classes = useStyles();
@@ -60,21 +21,21 @@ const FAQ = ({ navbar, setNavbar }) => {
   return (
     <Container style={{ margin: "80px auto" }}>
       <Typography
+      variant="h4"
         style={{
           fontFamily: "Nunito Sans",
           fontWeight: "600",
-          fontSize: "40px",
-          color: "orange",
-          textShadow: "1px 1px 4px black",
-          marginBottom: "20px",
+          color: "darkorange",
+          // textShadow: "1px 1px 4px black",
+          margin: "0px 15px",
         }}
-        align="center"
+        align="left"
       >
         FAQs for NEET {mode}
       </Typography>
       {mode === "UG" ?
         <>
-          <Accordion style={{ backgroundColor: "khaki" }}>
+          <Accordion style={{borderRadius:'10px', margin:'10px'}}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
@@ -86,10 +47,10 @@ const FAQ = ({ navbar, setNavbar }) => {
                   fontWeight: "600",
                 }}
               >
-                What is Medical Admission Counseling?{" "}
+                What is Medical Admission Counseling?
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails style={{ backgroundColor: "khaki",borderRadius:'10px',margin:'10px' }}>
               <Typography
                 style={{
                   fontFamily: "Nunito Sans",
@@ -109,7 +70,7 @@ const FAQ = ({ navbar, setNavbar }) => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          <Accordion style={{ backgroundColor: "lightblue" }}>
+          <Accordion style={{borderRadius:'10px', margin:'10px'}}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel2a-content"
@@ -124,7 +85,7 @@ const FAQ = ({ navbar, setNavbar }) => {
                 What is the basis of medical UG admission?{" "}
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails style={{ backgroundColor: "lightblue",borderRadius:'10px', margin:'10px'}}>
               <Typography
                 style={{
                   fontFamily: "Nunito Sans",
@@ -143,7 +104,7 @@ const FAQ = ({ navbar, setNavbar }) => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          <Accordion style={{ backgroundColor: "lightgreen" }}>
+          <Accordion style={{borderRadius:'10px', margin:'10px'}}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel3a-content"
@@ -159,7 +120,7 @@ const FAQ = ({ navbar, setNavbar }) => {
                 counselor?{" "}
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails style={{ backgroundColor: "lightgreen",borderRadius:'10px', margin:'10px' }}>
               <Typography
                 style={{
                   fontFamily: "Nunito Sans",
@@ -184,7 +145,7 @@ const FAQ = ({ navbar, setNavbar }) => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          <Accordion style={{ backgroundColor: "lightpink" }}>
+          <Accordion  style={{borderRadius:'10px', margin:'10px'}}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
@@ -197,10 +158,10 @@ const FAQ = ({ navbar, setNavbar }) => {
                 }}
               >
                 What will Expert Educational Consultancy do if I enroll for their
-                services?{" "}
+                services?
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails style={{ backgroundColor: "lightpink",borderRadius:'10px', margin:'10px' }}>
               <Typography
                 style={{
                   fontFamily: "Nunito Sans",
@@ -224,7 +185,7 @@ const FAQ = ({ navbar, setNavbar }) => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          <Accordion style={{ backgroundColor: "lightcyan" }}>
+          <Accordion  style={{borderRadius:'10px', margin:'10px'}}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel2a-content"
@@ -240,7 +201,7 @@ const FAQ = ({ navbar, setNavbar }) => {
                 admission?{" "}
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails style={{ backgroundColor: "lightcyan",borderRadius:'10px', margin:'10px' }}>
               <Typography
                 style={{
                   fontFamily: "Nunito Sans",
@@ -257,7 +218,7 @@ const FAQ = ({ navbar, setNavbar }) => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          <Accordion style={{ backgroundColor: "aquamarine" }}>
+          <Accordion  style={{borderRadius:'10px', margin:'10px'}}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel3a-content"
@@ -273,7 +234,7 @@ const FAQ = ({ navbar, setNavbar }) => {
                 Consultancy? Others charge flat fees
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails style={{ backgroundColor: "aquamarine",borderRadius:'10px', margin:'10px' }}>
               <Typography
                 style={{
                   fontFamily: "Nunito Sans",
@@ -294,7 +255,7 @@ const FAQ = ({ navbar, setNavbar }) => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          <Accordion style={{ backgroundColor: "violet" }}>
+          <Accordion  style={{borderRadius:'10px', margin:'10px'}}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
@@ -310,7 +271,7 @@ const FAQ = ({ navbar, setNavbar }) => {
                 case I don't get admission?{" "}
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails style={{ backgroundColor: "violet",borderRadius:'10px', margin:'10px' }}>
               <Typography
                 style={{
                   fontFamily: "Nunito Sans",
@@ -327,7 +288,7 @@ const FAQ = ({ navbar, setNavbar }) => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          <Accordion style={{ backgroundColor: "lightgreen" }}>
+          <Accordion  style={{borderRadius:'10px', margin:'10px'}}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel2a-content"
@@ -344,7 +305,7 @@ const FAQ = ({ navbar, setNavbar }) => {
                 only without charging any consultancy fees?{" "}
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails style={{ backgroundColor: "lightgreen",borderRadius:'10px', margin:'10px' }}>
               <Typography
                 style={{
                   fontFamily: "Nunito Sans",
@@ -367,7 +328,7 @@ const FAQ = ({ navbar, setNavbar }) => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          <Accordion style={{ backgroundColor: "bisque" }}>
+          <Accordion  style={{borderRadius:'10px', margin:'10px'}}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel3a-content"
@@ -382,7 +343,7 @@ const FAQ = ({ navbar, setNavbar }) => {
                 How can I trust Expert Educational Consultancy?
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails style={{ backgroundColor: "bisque" ,borderRadius:'10px', margin:'10px'}}>
               <Typography
                 style={{
                   fontFamily: "Nunito Sans",
@@ -409,7 +370,7 @@ const FAQ = ({ navbar, setNavbar }) => {
         </>
         :
         <>
-          <Accordion style={{ backgroundColor: "bisque" }}>
+          <Accordion style={{ margin:'10px',borderRadius:'10px' }}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
@@ -424,7 +385,7 @@ const FAQ = ({ navbar, setNavbar }) => {
                 What is admission counselling?{" "}
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails style={{backgroundColor: "bisque",borderRadius:'10px', margin:'10px'}}>
               <Typography
                 style={{
                   fontFamily: "Nunito Sans",
@@ -444,7 +405,7 @@ const FAQ = ({ navbar, setNavbar }) => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          <Accordion style={{ backgroundColor: "lightpink" }}>
+          <Accordion style={{margin:'10px',borderRadius:'10px'}}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel2a-content"
@@ -459,7 +420,7 @@ const FAQ = ({ navbar, setNavbar }) => {
                 What is the basis of medical PG admission?{" "}
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails style={{ backgroundColor: "lightpink",borderRadius:'10px',margin:'10px' }}>
               <Typography
                 style={{
                   fontFamily: "Nunito Sans",
@@ -477,7 +438,7 @@ const FAQ = ({ navbar, setNavbar }) => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          <Accordion style={{ backgroundColor: "cyan" }}>
+          <Accordion  style={{margin:'10px',borderRadius:'10px'}}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel3a-content"
@@ -493,7 +454,7 @@ const FAQ = ({ navbar, setNavbar }) => {
                 counsellor?{" "}
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails style={{ backgroundColor: "cyan",borderRadius:'10px',margin:'10px' }}>
               <Typography
                 style={{
                   fontFamily: "Nunito Sans",
@@ -517,7 +478,7 @@ const FAQ = ({ navbar, setNavbar }) => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          <Accordion style={{ backgroundColor: "goldenrod" }}>
+          <Accordion style={{margin:'10px',borderRadius:'10px'}}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
@@ -533,7 +494,7 @@ const FAQ = ({ navbar, setNavbar }) => {
                 services?{" "}
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails style={{ backgroundColor: "goldenrod",borderRadius:'10px',margin:'10px'}}>
               <Typography
                 style={{
                   fontFamily: "Nunito Sans",
@@ -557,7 +518,7 @@ const FAQ = ({ navbar, setNavbar }) => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          <Accordion style={{ backgroundColor: "greenyellow" }}>
+          <Accordion style={{margin:'10px',borderRadius:'10px'}}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel2a-content"
@@ -570,10 +531,10 @@ const FAQ = ({ navbar, setNavbar }) => {
                 }}
               >
                 Will Expert Educational Consultancy offer any guaranteed
-                admission?{" "}
+                admission?
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails style={{ backgroundColor: "greenyellow",borderRadius:'10px',margin:'10px' }}>
               <Typography
                 style={{
                   fontFamily: "Nunito Sans",
@@ -590,7 +551,7 @@ const FAQ = ({ navbar, setNavbar }) => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          <Accordion style={{ backgroundColor: "yellow" }}>
+          <Accordion  style={{margin:'10px',borderRadius:'10px'}}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel3a-content"
@@ -606,7 +567,7 @@ const FAQ = ({ navbar, setNavbar }) => {
                 Consultancy? Others charge flat fees.{" "}
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails style={{ backgroundColor: "yellow",borderRadius:'10px',margin:'10px' }}>
               <Typography
                 style={{
                   fontFamily: "Nunito Sans",
@@ -621,7 +582,7 @@ const FAQ = ({ navbar, setNavbar }) => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          <Accordion style={{ backgroundColor: "lightblue" }}>
+          <Accordion style={{margin:'10px',borderRadius:'10px'}}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
@@ -637,7 +598,7 @@ const FAQ = ({ navbar, setNavbar }) => {
                 case I don't get admission?{" "}
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails style={{ backgroundColor: "lightblue",borderRadius:'10px',margin:'10px' }}>
               <Typography
                 style={{
                   fontFamily: "Nunito Sans",
@@ -654,7 +615,7 @@ const FAQ = ({ navbar, setNavbar }) => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          <Accordion style={{ backgroundColor: "lightgreen" }}>
+          <Accordion style={{margin:'10px',borderRadius:'10px'}}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel2a-content"
@@ -671,7 +632,7 @@ const FAQ = ({ navbar, setNavbar }) => {
                 only without charging any consultancy fees?
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails style={{ backgroundColor: "lightgreen",borderRadius:'10px',margin:'10px' }}>
               <Typography
                 style={{
                   fontFamily: "Nunito Sans",
@@ -690,7 +651,7 @@ const FAQ = ({ navbar, setNavbar }) => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          <Accordion style={{ backgroundColor: "hotpink" }}>
+          <Accordion style={{margin:'10px',borderRadius:'10px'}}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel3a-content"
@@ -705,7 +666,7 @@ const FAQ = ({ navbar, setNavbar }) => {
                 How can I trust Expert Educational Consultancy?
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails style={{ backgroundColor: "hotpink",borderRadius:'10px',margin:'10px' }}>
               <Typography
                 style={{
                   fontFamily: "Nunito Sans",

@@ -1,12 +1,8 @@
 import React from 'react';
-import Popover from '@mui/material/Popover';
-import Button from '@mui/material/Button';
+import { Popover,Button } from '@mui/material';
 import ChatBot from 'react-simple-chatbot';
 import ChatBotImage from '../images/chatbot.png';
 import { ThemeProvider } from 'styled-components';
-import zIndex from '@mui/material/styles/zIndex';
-
-
 
 const ChatBotComponent = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);

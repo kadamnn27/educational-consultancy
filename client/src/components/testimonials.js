@@ -1,22 +1,14 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import { Paper, Container, Typography, makeStyles, Button } from "@material-ui/core";
-import Divider from '@mui/material/Divider';
-import Chip from '@mui/material/Chip';
+import { Typography, makeStyles } from "@material-ui/core";
+import { Paper,Divider, Chip } from '@mui/material';
 import Carousel from 'react-bootstrap/Carousel';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CircularProgress from '@mui/material/CircularProgress';
-// import Box from '@mui/material/Box';
 
-import image1 from "../images/testimonials/priyanshi_mathur.jpeg";
-import image2 from "../images/testimonials/mudit_jain.jpeg";
-import image3 from '../images/carousel-images/carousel-image-3.jpg';
 import texturedImage from "../images/textured_3.png";
-// import { testimonials } from "../data/testimonials-data";
 import axios from '../api/axios';
 import { UserContext } from '../UserContext';
-
-
 
 const useStyles = makeStyles((theme) => ({
     testimonialsBtn: {

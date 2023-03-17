@@ -6,14 +6,12 @@ import { Link } from "react-router-dom";
 import {
   useMediaQuery,
   useTheme,
-  Container,
   Typography,
   makeStyles,
-  Button,
-  Paper,
+  Button
 } from "@material-ui/core";
-import Divider from "@mui/material/Divider";
-import Chip from "@mui/material/Chip";
+
+import {Divider,Chip,Paper,Container} from "@mui/material";
 import Testimonials from "../components/testimonials";
 import NewsCarousel from "../components/newsCarousel";
 import Services from "../components/services";
@@ -28,12 +26,10 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "10px",
     transition: "all 0.5s ease",
     border: "2px solid orange",
-    // boxShadow: "2px 2px 1px 1px #fea905 ,1px 1px 1px 0px #ECDE65,1px 1px 5px 0px #ECDE65",
-    // transition: "all 0.3s ease",
     "&:hover,&:focus": {
+      color: "orange",
       boxShadow:
         "0px 0px 6px 2.5px #fea905 ,1px 1px 1px 0px #ECDE65,1px 1px 1px 0px #ECDE65",
-      color: "#fea905",
       background: "linear-gradient(to right bottom,black,#0411af)",
     },
   },
@@ -55,9 +51,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '20px',
     fontWeight: '300',
     transition: "all 0.5s ease",
-    border: "1px solid block",
+    border: "1px solid black",
     margin: '25px',
-    padding: '5px',
+    padding: '7px',
     boxShadow: "0px 0px 6px 2.5px #fea905 ,1px 1px 1px 0px #ECDE65,1px 1px 1px 0px #ECDE65",
     "&:hover,&:focus": {
       color: 'black',
@@ -324,8 +320,9 @@ const Home = () => {
                     className={classes.btn}
                     // href="/register"
                     variant="contained"
+                    style={{padding:"0px"}}
                   >
-                    <Link className={classes.link} to="/register" style={{}}>
+                    <Link className={classes.link} to="/register" style={{padding:'5px 10px'}}>
                       Take Membership
                     </Link>
                   </Button>

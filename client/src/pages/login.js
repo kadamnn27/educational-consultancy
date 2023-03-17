@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 
 import { Grow, Box, makeStyles, Paper, Typography } from '@material-ui/core';
 import { Alert, Button, Stack, CircularProgress, TextField } from '@mui/material';
+import texturedImage from "../images/textured_3_edit.png";
 
 import { Link } from "react-router-dom";
 
@@ -14,13 +15,10 @@ const LOGIN_URL = '/api/v1/login';
 
 const useStyles = makeStyles(() => ({
     form: {
-        maxWidth: "400px",
-        minHeight: "300px",
-        margin: "auto",
         display: "flex",
         flexDirection: "column",
         background: "white",
-        padding: "20px",
+        padding:'40px',
     }
 }));
 
@@ -57,25 +55,18 @@ const Login = ({ navbar, setNavbar }) => {
                     headers: { 'Content-Type': 'application/json' },
                 }
             )
-            // console.log(response);
             setResponseRecieved(false);
             setSuccess(true);
             setUser(response.data.user);
-            // console.log(response.data.user);
-            Cookies.set('token', response.data.token, { expires: new Date(new Date().getTime()+10*60*1000) });
-            // let expireTime = new Date(Date.now() +10*1000).toUTCString();
-            // document.cookie = `token=${response.data.token};expires=${expireTime}`;
+            Cookies.set('token', response.data.token, { expires: new Date(new Date().getTime() + 10 * 60 * 1000) });
             setCookieToken(Cookies.get('token'));
         } catch (error) {
             console.log(error);
             console.log(error.response.data.msg);
             setFailiureMessage(error.response.data.msg);
-            // alert(error.response.data.msg);
             setFailiure(true);
             setResponseRecieved(false);
         }
-        // console.log(email, password);
-
     }
 
     return (
@@ -83,7 +74,7 @@ const Login = ({ navbar, setNavbar }) => {
             justifyContent="center"
             alignItems="center"
             minHeight="100vh"
-            style={{ margin: '100px 50px' }}
+            style={{ margin: '100px 25px' }}
         >
             {failiure ? (
                 <Grow in timeout={500}>
@@ -92,7 +83,7 @@ const Login = ({ navbar, setNavbar }) => {
                             severity="error"
                             action={
                                 <Button color="inherit" size="small">
-                                    <Link style={{textDecoration: "none",color:"red"}} to="/">Home</Link>
+                                    <Link style={{ textDecoration: "none", color: "red" }} to="/">Home</Link>
                                 </Button>
                             }
                         >
@@ -108,7 +99,7 @@ const Login = ({ navbar, setNavbar }) => {
                         <Alert
                             action={
                                 <Button color="inherit" size="small">
-                                    <Link style={{textDecoration: "none",color:"limegreen"}} to="/">Home</Link>
+                                    <Link style={{ textDecoration: "none", color: "limegreen" }} to="/">Home</Link>
                                 </Button>
                             }
                         >
@@ -118,20 +109,27 @@ const Login = ({ navbar, setNavbar }) => {
                 </Grow>
             ) : (<></>)
             }
-            <Paper elevation={3} style={{ padding: '5px' }}>
-                <Typography style={{ margin: '20px' }} variant="h3" align="center">
+            <Paper elevation={5} style={{ borderRadius: '20px',margin:'auto',maxWidth:'400px',paddingBottom:'20px' }}>
+                <Typography style={{
+                    padding: '20px',
+                    borderRadius: "20px 20px 0px 0px",
+                    background: '#1769aa',
+                    color: 'white',
+                    fontFamily: "Nunito Sans",
+                    fontWeight: "800",
+                }} variant="h3" align="center">
                     Login
                 </Typography>
                 <form onSubmit={handleSubmit} className={classes.form}>
                     <TextField value={email} onChange={(e) => setEmail(e.target.value)} style={{ margin: '5px' }} id="outlined-basic" label="Email" variant="outlined" />
                     <TextField type="password" value={password} onChange={(e) => setPassword(e.target.value)} style={{ margin: '5px', marginBottom: '20px' }} id="outlined-basic" label="Password" variant="outlined" />
                     {responseRecieved ?
-                        <Button color="primary" style={{ margin: '5px' }} variant="contained"><CircularProgress style={{ color: "white" }} /></Button>
+                        <Button color="primary" style={{ margin: '5px',borerRadius:'10px' }} variant="contained"><CircularProgress style={{ color: "white" }} /></Button>
                         :
-                        <Button type="submit" color="primary" style={{ margin: '5px' }} variant="contained">Sign IN</Button>
+                        <Button type="submit" color="primary" style={{ margin: '5px',borderRadius:'20px' }} variant="contained">Sign IN</Button>
                     }
-
                 </form>
+                <Typography style={{fontFamily:"Nunito Sans",fontWeight:'600'}} align="center">Don't have an account ? <Link to="/register" style={{color:'#1769AA',fontWeight:'800',textDecoration:'none'}}>Sign Up</Link> </Typography>
             </Paper>
         </Box>
     )
