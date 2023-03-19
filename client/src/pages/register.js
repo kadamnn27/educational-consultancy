@@ -292,7 +292,7 @@ const Register = ({ navbar, setNavbar }) => {
                             }
                             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                                 <Box sx={{ flex: '1 1 auto' }} />
-                                <Button onClick={handleReset}>Reset</Button>
+                                <Button disabled={responseRecieved} onClick={handleReset}>Reset</Button>
                             </Box>
                         </React.Fragment>
                     ) : (
@@ -617,7 +617,7 @@ const Register = ({ navbar, setNavbar }) => {
                                     Back
                                 </Button>
                                 <Box sx={{ flex: '1 1 auto' }} />
-                                {isStepOptional(activeStep) && (
+                                {isStepOptional(activeStep) && !image && (
                                     <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
                                         Skip
                                     </Button>
@@ -626,6 +626,7 @@ const Register = ({ navbar, setNavbar }) => {
                                     activeStep === 0 ?
                                         <Button
                                             onClick={handleNext}
+                                            disabled={!image}
                                         >
                                             Next
                                         </Button>
@@ -651,12 +652,6 @@ const Register = ({ navbar, setNavbar }) => {
                                                     Sign Up
                                                 </Button> : null
                                 }
-                                {/* <Button
-                                onClick={handleNext}
-                                disabled={true}
-                            >
-                                {activeStep === steps.length - 1 ? <Button onClick={handleSubmit} type="submit" color="primary" style={{ margin: '5px' }} variant="contained">Sign UP</Button> : 'Next'}
-                            </Button> */}
                             </Box>
                         </React.Fragment>
                     )}

@@ -304,30 +304,6 @@ const Navbar = ({ navbar, setNavbar }) => {
                                         <Link to="/account" className={classes.link}>
                                             Hi, {user.name}
                                         </Link>
-                                        <Link to="/" className={classes.link} onClick={() => {
-                                            try {
-                                                axios.get(LOGOUT_URL, {
-                                                    headers: {
-                                                        Authorization: `Bearer ${cookieToken}`
-                                                    }
-                                                })
-                                                    .then((res) => {
-                                                        setUser(null);
-                                                        setCookieToken(null);
-                                                        Cookies.remove('token');
-                                                        localStorage.removeItem('user');
-                                                    })
-                                                    .catch((error) => {
-                                                        console.log(error);
-                                                    });
-
-                                            }
-                                            catch (error) {
-                                                console.log(error)
-                                            }
-                                        }}>
-                                            Logout
-                                        </Link>
                                     </>
                                 }
 

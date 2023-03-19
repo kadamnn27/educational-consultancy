@@ -13,12 +13,12 @@ import {
     AppBar,
     Grid,
 } from '@mui/material';
-import{CssBaseline,makeStyles,Typography} from '@material-ui/core';
+import { CssBaseline, makeStyles, Typography } from '@material-ui/core';
 import MuiAlert from '@mui/material/Alert';
 
 import crossIcon from '../images/icons/icons8-multiplication-48.png';
 
-import { Link } from "react-router-dom";
+import { Link, navigate, useNavigate } from "react-router-dom";
 
 import Cookies from 'js-cookie';
 import axios from '../api/axios';
@@ -83,6 +83,9 @@ const DrawerMenu = () => {
     //mode menu
     const [modeMenuOpen, setModeMenuOpen] = useState(false);
 
+    //account menu
+    const [accountMenuOpen, setAccountMenuOpen] = useState(false);
+
     const handleClick = () => {
         setOpen(true);
     };
@@ -96,7 +99,8 @@ const DrawerMenu = () => {
     const classes = useStyles();
     const [openDrawer, setOpenDrawer] = useState(false);
 
-    const { user, setUser, cookieToken, setCookieToken, course, setCourse, mode, setMode } = useContext(UserContext);
+    const { user, setUser, cookieToken, setCookieToken, course, setCourse, mode, setMode, accountPage, setAccountPage } = useContext(UserContext);
+    const navigate = useNavigate();
 
     return (
         <div>
@@ -154,7 +158,10 @@ const DrawerMenu = () => {
                                             padding: '10px',
                                             cursor: 'pointer'
                                         }}
-                                            onClick={() => setMode('UG')}
+                                            onClick={() => {
+                                                setMode('UG');
+                                                setOpenDrawer(false);
+                                            }}
                                         >
                                             Neet UG
                                         </li>
@@ -164,7 +171,10 @@ const DrawerMenu = () => {
                                             padding: '10px',
                                             cursor: 'pointer'
                                         }}
-                                            onClick={() => setMode('PG')}
+                                            onClick={() => {
+                                                setMode('PG');
+                                                setOpenDrawer(false);
+                                            }}
                                         >
                                             Neet PG
                                         </li>
@@ -285,10 +295,69 @@ const DrawerMenu = () => {
                                     </ListItem>
                                 </> :
                                 <>
-                                    <ListItem onClick={() => setOpenDrawer(false)}>
-                                        <ListItemText>
-                                            <Link className={classes.link} to="/account">Account Details</Link>
-                                        </ListItemText>
+                                    <ListItem onClick={() => setAccountMenuOpen(accountMenuOpen => !accountMenuOpen)}
+                                        style={{
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            alignItems: 'flex-start',
+                                        }}
+                                    >
+                                        <Typography style={{ color: 'orange', fontSize: '20px' }}>
+                                            Account Details
+                                            <img src={dropDownIcon} />
+                                        </Typography>
+                                        <Collapse in={accountMenuOpen} timeout={500} unmountOnExit
+                                            style={{
+                                                top: '65px',
+                                                margin: '0px',
+                                                padding: '0px',
+                                                zIndex: '100'
+                                            }}>
+                                            <ul class="menu-list-drawer">
+                                                <li style={{
+                                                    background: accountPage === 'Profile' ? 'rgba(255,165,0,0.2)' : 'transparent',
+                                                    listStyleType: 'none',
+                                                    padding: '10px',
+                                                    cursor: 'pointer'
+                                                }}
+                                                    onClick={() => {
+                                                        setAccountPage('Profile');
+                                                        navigate('/account');
+                                                        setOpenDrawer(false);
+                                                    }}
+                                                >
+                                                    Profile
+                                                </li>
+                                                <li style={{
+                                                    background: accountPage === 'Colleges' ? 'rgba(255,165,0,0.2)' : 'transparent',
+                                                    listStyleType: 'none',
+                                                    padding: '10px',
+                                                    cursor: 'pointer'
+                                                }}
+                                                    onClick={() => {
+                                                        setAccountPage('Colleges');
+                                                        navigate('/account');
+                                                        setOpenDrawer(false);
+                                                    }}
+                                                >
+                                                    Colleges
+                                                </li>
+                                                <li style={{
+                                                    background: accountPage === 'Membership Settings' ? 'rgba(255,165,0,0.2)' : 'transparent',
+                                                    listStyleType: 'none',
+                                                    padding: '10px',
+                                                    cursor: 'pointer'
+                                                }}
+                                                    onClick={() => {
+                                                        setAccountPage('Membership Settings');
+                                                        navigate('/account');
+                                                        setOpenDrawer(false);
+                                                    }}
+                                                >
+                                                    Membership Settings
+                                                </li>
+                                            </ul>
+                                        </Collapse>
                                     </ListItem>
                                     <ListItem onClick={() => {
                                         setOpenDrawer(false);
@@ -328,7 +397,7 @@ const DrawerMenu = () => {
                     </Grid>
                 </Toolbar>
             </AppBar>
-        </div>
+        </div >
     );
 }
 export default DrawerMenu;

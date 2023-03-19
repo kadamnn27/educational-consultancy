@@ -33,6 +33,7 @@ function App() {
   const [cookieToken, setCookieToken] = useState(null);
   const [course, setCourse] = React.useState('Course Details');
   const [mode, setMode] = useState(null);
+  const [accountPage, setAccountPage] = useState('Profile');
 
   //This method would work but seems taxing to the computer power.
   // window.setInterval(() => {
@@ -43,7 +44,7 @@ function App() {
 
   useEffect(() => {
     if (Cookies.get('token')) setCookieToken(Cookies.get('token'));
-    else{
+    else {
       localStorage.removeItem('user');
     }
     if (localStorage.getItem('user')) {
@@ -54,10 +55,10 @@ function App() {
     if (user) localStorage.setItem('user', JSON.stringify(user));
   }, [user])
   return (
-    <UserContext.Provider value={{ user, setUser, cookieToken, setCookieToken,course,setCourse,mode,setMode }}>
+    <UserContext.Provider value={{ user, setUser, cookieToken, setCookieToken, course, setCourse, mode, setMode,accountPage,setAccountPage }}>
       <div className={classes.App}>
         <Router>
-          {mode || window.location.pathname!=='/'?<Navbar navbar={navbar} setNavbar={setNavbar} />:<></>}
+          {mode || window.location.pathname !== '/' ? <Navbar navbar={navbar} setNavbar={setNavbar} /> : <></>}
           <Routes>
             <Route exact path="/" element={<Home navbar={navbar} setNavbar={setNavbar} />} />
             <Route path="/about" element={<About navbar={navbar} setNavbar={setNavbar} />} />
@@ -71,8 +72,8 @@ function App() {
             <Route eaxct path="/about/PG" element={<AboutPG navbar={navbar} setNavbar={setNavbar} />} />
           </Routes>
         </Router>
-        {mode || window.location.pathname!=='/'?<ChatBotComponent />:<></>}
-        {mode || window.location.pathname!=='/'?<Footer />:<></>}
+        {mode || window.location.pathname !== '/' ? <ChatBotComponent /> : <></>}
+        {mode || window.location.pathname !== '/' ? <Footer /> : <></>}
       </div>
     </UserContext.Provider>
   );
