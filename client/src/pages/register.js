@@ -168,11 +168,6 @@ const Register = ({ navbar, setNavbar }) => {
         setResponseRecieved(true);
         setSuccess(false);
         setFailiure(false);
-        if (!name || !email || !password || !course || !gender || !dob || !category || !state || !occParent || occParent.fatherOccupation === "Select or Write" || occParent.motherOccupation === "Select or Write" || !feeBudget) {
-            setResponseRecieved(false);
-            return alert("One or more required fields missing");
-        }
-        console.log(state);
         try {
             const formData = new FormData();
             formData.append('name', name);
@@ -212,7 +207,6 @@ const Register = ({ navbar, setNavbar }) => {
         <Box
             justifyContent="center"
             alignItems="center"
-            minHeight="100vh"
             style={{ margin: '100px 25px' }}
         >
             <Paper elevation={5} sx={{ maxWidth: '700px', borderRadius: '20px', margin: 'auto' }}>
@@ -381,9 +375,9 @@ const Register = ({ navbar, setNavbar }) => {
                                         ) : activeStep === 2 ? (
                                             <div style={{ display: 'flex', flexDirection: 'column', maxWidth: '500px', margin: 'auto' }}>
 
-                                                <TextField type="number" value={neet.score} onChange={(e) => setNeet({ ...neet, score: e.target.value })} style={{ margin: '15px' }} id="outlined-basic" label="NEET Score" variant="outlined" />
-                                                <TextField type="number" value={neet.airRank} onChange={(e) => setNeet({ ...neet, airRank: e.target.value })} style={{ margin: '15px' }} id="outlined-basic" label="AIR Rank" variant="outlined" />
-                                                <TextField type="number" value={neet.categoryRank} onChange={(e) => setNeet({ ...neet, categoryRank: e.target.value })} style={{ margin: '15px' }} id="outlined-basic" label="Category Rank" variant="outlined" />
+                                                <TextField type="number" value={neet.score} onChange={(e) => setNeet({ ...neet, score: e.target.value })} style={{ margin: '15px' }} label="NEET Score" variant="outlined" id="outlined-basic"/>
+                                                <TextField type="number" value={neet.airRank} onChange={(e) => setNeet({ ...neet, airRank: e.target.value })} style={{ margin: '15px' }} label="AIR Rank" variant="outlined" id="outlined-basic"/>
+                                                <TextField type="number" value={neet.categoryRank} onChange={(e) => setNeet({ ...neet, categoryRank: e.target.value })} style={{ margin: '15px' }} label="Category Rank" variant="outlined" id="outlined-basic"/>
                                                 <TextField
                                                     select
                                                     variant={course ? "filled" : "standard"}
@@ -546,7 +540,6 @@ const Register = ({ navbar, setNavbar }) => {
                                                     <MenuItem value="EWS">EWS</MenuItem>
                                                     <MenuItem value="Other">Other</MenuItem>
                                                 </TextField>
-                                                <TextField type="number" style={{ margin: '15px' }} value={feeBudget} onChange={(e) => setFeeBudget(e.target.value)} id="outlined-basic" label="Annual Fee Budget (INR)" variant="outlined" />
                                                 <TextField
                                                     select
                                                     variant={category ? "filled" : "standard"}
@@ -560,6 +553,7 @@ const Register = ({ navbar, setNavbar }) => {
                                                     <MenuItem value="central">Central</MenuItem>
                                                     <MenuItem value="state">State</MenuItem>
                                                 </TextField>
+                                                <TextField type="number" style={{ margin: '15px' }} value={feeBudget} onChange={(e) => setFeeBudget(e.target.value)} label="Annual Fee Budget (INR)" variant="outlined" id="outlined-basic"/>
                                                 <div style={{ margin: '15px' }}>
                                                     <Typography variant="h6">Parent's Occupation</Typography>
                                                     <TextField
@@ -639,7 +633,7 @@ const Register = ({ navbar, setNavbar }) => {
                                             </Button> : activeStep === 2 ?
                                                 <Button
                                                     onClick={handleNext}
-                                                    disabled={!(course && neet.score && neet.airRank && neet.categoryRank)}
+                                                    disabled={!(course && neet.score && neet.airRank && neet.categoryRank && state.domicile && (((["DNB", "MD/MS", "FCPS/CPS"]).includes(course) && state.passedGrad !== 0) || (!((["DNB", "MD/MS", "FCPS/CPS"]).includes(course)) && state.passedTenth !== 0 && state.passedEleventh!==0 && state.passedTwelfth!==0)))}
                                                 >
                                                     Next
                                                 </Button> : activeStep === 3 ? <Button

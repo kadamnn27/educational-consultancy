@@ -122,66 +122,6 @@ const Navbar = ({ navbar, setNavbar }) => {
                                 {/* <Link to={`/about/${mode}`} className={classes.link}>
                                     About {mode}
                                 </Link> */}
-                                <button
-                                    onMouseOver={() => setModeMenuOpen(true)}
-                                    onMouseLeave={() => setModeMenuOpen(false)}
-                                    style={{ background: 'transparent', border: 'none', display: 'flex' }}
-                                >
-                                    <Typography style={{ fontSize: '20px', color: '#fea905' }}>
-                                        Mode
-                                    </Typography>
-                                    <img src={dropDownIcon}></img>
-                                </button>
-                                <Collapse in={modeMenuOpen} timeout={500} unmountOnExit
-                                    onMouseOver={() => setModeMenuOpen(true)}
-                                    onMouseLeave={() => setModeMenuOpen(false)}
-                                    style={navbar ? {
-                                        position: 'absolute',
-                                        top: '70px',
-                                        left: '50%',
-                                        zIndex: '100'
-                                    } : {
-                                        position: 'absolute',
-                                        top: '65px',
-                                        left: '45%',
-                                        zIndex: '100'
-                                    }}
-                                >
-                                    <ul class="menu-list">
-                                        <li style={{ listStyleType: 'none', padding: '10px' }}>
-                                            <button
-                                                style={{
-                                                    background: 'transparent',
-                                                    border: 'none',
-                                                    color: mode === 'UG' ? 'black' : 'orange',
-                                                    borderLeft: mode === 'UG' ? '' : 'black',
-                                                    fontWeight: 'bold',
-                                                    transition: 'all 0.2s ease'
-                                                }}
-                                                onClick={() => setMode("UG")}
-                                            >
-                                                Neet UG
-                                            </button>
-                                        </li>
-                                        <li
-                                            style={{ listStyleType: 'none', padding: '10px' }}
-                                        >
-                                            <button
-                                                style={{
-                                                    background: 'transparent',
-                                                    border: 'none',
-                                                    color: mode === 'PG' ? 'black' : '#fea905',
-                                                    borderLeft: mode === 'PG' ? '' : 'black',
-                                                    fontWeight: 'bold',
-                                                    transition: 'all 0.2s ease'
-                                                }}
-                                                onClick={() => setMode("PG")}
-                                            >
-                                                Neet PG
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </Collapse>
                                 {/* <button
                                     onMouseOver={() => setMenuOpen(true)}
                                     onMouseLeave={() => setMenuOpen(false)}
@@ -307,6 +247,62 @@ const Navbar = ({ navbar, setNavbar }) => {
                                     </>
                                 }
 
+                                <button
+                                    onMouseOver={() => setModeMenuOpen(true)}
+                                    onMouseLeave={() => setModeMenuOpen(false)}
+                                    style={{ background: 'transparent', border: 'none', display: 'flex' }}
+                                >
+                                    <Typography style={{ fontSize: '20px', color: '#fea905' }}>
+                                        Mode
+                                    </Typography>
+                                    <img src={dropDownIcon}></img>
+                                </button>
+                                <Collapse in={modeMenuOpen} timeout={500} unmountOnExit
+                                    onMouseOver={() => setModeMenuOpen(true)}
+                                    onMouseLeave={() => setModeMenuOpen(false)}
+                                    style={{
+                                        position: 'absolute',
+                                        zIndex: '100',
+                                        top: '70px',
+                                        right: '5%'
+                                    }
+                                    }
+                                >
+                                    <ul class="menu-list">
+                                        <li style={{ listStyleType: 'none', padding: '10px' }}>
+                                            <button
+                                                style={{
+                                                    background: 'transparent',
+                                                    border: 'none',
+                                                    color: mode === 'UG' ? 'black' : 'orange',
+                                                    borderLeft: mode === 'UG' ? '' : 'black',
+                                                    fontWeight: 'bold',
+                                                    transition: 'all 0.2s ease'
+                                                }}
+                                                onClick={() => setMode("UG")}
+                                            >
+                                                Neet UG
+                                            </button>
+                                        </li>
+                                        <li
+                                            style={{ listStyleType: 'none', padding: '10px' }}
+                                        >
+                                            <button
+                                                style={{
+                                                    background: 'transparent',
+                                                    border: 'none',
+                                                    color: mode === 'PG' ? 'black' : '#fea905',
+                                                    borderLeft: mode === 'PG' ? '' : 'black',
+                                                    fontWeight: 'bold',
+                                                    transition: 'all 0.2s ease'
+                                                }}
+                                                onClick={() => setMode("PG")}
+                                            >
+                                                Neet PG
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </Collapse>
                             </div>
                         </Toolbar>
                     </AppBar>

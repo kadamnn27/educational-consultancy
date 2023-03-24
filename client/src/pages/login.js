@@ -73,7 +73,6 @@ const Login = ({ navbar, setNavbar }) => {
         <Box
             justifyContent="center"
             alignItems="center"
-            minHeight="100vh"
             style={{ margin: '100px 25px' }}
         >
             {failiure ? (
