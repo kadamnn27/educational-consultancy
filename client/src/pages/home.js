@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState, useContext } from "react";
 import CarouselComponent from "../components/carousel";
 import { UserContext } from "../UserContext";
 import { Link } from "react-router-dom";
+import '../scrollAnimation.css'
 
 import {
   useMediaQuery,
@@ -11,7 +12,7 @@ import {
   Button
 } from "@material-ui/core";
 
-import {Divider,Chip,Paper,Container} from "@mui/material";
+import { Divider, Chip, Paper, Container } from "@mui/material";
 import Testimonials from "../components/testimonials";
 import NewsCarousel from "../components/newsCarousel";
 import Services from "../components/services";
@@ -54,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid black",
     margin: '25px',
     padding: '7px',
-    border:'2px solid orange',
+    border: '2px solid orange',
     "&:hover,&:focus": {
       color: 'orange',
       fontSize: '25px',
@@ -78,27 +79,48 @@ const Home = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const classes = useStyles();
   const [years, setYears] = useState(0);
+  const { mode, setMode } = useContext(UserContext);
   useEffect(() => {
-    let num = 0;
+    // Years Animation
+    let num = -4;
     let totalMilSecDur = 2;
     let incrementTime = (totalMilSecDur / 26) * 1000;
-    let timer = setInterval(() => {
-      num += 1;
-      setYears(num);
-      var date = new Date();
-      if (num === date.getFullYear() - 1996) {
-        clearInterval(timer);
-      }
-    }, incrementTime);
-  }, []);
+    if (mode) {
+      let timer = setInterval(() => {
+        num += 1;
+        setYears(num);
+        var date = new Date();
+        if (num === date.getFullYear() - 1996) {
+          clearInterval(timer);
+        }
+      }, incrementTime);
+    }
 
-  const { mode, setMode } = useContext(UserContext);
+    //Scroll Animation
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+        // else {
+        //   entry.target.classList.remove("show");
+        // }
+        console.log(entry.target.classList);
+      });
+    });
+    const targets = document.querySelectorAll(".scroll");
+    targets.forEach(target => {
+      // console.log(target);
+      observer.observe(target);
+    });
+  }, [mode]);
+
 
   return (
     <div style={isMobile ? { marginTop: "220px" } : {}} width="100%">
       {
         !mode ?
-          <div style={{position:'absolute',top:'0',left:'0',right:'0', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', flexDirection: 'column' }}>
+          <div style={{ position: 'absolute', top: '0', left: '0', right: '0', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', flexDirection: 'column' }}>
             <div style={{ position: 'relative', bottom: '100px' }}>
               <Typography align="center" variant="h6">Welcome to </Typography>
               <Typography style={{ marginTop: "10px", fontSize: "25px" }} className={classes.logoText}>Expert Educational</Typography>
@@ -144,6 +166,7 @@ const Home = () => {
                   }
                 >
                   <Typography
+                    className="scroll scrollLeft"
                     align="left"
                     style={{
                       fontFamily: "Nunito Sans",
@@ -161,6 +184,7 @@ const Home = () => {
                     Data Analytics to help students.
                   </Typography>
                   <Paper
+                    className="scroll scrollRight"
                     elevation={3}
                     style={
                       !isMobile
@@ -242,8 +266,6 @@ const Home = () => {
                     2. To Support Medical aspirants and their Parents in reducing their mental pressure while serving them with a hassle-free admission procedure.
                   </Typography>
                 </Container>
-              </div>
-              <div>
                 <Divider
                   sx={{
                     "&::before, &::after": {
@@ -281,9 +303,11 @@ const Home = () => {
                   </Typography>
                 </Container>
               </div>
-              <Services />
-              <NewsCarousel />
-              <div>
+              <div class="scroll scrollDown">
+                <Services />
+                <NewsCarousel />
+              </div>
+              <div class="scroll scrollDown">
                 <Divider
                   sx={{
                     "&::before, &::after": {
@@ -318,15 +342,15 @@ const Home = () => {
                     className={classes.btn}
                     // href="/register"
                     variant="contained"
-                    style={{padding:"0px"}}
+                    style={{ padding: "0px" }}
                   >
-                    <Link className={classes.link} to="/register" style={{padding:'5px 10px'}}>
+                    <Link className={classes.link} to="/register" style={{ padding: '5px 10px' }}>
                       Take Membership
                     </Link>
                   </Button>
                 </Typography>
+                <Testimonials />
               </div>
-              <Testimonials />
             </Container>
           </>
       }

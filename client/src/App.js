@@ -20,7 +20,7 @@ import Cookies from 'js-cookie';
 
 const useStyles = makeStyles(() => ({
   App: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#f1f1f1",
     fontFamily: "Nunito Sans",
     fontWeight: "600"
   }

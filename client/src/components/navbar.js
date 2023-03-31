@@ -72,7 +72,6 @@ const Navbar = ({ navbar, setNavbar }) => {
     //mode menu
     const [modeMenuOpen, setModeMenuOpen] = useState(false);
 
-
     // const [navbar, setNavbar] = useState(false);
     const [location, setLocation] = useState("/");
     const changeNavbar = () => {
@@ -104,7 +103,7 @@ const Navbar = ({ navbar, setNavbar }) => {
             <div ref={focus}></div>
             {isMobile ? (<DrawerMenu />) :
                 (<>
-                    {window.location.pathname === "/" ? (<>
+                    {window.location.pathname === "/" && !navbar? (<>
                         <Typography style={{ marginTop: "10px", fontSize: "25px" }} className={classes.logoText}>Expert Educational</Typography>
                         <Typography style={{ fontSize: "40px" }} className={classes.logoText}>Consultancy</Typography>
                     </>) : (<></>)

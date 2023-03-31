@@ -18,7 +18,7 @@ const useStyles = makeStyles(() => ({
         display: "flex",
         flexDirection: "column",
         background: "white",
-        padding:'40px',
+        padding: '40px',
     }
 }));
 
@@ -58,7 +58,7 @@ const Login = ({ navbar, setNavbar }) => {
             setResponseRecieved(false);
             setSuccess(true);
             setUser(response.data.user);
-            Cookies.set('token', response.data.token, { expires: new Date(new Date().getTime() + 10 * 60 * 1000) });
+            Cookies.set('token', response.data.token, { expires: new Date(new Date().getTime() + 24 * 60 * 60 * 1000) });
             setCookieToken(Cookies.get('token'));
         } catch (error) {
             console.log(error);
@@ -108,7 +108,7 @@ const Login = ({ navbar, setNavbar }) => {
                 </Grow>
             ) : (<></>)
             }
-            <Paper elevation={5} style={{ borderRadius: '20px',margin:'auto',maxWidth:'400px',paddingBottom:'20px' }}>
+            <Paper elevation={5} style={{ borderRadius: '20px', margin: 'auto', maxWidth: '400px', paddingBottom: '20px' }}>
                 <Typography style={{
                     padding: '20px',
                     borderRadius: "20px 20px 0px 0px",
@@ -123,12 +123,12 @@ const Login = ({ navbar, setNavbar }) => {
                     <TextField value={email} onChange={(e) => setEmail(e.target.value)} style={{ margin: '5px' }} id="outlined-basic" label="Email" variant="outlined" />
                     <TextField type="password" value={password} onChange={(e) => setPassword(e.target.value)} style={{ margin: '5px', marginBottom: '20px' }} id="outlined-basic" label="Password" variant="outlined" />
                     {responseRecieved ?
-                        <Button color="primary" style={{ margin: '5px',borerRadius:'10px' }} variant="contained"><CircularProgress style={{ color: "white" }} /></Button>
+                        <Button color="primary" style={{ margin: '5px', borerRadius: '10px' }} variant="contained"><CircularProgress style={{ color: "white" }} /></Button>
                         :
-                        <Button type="submit" color="primary" style={{ margin: '5px',borderRadius:'20px' }} variant="contained">Sign IN</Button>
+                        <Button type="submit" color="primary" style={{ margin: '5px', borderRadius: '20px' }} variant="contained">Sign IN</Button>
                     }
                 </form>
-                <Typography style={{fontFamily:"Nunito Sans",fontWeight:'600'}} align="center">Don't have an account ? <Link to="/register" style={{color:'#1769AA',fontWeight:'800',textDecoration:'none'}}>Sign Up</Link> </Typography>
+                <Typography style={{ fontFamily: "Nunito Sans", fontWeight: '600' }} align="center">Don't have an account ? <Link to="/register" style={{ color: '#1769AA', fontWeight: '800', textDecoration: 'none' }}>Sign Up</Link> </Typography>
             </Paper>
         </Box>
     )

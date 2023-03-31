@@ -65,45 +65,45 @@ Our Managing Director, Mr. Shamsher Rana, who has personally visited private med
                         <br />
 
                         In India, the process of getting admitted to a medical college can be quite competitive and challenging. There are several factors that you need to consider, including your rank in NEET (National Eligibility cum Entrance Test), Domicile, Category, financial capacity to pay fees, branch, availability of seats, etc. which are explained under :
-                        <ul>
-                            <li>
+                        <ul style={{listStyleType:'none',marginTop:'10px',position:'relative',right:'10px'}}>
+                            <li style={{margin:'5px'}}>
                                 <Typography className={classes.text}
-                                    style={{ color: '#fea905' }} variant="h6">
-                                    NEET AIR (All India Rank) :
+                                    style={{ color: 'darkorange', background: '#ffe8b0', padding: '3px 7px', borderRadius: '10px', width: '260px' }} variant="h7">
+                                    NEET AIR (All India Rank)
                                 </Typography>
-                                <Typography className={classes.text} variant="body2">The All India Rank (AIR) is the rank of a candidate in the NEET exam. It is calculated based on the total marks obtained by the candidate in the exam. The higher the rank, the better the chances of getting admission in a good medical college.
+                                <Typography style={{margin:'10px'}} className={classes.text} variant="body2">The All India Rank (AIR) is the rank of a candidate in the NEET exam. It is calculated based on the total marks obtained by the candidate in the exam. The higher the rank, the better the chances of getting admission in a good medical college.
                                 </Typography>
                             </li>
-                            <li>
+                            <li style={{margin:'5px'}}>
                                 <Typography className={classes.text}
-                                    style={{ color: '#fea905' }} variant="h6">
-                                    Category :
+                                    style={{ color: 'darkorange', background: '#ffe8b0', padding: '3px 7px', borderRadius: '10px', width: '100px' }} variant="h7">
+                                    Category
                                 </Typography>
-                                <Typography className={classes.text} variant="body2">The All India Rank (AIR) is the rank of a candidAdmissions guidance for MD/MS/DIPLOMA/DNB courses depend on the category of the student such as General, EWS, OBC, SC, ST, PwD etc. Different State/ institutes have different reservation criteria for each category, and EEC have complete knowledge about the same.
+                                <Typography style={{margin:'10px'}} className={classes.text} variant="body2">The All India Rank (AIR) is the rank of a candidAdmissions guidance for MD/MS/DIPLOMA/DNB courses depend on the category of the student such as General, EWS, OBC, SC, ST, PwD etc. Different State/ institutes have different reservation criteria for each category, and EEC have complete knowledge about the same.
                                 </Typography>
                             </li>
-                            <li>
+                            <li style={{margin:'5px'}}>
                                 <Typography className={classes.text}
-                                    style={{ color: '#fea905' }} variant="h6">
-                                    Domicile :
+                                    style={{  color: 'darkorange',background:'#ffe8b0',padding:'3px 7px',borderRadius:'10px',width:'98px'  }} variant="h7">
+                                    Domicile
                                 </Typography>
-                                <Typography className={classes.text} variant="body2">Domicile of the student means where the student lives or have property / ancestral property or have done his/her education. It plays a crucial role in the admission process. Some institutes have different quotas for students of the same state and outside of the state, which EEC have complete information about.
+                                <Typography style={{margin:'10px'}} className={classes.text} variant="body2">Domicile of the student means where the student lives or have property / ancestral property or have done his/her education. It plays a crucial role in the admission process. Some institutes have different quotas for students of the same state and outside of the state, which EEC have complete information about.
                                 </Typography>
                             </li>
-                            <li>
+                            <li style={{margin:'5px'}}>
                                 <Typography className={classes.text}
-                                    style={{ color: '#fea905' }} variant="h6">
-                                    Tuition Fee :
+                                    style={{  color: 'darkorange',background:'#ffe8b0',padding:'3px 7px',borderRadius:'10px',width:'120px'  }} variant="h7">
+                                    Tuition Fee
                                 </Typography>
-                                <Typography className={classes.text} variant="body2">The tuition fee or the financial capacity to pay fees for different branch varies from institute to institute, and the consultancy have updated information about the same to guide the student in the right direction.
+                                <Typography style={{margin:'10px'}} className={classes.text} variant="body2">The tuition fee or the financial capacity to pay fees for different branch varies from institute to institute, and the consultancy have updated information about the same to guide the student in the right direction.
                                 </Typography>
                             </li>
-                            <li>
+                            <li style={{margin:'5px'}}>
                                 <Typography className={classes.text}
-                                    style={{ color: '#fea905' }} variant="h6">
-                                    Branch :
+                                    style={{  color: 'darkorange',background:'#ffe8b0',padding:'3px 7px',borderRadius:'10px',width:'77px'  }} variant="h7">
+                                    Branch
                                 </Typography>
-                                <Typography className={classes.text} variant="body2">Government / Private colleges Branch preference as per requirement of the students (recognised / permitted).
+                                <Typography style={{margin:'10px'}} className={classes.text} variant="body2">Government / Private colleges Branch preference as per requirement of the students (recognised / permitted).
                                 </Typography>
                             </li>
                         </ul>
@@ -139,7 +139,7 @@ Our Managing Director, Mr. Shamsher Rana, who has personally visited private med
                         </ul>
                     </Typography>
                     <div className="accordions">
-                        <Accordion style={{ margin: '10px',borderRadius:'10px' }}>
+                        <Accordion style={{ margin: '10px', borderRadius: '10px' }}>
                             <AccordionSummary
                                 expandIcon={<ExpandMoreIcon />}
                                 aria-controls="panel1a-content"
@@ -165,7 +165,7 @@ Our Managing Director, Mr. Shamsher Rana, who has personally visited private med
                                 </Typography>
                             </AccordionDetails>
                         </Accordion>
-                        <Accordion style={{ margin: '10px',borderRadius:'10px' }}>
+                        <Accordion style={{ margin: '10px', borderRadius: '10px' }}>
                             <AccordionSummary
                                 expandIcon={<ExpandMoreIcon />}
                                 aria-controls="panel1a-content"
@@ -192,7 +192,7 @@ Our Managing Director, Mr. Shamsher Rana, who has personally visited private med
                                 </Typography>
                             </AccordionDetails>
                         </Accordion>
-                        <Accordion style={{ margin: '10px',borderRadius:'10px' }}>
+                        <Accordion style={{ margin: '10px', borderRadius: '10px' }}>
                             <AccordionSummary
                                 expandIcon={<ExpandMoreIcon />}
                                 aria-controls="panel1a-content"
@@ -217,7 +217,7 @@ Our Managing Director, Mr. Shamsher Rana, who has personally visited private med
                                 </Typography>
                             </AccordionDetails>
                         </Accordion>
-                        <Accordion style={{ margin: '10px',borderRadius:'10px' }}>
+                        <Accordion style={{ margin: '10px', borderRadius: '10px' }}>
                             <AccordionSummary
                                 expandIcon={<ExpandMoreIcon />}
                                 aria-controls="panel1a-content"
@@ -244,7 +244,7 @@ Our Managing Director, Mr. Shamsher Rana, who has personally visited private med
                                 </Typography>
                             </AccordionDetails>
                         </Accordion>
-                        <Accordion style={{ margin: '10px',borderRadius:'10px' }}>
+                        <Accordion style={{ margin: '10px', borderRadius: '10px' }}>
                             <AccordionSummary
                                 expandIcon={<ExpandMoreIcon />}
                                 aria-controls="panel1a-content"
