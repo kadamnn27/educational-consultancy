@@ -1,0 +1,18 @@
+version: 2
+env:
+  DB: mongodb+srv://percy1:percyone@cluster0.pxbc97w.mongodb.net/?retryWrites=true&w=majority
+  PORT: 4679
+  JWT_SECRET: allyourfirendsareverifiedactiingliketheyarefirstinline
+  JWT_EXPIRY: 1d
+  CLOUDINARY_KEY: 122328555334771
+  CLOUDINARY_SECRET: tehuMVeJSwaYuhH1J8vz0kCGtTU
+  SMTP_HOST: smtp.mailtrap.io
+  SMTP_PORT: 2525
+  SMTP_USER: 9ae51242b0475e
+  SMTP_PASS: d677def16e5fc8
+deploy:
+  image: node:14
+  commands:
+    - cd Expert-Educational-Consultancy/projbackend
+    - npm install
+    - npm start

@@ -1,0 +1,86 @@
+openapi: 3.0.0
+
+info:
+  title: Expert Educational Consultancy
+  description: API for Expert Educational Consultancy website
+  version: 1.0.1
+  contact:
+    email: architagarwal2002@gmail.com
+
+servers:
+  - url: "{protocol}://{host}/api/{versions}"
+    variables:
+      versions:
+        default: v1
+        enum:
+          - v1
+          - v2
+      protocol:
+        default: https
+        enum:
+          - http
+          - https
+      host:
+        default: expert-educational-consultancy.herokuapp.com
+        enum:
+         - expert-educational-consultancy.herokuapp.com
+         - localhost:4679     
+
+components:
+  securitySchemes:
+    BearerAuth: 
+      type: http
+      scheme: bearer
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: token
+
+paths:
+ /register:
+  post:
+   tags:
+    - User
+   summary: Sign up a new user
+   requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - name
+                - email
+                - password
+              properties:
+                name:
+                  type: string
+                  required: true
+                email:
+                  type: string
+                  required: true
+                password:
+                  type: string
+                  required: true
+                course:
+                  type: string
+                city:
+                  type: string
+              
+   responses:
+    200:
+      description: success
+        content:
+          application/json:
+            schema:
+              type: object
+                properties:
+                  success:
+                    type: boolean
+                  token:
+                    type: string
+                  message:
+                    type: string
+        400:
+          description: Bad request
+        500:
+          description: internal server error
