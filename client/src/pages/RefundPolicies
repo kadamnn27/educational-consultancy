@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms and Conditions</title>
+    
+</head>
+<body>
+    <body>
+      <h2>Refund Policies</h2>
+      <h4>1. Refund Request Process:</h4>
+
+a) To request a refund, students must fill out the Refund Request Form available on our website or contact our Customer Support team.<br>
+b) Provide proof of enrollment and reasons for requesting a refund (e.g., dissatisfaction with course content, technical issues).
+      <p><h4>2. Refund Timeframe:</h4>
+
+a) Refunds are processed within 14 business days from the date of receiving a valid refund request.<br>
+b) Allowance for processing delays during peak enrollment periods.
+        <p><h4>3. Refund Amounts:</h4>
+
+a) Full refunds will be issued if the withdrawal is within the eligible timeframe and no course materials have been accessed.<br>
+b) Partial refunds may be calculated based on the percentage of the course completed before the refund request.
+          <p><h4>4. Exceptions and Limitations:</h4>
+
+a) Non-refundable deposits or registration fees are not eligible for refunds.<br>
+b) Refunds do not apply to specialized workshops, seminars, or personalized consulting services unless explicitly stated otherwise.<br>
+c) Promotional offers or discounts may have their own refund terms and conditions.<br>
+            <p><h4>5. Cancellation Policy:</h4>
+
+a) Students may cancel their enrollment by providing written notice at least 48 hours before the course start date to avoid penalties.<br>
+b) Cancellations made within 48 hours of the course start date may be subject to a cancellation fee.
+              <p><h4>6. Contact Information:</h4>
+
+For refund inquiries or assistance, contact our Customer Support team at expertec104@gmail.com or call +91-9313555010.
+
+
+</body>
+</html>
+
+export default RefundPolicies;
