@@ -95,6 +95,16 @@ const Footer = () => {
                                     <Phone /><a href="tel:9313555010" style={{textDecoration: "none",color:"inherit"}} >9313555010</a>
                                 </Button>
                             </Grid>
+                             <Grid item md={12} xs={12}>
+                                <Button size="small" backgroundColor="white" color="white" style={{ backgroundColor: "#444548", color: "white" }}>
+                                    <Terms And Conditions /><a href="TermsAndConditions" style={{textDecoration: "none",color:"inherit"}} >TermsAndConditions</a>
+                                </Button>
+                            </Grid>
+                            <Grid item md={12} xs={12}>
+                                <Button size="small" backgroundColor="white" color="white" style={{ backgroundColor: "#444548", color: "white" }}>
+                                    <Refund Policies /><a href="refundPolicies" style={{textDecoration: "none",color:"inherit"}} >RefundPolicies</a>
+                                </Button>
+                            </Grid>
                         </Grid>
                     </Paper>
                 </Grid>
