@@ -17,6 +17,8 @@ import AboutUG from './pages/aboutUG';
 import { makeStyles } from '@material-ui/core';
 import { UserContext } from './UserContext';
 import Cookies from 'js-cookie';
+import TermsAndConditions from './pages/TermsAndConditions';
+import RefundPolicies from './pages/RefundPolicies';
 
 const useStyles = makeStyles(() => ({
   App: {
@@ -70,6 +72,9 @@ function App() {
             <Route path="/course" element={<Course navbar={navbar} setNavbar={setNavbar} />} />
             <Route eaxct path="/about/UG" element={<AboutUG navbar={navbar} setNavbar={setNavbar} />} />
             <Route eaxct path="/about/PG" element={<AboutPG navbar={navbar} setNavbar={setNavbar} />} />
+            <Route path="/TermsAndConditions" element={<About navbar={navbar} setNavbar={setNavbar} />} />
+            <Route path="/RefundPolicies" element={<About navbar={navbar} setNavbar={setNavbar} />} />
+            
           </Routes>
         </Router>
         {mode || window.location.pathname !== '/' ? <ChatBotComponent /> : <></>}
