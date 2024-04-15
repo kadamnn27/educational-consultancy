@@ -105,14 +105,14 @@ const Footer = () => {
                         <Container className={classes.textFieldArea}>
                             <TextField className={classes.textField} id="filled-standard" label="Enter your email" variant="filled" />
                             <Button size="large" className={classes.submitBtn}>Submit</Button>
-                            <Button size="large" className={classes.TermsAndConditions }>TermsAndConditions>
+                            <Button size="large" className={classes.TermsAndConditions }>
                                 <Link to="/TermsAndConditions" className={classes.link}>
-                                    TermsAndConditions 
+                                    Terms And Conditions 
                                 </Link>
                             </Button>
-                            <Button size="large" className={classes.RefundPolicies}>RefundPolicies>
+                            <Button size="large" className={classes.RefundPolicies}>
                                 <Link to="/RefundPolicies" className={classes.link}>
-                                    RefundPolicies
+                                    Refund Policies
                                 </Link>
                             </Button>
                         </Container>
