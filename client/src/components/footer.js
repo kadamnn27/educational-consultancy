@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { TextField, Button, Grid, Box, Typography, makeStyles, Paper, Container } from '@material-ui/core';
 import { Instagram, Facebook, Mail, Phone, Telegram,Business } from '@material-ui/icons';
 
@@ -64,6 +65,32 @@ const useStyles = makeStyles(() => ({
     },
 
 }));
+const useStyles = makeStyles(() => ({
+    // Other styles...
+    TermsAndConditions: {
+        smallWhiteButton: {
+        backgroundColor: 'white',
+        color: 'black', // Text color
+        padding: '5px 10px', // Adjust padding as needed
+        borderRadius: '5px', // Rounded corners
+        border: '1px solid black', // Border style
+        '&:hover': {
+            backgroundColor: 'black', // Background color on hover
+            color: 'white', // Text color on hover
+    },
+    RefundPolicies: {
+        smallWhiteButton: {
+        backgroundColor: 'white',
+        color: 'black', // Text color
+        padding: '5px 10px', // Adjust padding as needed
+        borderRadius: '5px', // Rounded corners
+        border: '1px solid black', // Border style
+        '&:hover': {
+            backgroundColor: 'black', // Background color on hover
+            color: 'white', // Text color on hover
+    },
+}));
+
 
 const Footer = () => {
     const classes = useStyles();
