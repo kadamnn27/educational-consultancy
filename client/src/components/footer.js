@@ -64,9 +64,7 @@ const useStyles = makeStyles(() => ({
         color: "orange"
     },
 
-}));
-const useStyles = makeStyles(() => ({
-    // Other styles...
+},
     TermsAndConditions: {
         smallWhiteButton: {
         backgroundColor: 'white',
@@ -77,6 +75,7 @@ const useStyles = makeStyles(() => ({
         '&:hover': {
             backgroundColor: 'black', // Background color on hover
             color: 'white', // Text color on hover
+        }
     },
     RefundPolicies: {
         smallWhiteButton: {
@@ -88,6 +87,7 @@ const useStyles = makeStyles(() => ({
         '&:hover': {
             backgroundColor: 'black', // Background color on hover
             color: 'white', // Text color on hover
+        }
     },
 }));
 
