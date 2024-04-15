@@ -63,8 +63,6 @@ const useStyles = makeStyles(() => ({
         // margin: "20px",
         color: "orange"
     },
-
-},
     TermsAndConditions: {
         backgroundColor: 'white',
         color: 'black', // Text color
