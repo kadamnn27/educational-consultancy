@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { TextField, Button, Grid, Box, Typography, makeStyles, Paper, Container } from '@material-ui/core';
-import { Instagram, Facebook, Mail, Phone, Telegram,Business } from '@material-ui/icons';
+import { Instagram, Facebook, Mail, Phone, Telegram, Business } from '@material-ui/icons';
 
 const useStyles = makeStyles(() => ({
     text: {
@@ -66,7 +66,6 @@ const useStyles = makeStyles(() => ({
 
 },
     TermsAndConditions: {
-        smallWhiteButton: {
         backgroundColor: 'white',
         color: 'black', // Text color
         padding: '5px 10px', // Adjust padding as needed
@@ -78,7 +77,6 @@ const useStyles = makeStyles(() => ({
         }
     },
     RefundPolicies: {
-        smallWhiteButton: {
         backgroundColor: 'white',
         color: 'black', // Text color
         padding: '5px 10px', // Adjust padding as needed
