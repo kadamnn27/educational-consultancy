@@ -72,8 +72,8 @@ function App() {
             <Route path="/course" element={<Course navbar={navbar} setNavbar={setNavbar} />} />
             <Route eaxct path="/about/UG" element={<AboutUG navbar={navbar} setNavbar={setNavbar} />} />
             <Route eaxct path="/about/PG" element={<AboutPG navbar={navbar} setNavbar={setNavbar} />} />
-            <Route path="/TermsAndConditions" element={<About navbar={navbar} setNavbar={setNavbar} />} />
-            <Route path="/RefundPolicies" element={<About navbar={navbar} setNavbar={setNavbar} />} />
+            <Route path="/TermsAndConditions" element={<TermsAndConditions navbar={navbar} setNavbar={setNavbar} />} />
+            <Route path="/RefundPolicies" element={<RefundPolicies navbar={navbar} setNavbar={setNavbar} />} />
             
           </Routes>
         </Router>
