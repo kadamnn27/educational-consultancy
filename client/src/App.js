@@ -36,6 +36,7 @@ function App() {
   const [course, setCourse] = React.useState('Course Details');
   const [mode, setMode] = useState(null);
   const [accountPage, setAccountPage] = useState('Profile');
+  console.log("Reached App.js");
 
   //This method would work but seems taxing to the computer power.
   // window.setInterval(() => {
@@ -74,11 +75,10 @@ function App() {
             <Route eaxct path="/about/PG" element={<AboutPG navbar={navbar} setNavbar={setNavbar} />} />
             <Route path="/TermsAndConditions" element={<TermsAndConditions navbar={navbar} setNavbar={setNavbar} />} />
             <Route path="/RefundPolicies" element={<RefundPolicies navbar={navbar} setNavbar={setNavbar} />} />
-            
           </Routes>
-        </Router>
         {mode || window.location.pathname !== '/' ? <ChatBotComponent /> : <></>}
         {mode || window.location.pathname !== '/' ? <Footer /> : <></>}
+        </Router>
       </div>
     </UserContext.Provider>
   );
