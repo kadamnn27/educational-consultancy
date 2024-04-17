@@ -63,7 +63,7 @@ const useStyles = makeStyles(() => ({
         // margin: "20px",
         color: "orange"
     },
-    TermsAndConditions: {
+    termsBtn: {
         backgroundColor: 'white',
         color: 'black', // Text color
         padding: '5px 10px', // Adjust padding as needed
@@ -74,7 +74,7 @@ const useStyles = makeStyles(() => ({
             color: 'white', // Text color on hover
         }
     },
-    RefundPolicies: {
+    refundbtn: {
         backgroundColor: 'white',
         color: 'black', // Text color
         padding: '5px 10px', // Adjust padding as needed
@@ -128,14 +128,15 @@ const Footer = () => {
                         <Container className={classes.textFieldArea}>
                             <TextField className={classes.textField} id="filled-standard" label="Enter your email" variant="filled" />
                             <Button size="large" className={classes.submitBtn}>Submit</Button>
+                            <Button size="large" className={classes.submitBtn}>Submit</Button>
                             <Link to="/TermsAndConditions" className={classes.link}>
-                                <Button size="large" className={classes.TermsAndConditions}>
-                                    Terms And Conditions
+                                <Button size="large" className={classes.termsBtn}>
+                                  Terms And Conditions
                                 </Button>
                             </Link>
                             <Link to="/RefundPolicies" className={classes.link}>
-                                <Button size="large" className={classes.RefundPolicies}>
-                                    Refund Policies
+                                <Button size="large" className={classes.refundBtn}>
+                                  Refund Policies
                                 </Button>
                             </Link>
                         </Container>
