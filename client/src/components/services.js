@@ -29,7 +29,7 @@ const Services = () => {
                     sx={{
                         background: "linear-gradient(to right bottom,#fea905,orange)"
                     }}
-                    label="Our Services"
+                    label="Why choose us?"
 
                 />
             </Divider>
