@@ -395,9 +395,6 @@ const Register = ({ navbar, setNavbar }) => {
                                                     <MenuItem value="BAMS">BAMS</MenuItem>
                                                     <MenuItem value="BHMS">BHMS</MenuItem>
                                                     <MenuItem value="BDS">BDS</MenuItem>
-                                                    <MenuItem value="MD/MS">MD/MS</MenuItem>
-                                                    <MenuItem value="DNB">DNB</MenuItem>
-                                                    <MenuItem value="FCPS/CPS">FCPS/CPS</MenuItem>
                                                 </TextField>
                                                 <TextField
                                                     select
@@ -410,7 +407,7 @@ const Register = ({ navbar, setNavbar }) => {
                                                     onChange={(e) => setState({ ...state, domicile: e.target.value })}
                                                 >
                                                     <MenuItem value="">
-                                                        <em>None</em>
+                                                        <em>Outise India</em>
                                                     </MenuItem>
                                                     {states.map(state => (
                                                         <MenuItem value={state}>
@@ -454,7 +451,7 @@ const Register = ({ navbar, setNavbar }) => {
                                                             onChange={(e) => setState({ ...state, passedTenth: e.target.value })}
                                                         >
                                                             <MenuItem value="">
-                                                                <em>None</em>
+                                                                <em>Outside India</em>
                                                             </MenuItem>
                                                             {states.map(state => (
                                                                 <MenuItem value={state}>
@@ -474,7 +471,7 @@ const Register = ({ navbar, setNavbar }) => {
                                                             onChange={(e) => setState({ ...state, passedEleventh: e.target.value })}
                                                         >
                                                             <MenuItem value="">
-                                                                <em>None</em>
+                                                                <em>Outside India</em>
                                                             </MenuItem>
                                                             {states.map(state => (
                                                                 <MenuItem value={state}>
@@ -494,7 +491,7 @@ const Register = ({ navbar, setNavbar }) => {
                                                             onChange={(e) => setState({ ...state, passedTwelfth: e.target.value })}
                                                         >
                                                             <MenuItem value="">
-                                                                <em>None</em>
+                                                                <em>Outside India</em>
                                                             </MenuItem>
                                                             {states.map(state => (
                                                                 <MenuItem value={state}>
@@ -540,19 +537,7 @@ const Register = ({ navbar, setNavbar }) => {
                                                     <MenuItem value="EWS">EWS</MenuItem>
                                                     <MenuItem value="Other">Other</MenuItem>
                                                 </TextField>
-                                                <TextField
-                                                    select
-                                                    variant={category ? "filled" : "standard"}
-                                                    helperText="Select Category"
-                                                    style={{ margin: '15px' }}
-                                                    label="Category"
-                                                    value={category}
-                                                    name="category"
-                                                    onChange={(e) => setCategory(e.target.value)}
-                                                >
-                                                    <MenuItem value="central">Central</MenuItem>
-                                                    <MenuItem value="state">State</MenuItem>
-                                                </TextField>
+                                                
                                                 <TextField type="number" style={{ margin: '15px' }} value={feeBudget} onChange={(e) => setFeeBudget(e.target.value)} label="Annual Fee Budget (INR)" variant="outlined" id="outlined-basic"/>
                                                 <div style={{ margin: '15px' }}>
                                                     <Typography variant="h6">Parent's Occupation</Typography>

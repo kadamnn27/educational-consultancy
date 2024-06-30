@@ -35,19 +35,37 @@ const About = ({ navbar, setNavbar }) => {
                 <>
                     <Typography className={classes.text} align="center"
                         variant="body1">
-                        Expert Educational Consultancy was conceptualised and incorporated in 1995 with a permanent office in Delhi, in response to the growing concerns in MBBS admissions in India about fraud, misguidance and cheating by several unscrupulous touts masquerading as admission counsellors.
-                        To combat this growing issue and offer complete transparency, Expert Educational Consultancy uses Artificial Intelligence and Data Analytics to help students.
-                        Expert Educational Consultancy started services in 1995 in all professional courses and in 2016 Expert Educational Consultancy launched the personalised counselling services for students/parents. Expert Educational Consultancy laid the foundation of data analysis based specialised and ethical medical admission counselling in India. We are the very first in India to incorporate advanced medical admission data mining and counselling intelligence tools in forecasting the medical admission probability of students on basis of their NEET UG AIR Rank, Domicile, Category and Fees Budget.
-                        Unlike traditional generalised heuristics-based admission guidance, NEET UG Expert Educational Consultancy offers highly personalised, data mining and forecasting tools to accurately and ethically guide the students/ parents through the Medical Admission Counselling Process.
-                        We proudly claim 90% accuracy on the college prediction model and over 95% client success rate.
-                        Expert Educational Consultancy data advisory services are now being used by India’s leading medical admission counselling service providers.
-                        Our Mission…
-                        is to guide every student in our NEET UG Expert Educational Consultancy family to get an admission in the Best Medical College as per their NEET UG All India Rank, Category, Domicile & Fees Budget in the most ethical, transparent, economic and comfortable way possible.
-                        At Our Core -
-                        Value for money we strive to offer our services at the most affordable prices so that all students/ parents can avail genuine guidance on medical admission counselling process without any fear of cheating.
-                        Integrity, we offer 100% transparent, honest and authentic services to all students/parents. We ensure that there is integrity in our communication, services and activities.
-                        Trust, we strive to develop empathy and respect towards each student/ parent and all stakeholders. We work towards enhancing mutual trust between our customers and stakeholders.
+                        Expert Educational Consultancy was established in 1995 with its headquarters in Delhi, aiming to address the
+escalating concerns surrounding MBBS admissions in India, including fraudulent practices, misinformation, and
+deceitful activities perpetrated by various unscrupulous individuals posing as admission counselors. To counter this
+pressing issue and ensure complete transparency, Expert Educational Consultancy harnesses Artificial Intelligence and
+Data Analytics to assist students. Since its inception in 1995, Expert Educational Consultancy has been providing
+services across all professional courses, and in 2016, it introduced personalized counseling services for students and
+parents.
+
                     </Typography>
+                    <Typography className={classes.text} align="center" style={{ marginTop: '20px' }}
+                        variant="body1">
+                        The consultancy laid the groundwork for specialized and ethical medical admission counseling in India based on data
+                        analysis. Pioneering the integration of advanced medical admission data mining and counseling intelligence tools,
+                        Expert Educational Consultancy forecasts students' medical admission probabilities based on their NEET UG AIR Rank,
+                        Domicile, Category, and Fees Budget, thus departing from traditional heuristic-based admission guidance towards
+                        highly personalized, data-driven approaches. Claiming a 90% accuracy rate on the college prediction model and
+                        boasting a client success rate exceeding 95%, Expert Educational Consultancy's data advisory services are now utilized
+                        by India’s leading medical admission counseling service providers.
+                    </Typography>
+                    <Typography className={classes.text} align="center" style={{ marginTop: '20px' }}
+                        variant="body1">
+                        The mission of Expert Educational Consultancy is to guide every student within its NEET UG family to secure admission
+in the best medical college according to their NEET UG All India Rank, Category, Domicile, and Fees Budget, ensuring
+ethical, transparent, economical, and comfortable processes. At the core of its principles, Expert Educational
+Consultancy prioritizes value for money, striving to provide its services at affordable rates, thus enabling all students
+and parents to access genuine guidance on the medical admission counseling process without fear of exploitation.
+Upholding integrity, the consultancy ensures 100% transparency, honesty, and authenticity in all its dealings with
+students and parents, maintaining integrity across communication, services, and activities. Furthermore, Expert
+Educational Consultancy endeavors to cultivate trust by fostering empathy and respect towards each student, parent,
+and stakeholder, thereby fostering mutual trust and confidence among its clientele and stakeholders.
+                        </Typography>
                 </>
                 :
                 <>

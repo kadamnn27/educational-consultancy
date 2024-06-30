@@ -37,41 +37,74 @@ const Services = () => {
                 <ul>
                     <li>
                         <Typography className={classes.text}>
-                    India's Most Trusted Medical Admission Counsellors with >95% success rate in MBBS admissions
+                        Over 28 years, India’s Most Trusted Admission Consultancy with >96% success rate in MBBS / BDS / BAMS /
+                        BHMS admission.
+                    
                         </Typography>
                     </li>
                     <li>
                         <Typography className={classes.text}>
-                            Data Analytics, AI tools to Support Decision Making
+                        Utilize Data Analytics and AI tools to support in decision making.
                         </Typography>
                     </li>
                     <li>
                         <Typography className={classes.text}>
-                            All India presence with 10+ branch offices
-                            Over 26 Years of Experience and Leadership
+                        All India Presence with over 10+ branches across the country.
                         </Typography>
                     </li>
+                    <li>
+                        <Typography className={classes.text}>
+                        Private & Deemed Colleges in 15 states are Personally Visited (Approx. 95%)
+                        </Typography>
+                    </li>
+                    <li>
+                        <Typography className={classes.text}>
+                        Dedicated and Professionally Trained Employees.
+                        </Typography>
+                    </li>
+                    <li>
+                        <Typography className={classes.text}>
+                        Provide information on document preparation, form filling, eligibility, fee structure, bond, college -
+                        apprvd./Recog., no. of seats, security amount.
+                        </Typography>
+                    </li>
+                    <li>
+                        <Typography className={classes.text}>
+                        We provide accurate & authentic information with 100% honesty and transparency.
+                        </Typography>
+                    </li>
+                    <li>
+                        <Typography className={classes.text}>
+                        Provide individual attention to each case.
+                        </Typography>
+                    </li>
+                    <li>
+                        <Typography className={classes.text}>
+                        Focus on strong follow-ups & time to time updates.
+                        </Typography>
+                    </li>
+                
                 </ul>
                 <List sx={{
                     borderRadius: "10px",
                     boxShadow: "0px 0px 6px 2.5px #fea905 ,1px 1px 1px 0px #ECDE65,1px 1px 1px 0px #ECDE65",
                 }}>
                     <ListItem disablePadding>
-                        <ListItemButton component="a" href="../Downloadable_Content/Expert NEET UG Services 2023 Prashant Vihar.pdf" download>
+                        <ListItemButton component="a" href="/EXPERT_NEET_UG_SERVICES_2024.pdf" download>
                             <ListItemText primary="UG Service Brochure" />
                         </ListItemButton>
                     </ListItem>
                     <ListItem disablePadding>
-                        <ListItemButton component="a" href="../Downloadable_Content/Expert NEET PG Services 2023 Prashant Vihar.pdf" download>
+                        <ListItemButton component="a" href="/EXPERT_NEET_PG_SERVICES_2024.pdf" download>
                             <ListItemText primary="PG Service Brochure" />
                         </ListItemButton>
                     </ListItem>
                     <ListItem disablePadding>
-                        <ListItemButton component="a" href="../Downloadable_Content/ALL_INDIA_DEEMED_UNIVERSITY_MBBS_FEE_STRUCTURE_2021.xlsx" download>
-                            <ListItemText primary="Deemed Universities" />
+                        <ListItemButton component="a" href="/ALL_INDIA_MBBS_COLLEGE_LIST_2024.xlsx" download>
+                            <ListItemText primary="MBBS College List" />
                         </ListItemButton>
                     </ListItem>
-                    <ListItem disablePadding>
+                    {/*<ListItem disablePadding>
                         <ListItemButton component="a" href="../Downloadable_Content/ALL_INDIA_MBBS_GOVT_FEE_STRUCTURE_2021.xlsx" download>
                             <ListItemText primary="Government Universities" />
                         </ListItemButton>
@@ -80,7 +113,7 @@ const Services = () => {
                         <ListItemButton component="a" href="../Downloadable_Content/ALL_INDIA_MBBS_PVT_CLG_FEE_STRUCTURE_2021.xlsx" download>
                             <ListItemText primary="Private Universitites" />
                         </ListItemButton>
-                    </ListItem>
+                    </ListItem>*/}
                 </List>
             </div>
         </Container>

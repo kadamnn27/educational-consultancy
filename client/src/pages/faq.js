@@ -92,15 +92,11 @@ const FAQ = ({ navbar, setNavbar }) => {
                   fontWeight: "600",
                 }}
               >
-                The Medical UG admission is done on the basis of NEET Rank,
-              Category, Domicile and Fees budget. There are > 600 MBBS Colleges
-                in India and in which there are 47862 Government Seats, 44215
-                Private Seats & 6500 seats comes under Society and Trust. (as on
-                05-05-2022). There are multiple quotas and admission criteria of
-                colleges in different states, and it is practically impossible for
-                a student to have all the knowledge of those quotas and criteria.
-                Expert Educational Consultancy will help you with 26+ years of
-                expertise in the field
+              The Medical UG admission is done on the basis of NEET Rank, Category, Domicile and Fees budget. There are >
+              700 MBBS Colleges in India and in which there are 390 Government Colleges with 56480 Seats and 316 Private
+              Colleges with 52665 Seats. (As on 26-03-2024). There are multiple quotas and admission criteria of colleges in different
+              states and it is practically impossible for a student to have all the knowledge of those quotas and criteria. Expert
+              Educational Consultancy will help you with more than 28 years of expertise in this field.
               </Typography>
             </AccordionDetails>
           </Accordion>

@@ -128,7 +128,7 @@ const Footer = () => {
                         <Container className={classes.textFieldArea}>
                             <TextField className={classes.textField} id="filled-standard" label="Enter your email" variant="filled" />
                             <Button size="large" className={classes.submitBtn}>Submit</Button>
-                            <Button size="large" className={classes.submitBtn}>Submit</Button>
+                            
                             <Link to="/TermsAndConditions" className={classes.link}>
                                 <Button size="large" className={classes.termsBtn}>
                                   Terms And Conditions
@@ -151,7 +151,7 @@ const Footer = () => {
                     className={classes.icons}
                 >
                     <a target="_blank" href="https://www.instagram.com/experteducationalconsultancy/?hl=en"><Instagram className={classes.icon} /></a>
-                    <a target="_blank" href="https://www.facebook.com/ExpertEducatoinalConsultancy"><Facebook className={classes.icon} /></a>
+                    <a target="_blank" href="https://www.facebook.com/profile.php?id=100067182972359&mibextid=ZbWKwL"><Facebook className={classes.icon} /></a>
                     <a target="_blank" href="https://t.me/ExpertNEETUG"><Telegram className={classes.icon} /></a>
                 </Box>
             </Paper>
