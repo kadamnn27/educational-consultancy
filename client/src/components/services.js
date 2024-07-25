@@ -90,17 +90,17 @@ const Services = () => {
                     boxShadow: "0px 0px 6px 2.5px #fea905 ,1px 1px 1px 0px #ECDE65,1px 1px 1px 0px #ECDE65",
                 }}>
                     <ListItem disablePadding>
-                        <ListItemButton component="a" href="/EXPERT_NEET_UG_SERVICES_2024.pdf" download>
+                        <ListItemButton component="a" href="/EXPERT_NEET_UG_SERVICES_2024.pdf" target="_blank">
                             <ListItemText primary="UG Service Brochure" />
                         </ListItemButton>
                     </ListItem>
                     <ListItem disablePadding>
-                        <ListItemButton component="a" href="/EXPERT_NEET_PG_SERVICES_2024.pdf" download>
+                        <ListItemButton component="a" href="/EXPERT_NEET_PG_SERVICES_2024.pdf" target="_blank">
                             <ListItemText primary="PG Service Brochure" />
                         </ListItemButton>
                     </ListItem>
                     <ListItem disablePadding>
-                        <ListItemButton component="a" href="/ALL_INDIA_MBBS_COLLEGE_LIST_2024.xlsx" download>
+                        <ListItemButton component="a" href="/ALL_INDIA_MBBS_COLLEGE_LIST_2024.xlsx" target="_blank">
                             <ListItemText primary="MBBS College List" />
                         </ListItemButton>
                     </ListItem>
